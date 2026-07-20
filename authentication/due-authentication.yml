@@ -1,0 +1,26 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/due-openapi-original.yml
+docs: https://due.readme.io/docs/creating-customers
+summary:
+  types:
+  - http
+  http_schemes:
+  - bearer
+  note: >-
+    Due authenticates with an API key presented as an HTTP bearer token (Authorization: Bearer <api_key>).
+    Per-account operations are additionally scoped by the Due-Account-Id header. Read-only FX/market
+    endpoints require no authentication. Sandbox and production use environment-specific keys/hosts.
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: API key presented as a bearer token.
+  header: Authorization
+  sources:
+  - openapi/due-openapi-original.yml
+account_scoping:
+  header: Due-Account-Id
+  note: Scopes per-account requests (see webhook fetch/retry examples).
+public_endpoints:
+  note: FX markets (getmarkets, getmarket, getmarkethistory) are public and require no authentication.
