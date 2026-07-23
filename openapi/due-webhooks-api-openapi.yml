@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: Due Account Webhooks API
+  version: v1
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  contact:
+    email: demo@due.network
+    url: https://www.opendue.com
+servers:
+- url: https://api.due.network
+  description: Production
+- url: https://api.sandbox.due.network
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Webhooks
+paths:
+  /v1/webhook_endpoints/{id}:
+    delete:
+      tags:
+      - Webhooks
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bp_models.WebhookEndpoint'
+      operationId: delete_v1-webhook-endpoints-id
+  /v1/webhook_endpoints:
+    get:
+      tags:
+      - Webhooks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bp_models.WebhookEndpoint'
+      operationId: get_v1-webhook-endpoints
+    post:
+      tags:
+      - Webhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bp_dto.CreateWebhookEndpointRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bp_models.WebhookEndpoint'
+      operationId: post_v1-webhook-endpoints
+  /v1/webhook_endpoints/events:
+    get:
+      tags:
+      - Webhooks
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+      operationId: get_v1-webhook-events
+components:
+  schemas:
+    bp_dto.CreateWebhookEndpointRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        description:
+          type: string
+        events:
+          type: array
+          items:
+            type: string
+    bp_models.WebhookEndpoint:
+      type: object
+      properties:
+        id:
+          type: string
+        ownerId:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        subscribedEvents:
+          type: array
+          items:
+            type: string
+        publicKey:
+          type: string
+        enabled:
+          type: boolean
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

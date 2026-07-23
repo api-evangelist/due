@@ -1,0 +1,74 @@
+openapi: 3.0.3
+info:
+  title: Due Account Quote API
+  version: v1
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  contact:
+    email: demo@due.network
+    url: https://www.opendue.com
+servers:
+- url: https://api.due.network
+  description: Production
+- url: https://api.sandbox.due.network
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Quote
+paths:
+  /quote:
+    post:
+      operationId: CreateQuote
+      summary: Create FX quote
+      description: Creates a new FX quote for the specified input and output currencies and amounts.
+      tags:
+      - Quote
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/fx_dto.QuoteRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fx_models.Quote'
+components:
+  schemas:
+    fx_dto.QuoteRequest:
+      type: object
+      properties:
+        currencyIn:
+          type: string
+        currencyOut:
+          type: string
+        amountIn:
+          type: string
+        amountOut:
+          type: string
+    fx_models.Quote:
+      type: object
+      properties:
+        currencyIn:
+          type: string
+        currencyOut:
+          type: string
+        amountIn:
+          type: string
+        amountOut:
+          type: string
+        rate:
+          type: number
+          format: double
+        markupBps:
+          type: integer
+          format: int32
+        createdAt:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

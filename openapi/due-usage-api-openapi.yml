@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: Due Account Usage API
+  version: v1
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  contact:
+    email: demo@due.network
+    url: https://www.opendue.com
+servers:
+- url: https://api.due.network
+  description: Production
+- url: https://api.sandbox.due.network
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Usage
+paths:
+  /v1/usage:
+    parameters:
+    - $ref: '#/components/parameters/DueAccountIdHeader'
+    get:
+      summary: Get usage
+      tags:
+      - Usage
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/transfers_models_v2.Usage'
+      operationId: get_v1-usage
+components:
+  schemas:
+    transfers_models_v2.Usage:
+      type: object
+      properties:
+        ownerId:
+          type: string
+        period:
+          type: string
+        start:
+          type: string
+          format: date-time
+        end:
+          type: string
+          format: date-time
+        kind:
+          type: string
+        amount:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

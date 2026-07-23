@@ -1,0 +1,82 @@
+openapi: 3.0.3
+info:
+  title: Due Account Account Wallets API
+  version: v1
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  contact:
+    email: demo@due.network
+    url: https://www.opendue.com
+servers:
+- url: https://api.due.network
+  description: Production
+- url: https://api.sandbox.due.network
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Account Wallets
+paths:
+  /v1/wallets:
+    parameters:
+    - $ref: '#/components/parameters/DueAccountIdHeader'
+    get:
+      summary: List wallets
+      description: Lists all wallets linked to the account
+      tags:
+      - Account Wallets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bp_models.Wallet'
+      operationId: get_v1-wallets-1
+    post:
+      summary: Create wallet
+      description: Creates wallet and links it to the account
+      tags:
+      - Account Wallets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bp_dto.AddWalletRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bp_models.Wallet'
+      operationId: post_v1-wallets-1
+components:
+  schemas:
+    bp_models.Wallet:
+      type: object
+      properties:
+        id:
+          type: string
+        address:
+          type: string
+        preferences:
+          $ref: '#/components/schemas/bp_models.WalletPreferences'
+    bp_dto.AddWalletRequest:
+      type: object
+      properties:
+        address:
+          type: string
+    bp_models.WalletPreferences:
+      type: object
+      properties:
+        selectedNetworks:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

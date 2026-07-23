@@ -1,0 +1,99 @@
+openapi: 3.0.3
+info:
+  title: Due Account TOS API
+  version: v1
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  contact:
+    email: demo@due.network
+    url: https://www.opendue.com
+servers:
+- url: https://api.due.network
+  description: Production
+- url: https://api.sandbox.due.network
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: TOS
+paths:
+  /v1/tos/{token}:
+    get:
+      summary: Get TOS data
+      tags:
+      - TOS
+      parameters:
+      - in: path
+        name: token
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/transfers_models_v2.TosAcceptance'
+      operationId: get_v1-tos-token
+    post:
+      summary: Manually accept TOS
+      tags:
+      - TOS
+      parameters:
+      - in: path
+        name: token
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/transfers_dto_v2.AcceptTosRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/transfers_models_v2.TosAcceptance'
+      operationId: post_v1-tos-token
+components:
+  schemas:
+    transfers_models_v2.LinkSet:
+      type: object
+      properties:
+        tos:
+          type: string
+        privacyPolicy:
+          type: string
+    transfers_models_v2.TosAcceptance:
+      type: object
+      properties:
+        id:
+          type: string
+        entityName:
+          type: string
+        status:
+          type: string
+          enum:
+          - accepted
+          - pending
+        link:
+          type: string
+        documentLinks:
+          $ref: '#/components/schemas/transfers_models_v2.LinkSet'
+        acceptedAt:
+          type: string
+        token:
+          type: string
+    transfers_dto_v2.AcceptTosRequest:
+      type: object
+      properties:
+        ipAddress:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,62 @@
+openapi: 3.0.3
+info:
+  title: Due Account Wallets API
+  version: v1
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  contact:
+    email: demo@due.network
+    url: https://www.opendue.com
+servers:
+- url: https://api.due.network
+  description: Production
+- url: https://api.sandbox.due.network
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Wallets
+paths:
+  /v1/wallets/{walletId}/balance:
+    parameters:
+    - $ref: '#/components/parameters/DueAccountIdHeader'
+    get:
+      summary: Get wallet balances
+      description: Retrieves balances for a specific wallet
+      tags:
+      - Wallets
+      parameters:
+      - in: path
+        name: walletId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/transfers_dto_v2.WalletBalanceResponse'
+      operationId: get_v1-wallets-walletid-balance
+components:
+  schemas:
+    transfers_dto_v2.WalletBalanceResponse:
+      type: object
+      properties:
+        balances:
+          type: array
+          items:
+            $ref: '#/components/schemas/transfers_models_v2.WalletBalance'
+    transfers_models_v2.WalletBalance:
+      type: object
+      properties:
+        networkId:
+          type: string
+        token:
+          type: string
+        balance:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

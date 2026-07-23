@@ -1,0 +1,216 @@
+openapi: 3.0.3
+info:
+  title: Due Account API
+  version: v1
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  contact:
+    email: demo@due.network
+    url: https://www.opendue.com
+servers:
+- url: https://api.due.network
+  description: Production
+- url: https://api.sandbox.due.network
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Account
+paths:
+  /v1/account_categories/:
+    get:
+      summary: Get account categories
+      description: Retrieves a list of available account categories
+      tags:
+      - Account
+      parameters:
+      - in: query
+        name: next
+        schema:
+          type: string
+      - in: query
+        name: accountType
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/repository.CursorPage--transfers_models.AccountCategory'
+      operationId: get_v1-account-categories
+  /v1/accounts/{accountId}:
+    get:
+      summary: Get account
+      description: Retrieves full account details, including status history, KYC status, and ToS acceptance.
+      tags:
+      - Account
+      parameters:
+      - in: path
+        name: accountId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bp_models.AccountV1'
+      operationId: get_v1-accounts-accountid
+  /v1/accounts/:
+    get:
+      summary: List accounts
+      description: Lists all accounts linked to your platform or user.
+      tags:
+      - Account
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/bp_models.AccountV1'
+      operationId: get_v1-accounts
+  /v1/accounts:
+    post:
+      summary: Create account
+      description: Creates a new customer account (business or individual)
+      tags:
+      - Account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bp_dto.CreateAccountRequestV1'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bp_models.AccountV1'
+      operationId: post_v1-accounts
+components:
+  schemas:
+    transfers_models_v2.LinkSet:
+      type: object
+      properties:
+        tos:
+          type: string
+        privacyPolicy:
+          type: string
+    transfers_models.AccountCategory:
+      type: object
+      properties:
+        code:
+          type: string
+        accountType:
+          type: string
+        active:
+          type: boolean
+    bp_dto.CreateAccountRequestV1:
+      type: object
+      properties:
+        type:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        country:
+          type: string
+        category:
+          type: string
+        externalId:
+          type: string
+        kycReturnUrl:
+          type: string
+    transfers_models_v2.TosAcceptance:
+      type: object
+      properties:
+        id:
+          type: string
+        entityName:
+          type: string
+        status:
+          type: string
+          enum:
+          - accepted
+          - pending
+        link:
+          type: string
+        documentLinks:
+          $ref: '#/components/schemas/transfers_models_v2.LinkSet'
+        acceptedAt:
+          type: string
+        token:
+          type: string
+    transfers_models_v2.OwnerKyc:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - pending
+          - resubmission_required
+          - passed
+          - failed
+        link:
+          type: string
+    status_log.Record:
+      type: object
+      properties:
+        status:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        reason:
+          type: string
+        code:
+          type: string
+    repository.CursorPage--transfers_models.AccountCategory:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/transfers_models.AccountCategory'
+        next:
+          type: string
+    bp_models.AccountV1:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        country:
+          type: string
+        category:
+          type: string
+        externalId:
+          type: string
+        status:
+          type: string
+        statusLog:
+          type: array
+          items:
+            $ref: '#/components/schemas/status_log.Record'
+        kyc:
+          $ref: '#/components/schemas/transfers_models_v2.OwnerKyc'
+        tos:
+          $ref: '#/components/schemas/transfers_models_v2.TosAcceptance'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

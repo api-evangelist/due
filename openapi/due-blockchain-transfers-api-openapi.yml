@@ -1,0 +1,2333 @@
+openapi: 3.0.3
+info:
+  title: Due Account Blockchain Transfers API
+  version: v1
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  contact:
+    email: demo@due.network
+    url: https://www.opendue.com
+servers:
+- url: https://api.due.network
+  description: Production
+- url: https://api.sandbox.due.network
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Blockchain Transfers
+paths:
+  /v1/token_transfers/{address}/{id}:
+    parameters:
+    - $ref: '#/components/parameters/DueAccountIdHeader'
+    get:
+      summary: Get token transfer
+      tags:
+      - Blockchain Transfers
+      parameters:
+      - in: path
+        name: address
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/transfers_models_v2.TokenTransfer'
+      operationId: get_v1-token-transfers-address-id
+  /v1/token_transfers/{address}:
+    parameters:
+    - $ref: '#/components/parameters/DueAccountIdHeader'
+    get:
+      summary: List token transfers
+      tags:
+      - Blockchain Transfers
+      parameters:
+      - in: path
+        name: address
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: next
+        description: Cursor for pagination to fetch the next set of results.
+        schema:
+          type: string
+      - in: query
+        name: order
+        description: Order in which results should be returned (e.g., `asc`, `desc`).
+        schema:
+          type: string
+      - in: query
+        name: limit
+        description: Number of results to return per page.
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: startDate
+        description: Start date for filtering results (ISO 8601 format).
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: endDate
+        description: Start date for filtering results (ISO 8601 format).
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: includeEmpty
+        schema:
+          type: boolean
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/repository.CursorPage--transfers_models_v2.TokenTransfer'
+      operationId: get_v1-token-transfers-address
+  /v1/transfer_intents/{id}:
+    parameters:
+    - $ref: '#/components/parameters/DueAccountIdHeader'
+    get:
+      summary: Get transfer intent
+      description: Get a specific transfer intent by id.
+      tags:
+      - Blockchain Transfers
+      parameters:
+      - in: path
+        name: id
+        description: Unique identifier for the resource.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/transfers_models_v2.TransferIntent'
+      operationId: get_v1-transfer-intents-id
+  /v1/transfer_intents/submit:
+    parameters:
+    - $ref: '#/components/parameters/DueAccountIdHeader'
+    post:
+      summary: Submit transfer intent
+      description: Submit transfer intent for an execution on blockchain.
+      tags:
+      - Blockchain Transfers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/transfers_models_v2.TransferIntent'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/transfers_models_v2.TransferIntent'
+      operationId: post_v1-transfer-intents-submit
+  /v1/transfer_intents:
+    parameters:
+    - $ref: '#/components/parameters/DueAccountIdHeader'
+    post:
+      summary: Create transfer intent
+      description: Creates an arbitrary transfer intent for a given set of tokens (in and out) and networks
+      tags:
+      - Blockchain Transfers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/transfers_dto_v2.TransferIntentRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/transfers_models_v2.TransferIntent'
+      operationId: post_v1-transfer-intents
+components:
+  schemas:
+    account.SolanaAccount:
+      type: object
+      properties:
+        address:
+          type: array
+          items:
+            type: integer
+            format: int32
+        schema:
+          type: string
+      required:
+      - address
+      - schema
+    account.BankAccountDetailsDO:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        bankAccountType:
+          type: string
+        idType:
+          type: string
+        idNumber:
+          type: string
+        taxId:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - bankAccountType
+      - schema
+    account.BankAccountDetailsUK:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        accountNumber:
+          type: string
+        sortCode:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - accountNumber
+      - sortCode
+      - schema
+    account.QRAccountBrazilDetails:
+      type: object
+      properties:
+        emv:
+          type: string
+        pixKey:
+          type: string
+        name:
+          type: string
+        nin:
+          type: string
+        financialInstitutionId:
+          type: string
+        branchNumber:
+          type: string
+        accountNumber:
+          type: string
+        bankAccountType:
+          type: string
+        schema:
+          type: string
+      required:
+      - emv
+      - schema
+    account.BankAccountDetailsAU:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        bankName:
+          type: string
+        bsbCode:
+          type: string
+        accountNumber:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.MailingAddress'
+        schema:
+          type: string
+      required:
+      - accountType
+      - bsbCode
+      - accountNumber
+      - beneficiaryAddress
+      - schema
+    account.BankAccountDetailsPH:
+      type: object
+      properties:
+        beneficiaryName:
+          type: string
+        bankName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        emv:
+          type: string
+        schema:
+          type: string
+      required:
+      - beneficiaryName
+      - financialInstitutionId
+      - accountNumber
+      - schema
+    account.BankAccountDetailsPK:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - schema
+    account.BankAccountDetailsCO:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        bankAccountType:
+          type: string
+        accountNumber:
+          type: string
+        idType:
+          type: string
+        idNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - bankAccountType
+      - accountNumber
+      - idNumber
+      - schema
+    account.BankAccountDetailsINUPI:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        accountNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - accountNumber
+      - schema
+    account.BankAccountDetailsBR:
+      type: object
+      properties:
+        name:
+          type: string
+        nin:
+          type: string
+        financialInstitutionId:
+          type: string
+        branchNumber:
+          type: string
+        accountNumber:
+          type: string
+        bankAccountType:
+          type: string
+        bankName:
+          type: string
+        schema:
+          type: string
+      required:
+      - name
+      - nin
+      - financialInstitutionId
+      - branchNumber
+      - accountNumber
+      - bankAccountType
+      - schema
+    account.BankAccountDetailsEG:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        IBAN:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - IBAN
+      - schema
+    transfers_models_v2.TokenTransfer:
+      type: object
+      properties:
+        id:
+          type: string
+        fullId:
+          type: string
+        txHash:
+          type: string
+        networkId:
+          type: string
+        eventIdx:
+          type: integer
+          format: int64
+        blockNumber:
+          type: integer
+          format: int64
+        token:
+          type: string
+        owner:
+          type: string
+        from:
+          type: string
+        to:
+          type: string
+        amount:
+          type: string
+        transferIntentId:
+          type: string
+        transferIntent:
+          $ref: '#/components/schemas/transfers_models_v2.TransferIntent'
+        transfer:
+          $ref: '#/components/schemas/transfers_models_v2.Transfer'
+        addedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+    repository.CursorPage--transfers_models_v2.TokenTransfer:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/transfers_models_v2.TokenTransfer'
+        next:
+          type: string
+    account.TransferInstructionsExternalLink:
+      type: object
+      properties:
+        url:
+          type: string
+        kind:
+          type: string
+      required:
+      - kind
+    account.BankAccountDetailsCR:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        IBAN:
+          type: string
+        phoneNumber:
+          type: string
+        idType:
+          type: string
+        idNumber:
+          type: string
+        taxId:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - IBAN
+      - phoneNumber
+      - schema
+    account.BankAccountDetailsIL:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        IBAN:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - IBAN
+      - schema
+    account.BankAccountDetailsSV:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        bankAccountType:
+          type: string
+        accountNumber:
+          type: string
+        phoneNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - bankAccountType
+      - accountNumber
+      - phoneNumber
+      - schema
+    account.EWalletID:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        phoneNumber:
+          type: string
+        financialInstitutionId:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - phoneNumber
+      - financialInstitutionId
+      - schema
+    relay_signable.Siwsol:
+      type: string
+    account.BankAccountDetailsSwiftIBAN:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        bankName:
+          type: string
+        bankAddress:
+          type: string
+        IBAN:
+          type: string
+        swiftCode:
+          type: string
+        currency:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.MailingAddress'
+        schema:
+          type: string
+      required:
+      - accountType
+      - IBAN
+      - swiftCode
+      - currency
+      - beneficiaryAddress
+      - schema
+    account.BankAccountDetailsUSJPM:
+      type: object
+      properties:
+        bankName:
+          type: string
+        bankAddress:
+          type: string
+        accountName:
+          type: string
+        accountNumber:
+          type: string
+        routingNumberACH:
+          type: string
+        routingNumberWire:
+          type: string
+        routingNumberRTP:
+          type: string
+        schema:
+          type: string
+      required:
+      - bankName
+      - accountName
+      - accountNumber
+      - routingNumberACH
+      - routingNumberWire
+      - routingNumberRTP
+      - schema
+    account.BankAccountDetailsIBANLegacy:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        bankName:
+          type: string
+        IBAN:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - IBAN
+      - schema
+    account.EWalletAlipay:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        phoneNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - phoneNumber
+      - schema
+    relay_signable.SiweMessage:
+      type: string
+      description: See https://eips.ethereum.org/EIPS/eip-4361#message-format
+    account.BankAccountDetailsMX:
+      type: object
+      properties:
+        bankName:
+          type: string
+        clabe:
+          type: string
+        beneficiaryName:
+          type: string
+        email:
+          type: string
+        schema:
+          type: string
+      required:
+      - clabe
+      - beneficiaryName
+      - schema
+    account.BankAccountDetailsCL:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        bankAccountType:
+          type: string
+        idType:
+          type: string
+        idNumber:
+          type: string
+        beneficiaryCity:
+          type: string
+        taxId:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - bankAccountType
+      - beneficiaryCity
+      - schema
+    relay_signable.TronTransaction:
+      type: object
+      properties:
+        raw_data:
+          $ref: '#/components/schemas/relay_signable.TronTransactionRawData'
+        raw_data_hex:
+          type: string
+        txID:
+          type: string
+        kind:
+          type: string
+      required:
+      - kind
+    account.BankAccountDetailsCN:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.MailingAddress'
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - beneficiaryAddress
+      - schema
+    account.EWalletWechat:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        phoneNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - phoneNumber
+      - schema
+    account.BankAccountDetailsJP:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        bankName:
+          type: string
+        accountNumber:
+          type: string
+        branchNumber:
+          type: string
+        nationalityCountry3:
+          type: string
+        phoneNumber:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.MailingAddress'
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - branchNumber
+      - phoneNumber
+      - beneficiaryAddress
+      - schema
+    apitypes.Type:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+    relay_signable.TypedDataWithMessage--relay_signable.ITypedDataMessage:
+      type: object
+      properties:
+        types:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/apitypes.Type'
+        primaryType:
+          type: string
+        domain:
+          type: object
+        message:
+          type: object
+        kind:
+          type: string
+      required:
+      - kind
+    transfers_models_v2.TransferSide:
+      type: object
+      properties:
+        amount:
+          type: string
+        fee:
+          type: string
+        applicationFee:
+          type: string
+        totalFee:
+          type: string
+        currency:
+          type: string
+        rail:
+          type: string
+        id:
+          type: string
+        label:
+          type: string
+        details:
+          oneOf:
+          - $ref: '#/components/schemas/account.BankAccountDetailsSA'
+          - $ref: '#/components/schemas/account.EWalletGT'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSV'
+          - $ref: '#/components/schemas/account.BankAccountDetailsHN'
+          - $ref: '#/components/schemas/account.EWalletPK'
+          - $ref: '#/components/schemas/account.EWalletPH'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSwiftIBAN'
+          - $ref: '#/components/schemas/account.EWalletAlipay'
+          - $ref: '#/components/schemas/account.EWalletID'
+          - $ref: '#/components/schemas/account.EWalletDO'
+          - $ref: '#/components/schemas/account.SolanaAccount'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCL'
+          - $ref: '#/components/schemas/account.BankAccountAfricaDetails'
+          - $ref: '#/components/schemas/account.BankAccountDetailsBD'
+          - $ref: '#/components/schemas/account.BankAccountDetailsJP'
+          - $ref: '#/components/schemas/account.BankAccountDetailsAU'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCA'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSwift'
+          - $ref: '#/components/schemas/account.BankAccountDetailsDO'
+          - $ref: '#/components/schemas/account.BankAccountDetailsJM'
+          - $ref: '#/components/schemas/account.EWallet'
+          - $ref: '#/components/schemas/account.MomoAccountAfricaDetails'
+          - $ref: '#/components/schemas/account.MomoSenderAccountAfricaDetails'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSG'
+          - $ref: '#/components/schemas/account.BankAccountDetailsTH'
+          - $ref: '#/components/schemas/account.BankAccountDetailsTR'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCN'
+          - $ref: '#/components/schemas/account.BankAccountDetailsIN'
+          - $ref: '#/components/schemas/account.BankAccountDetailsBR'
+          - $ref: '#/components/schemas/account.QRAccountBrazilDetails'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCR'
+          - $ref: '#/components/schemas/account.BankAccountDetailsGT'
+          - $ref: '#/components/schemas/account.BankAccountDetailsEG'
+          - $ref: '#/components/schemas/account.BankAccountDetailsPKIBAN'
+          - $ref: '#/components/schemas/account.BankAccountDetailsINUPI'
+          - $ref: '#/components/schemas/account.EvmAccount'
+          - $ref: '#/components/schemas/account.BankAccountDetailsUK'
+          - $ref: '#/components/schemas/account.BankAccountDetailsMX'
+          - $ref: '#/components/schemas/account.BankAccountDetailsIBANLegacy'
+          - $ref: '#/components/schemas/account.BankAccountDetailsMY'
+          - $ref: '#/components/schemas/account.BankAccountDetailsPH'
+          - $ref: '#/components/schemas/account.BankAccountDetailsID'
+          - $ref: '#/components/schemas/account.BankAccountDetailsVN'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCOBreb'
+          - $ref: '#/components/schemas/account.StarknetAccount'
+          - $ref: '#/components/schemas/account.BankAccountDetailsBO'
+          - $ref: '#/components/schemas/account.BankAccountDetailsIL'
+          - $ref: '#/components/schemas/account.EWalletWechat'
+          - $ref: '#/components/schemas/account.BankAccountDetailsKR'
+          - $ref: '#/components/schemas/account.BankAccountDetailsUSJPM'
+          - $ref: '#/components/schemas/account.TronAccount'
+          - $ref: '#/components/schemas/account.BankAccountDetailsMena'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCO'
+          - $ref: '#/components/schemas/account.BankAccountDetailsHK'
+          - $ref: '#/components/schemas/account.BankAccountDetailsPK'
+          - $ref: '#/components/schemas/account.BankAccountDetailsUS'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSepa'
+          - $ref: '#/components/schemas/account.BankAccountDetailsBRPix'
+          discriminator:
+            propertyName: schema
+            mapping:
+              bank_africa: '#/components/schemas/account.BankAccountAfricaDetails'
+              bank_au: '#/components/schemas/account.BankAccountDetailsAU'
+              bank_bd: '#/components/schemas/account.BankAccountDetailsBD'
+              bank_bo: '#/components/schemas/account.BankAccountDetailsBO'
+              bank_br: '#/components/schemas/account.BankAccountDetailsBR'
+              bank_br_pix: '#/components/schemas/account.BankAccountDetailsBRPix'
+              bank_ca: '#/components/schemas/account.BankAccountDetailsCA'
+              bank_cl: '#/components/schemas/account.BankAccountDetailsCL'
+              bank_cn: '#/components/schemas/account.BankAccountDetailsCN'
+              bank_co_breb: '#/components/schemas/account.BankAccountDetailsCOBreb'
+              bank_colombia: '#/components/schemas/account.BankAccountDetailsCO'
+              bank_cr: '#/components/schemas/account.BankAccountDetailsCR'
+              bank_do: '#/components/schemas/account.BankAccountDetailsDO'
+              bank_eg: '#/components/schemas/account.BankAccountDetailsEG'
+              bank_gt: '#/components/schemas/account.BankAccountDetailsGT'
+              bank_hk: '#/components/schemas/account.BankAccountDetailsHK'
+              bank_hn: '#/components/schemas/account.BankAccountDetailsHN'
+              bank_iban: '#/components/schemas/account.BankAccountDetailsIBANLegacy'
+              bank_id: '#/components/schemas/account.BankAccountDetailsID'
+              bank_il: '#/components/schemas/account.BankAccountDetailsIL'
+              bank_in: '#/components/schemas/account.BankAccountDetailsIN'
+              bank_in_upi: '#/components/schemas/account.BankAccountDetailsINUPI'
+              bank_jm: '#/components/schemas/account.BankAccountDetailsJM'
+              bank_jp: '#/components/schemas/account.BankAccountDetailsJP'
+              bank_kr: '#/components/schemas/account.BankAccountDetailsKR'
+              bank_mena: '#/components/schemas/account.BankAccountDetailsMena'
+              bank_mexico: '#/components/schemas/account.BankAccountDetailsMX'
+              bank_my: '#/components/schemas/account.BankAccountDetailsMY'
+              bank_ph: '#/components/schemas/account.BankAccountDetailsPH'
+              bank_pk: '#/components/schemas/account.BankAccountDetailsPK'
+              bank_pk_iban: '#/components/schemas/account.BankAccountDetailsPKIBAN'
+              bank_sa: '#/components/schemas/account.BankAccountDetailsSA'
+              bank_sepa: '#/components/schemas/account.BankAccountDetailsSepa'
+              bank_sg: '#/components/schemas/account.BankAccountDetailsSG'
+              bank_sv: '#/components/schemas/account.BankAccountDetailsSV'
+              bank_swift: '#/components/schemas/account.BankAccountDetailsSwift'
+              bank_swift_iban: '#/components/schemas/account.BankAccountDetailsSwiftIBAN'
+              bank_th: '#/components/schemas/account.BankAccountDetailsTH'
+              bank_tr: '#/components/schemas/account.BankAccountDetailsTR'
+              bank_uk: '#/components/schemas/account.BankAccountDetailsUK'
+              bank_us: '#/components/schemas/account.BankAccountDetailsUS'
+              bank_us_jpm: '#/components/schemas/account.BankAccountDetailsUSJPM'
+              bank_vn: '#/components/schemas/account.BankAccountDetailsVN'
+              evm: '#/components/schemas/account.EvmAccount'
+              ewallet: '#/components/schemas/account.EWallet'
+              ewallet_alipay: '#/components/schemas/account.EWalletAlipay'
+              ewallet_do: '#/components/schemas/account.EWalletDO'
+              ewallet_gt: '#/components/schemas/account.EWalletGT'
+              ewallet_id: '#/components/schemas/account.EWalletID'
+              ewallet_ph: '#/components/schemas/account.EWalletPH'
+              ewallet_pk: '#/components/schemas/account.EWalletPK'
+              ewallet_wechatpay: '#/components/schemas/account.EWalletWechat'
+              momo_africa: '#/components/schemas/account.MomoAccountAfricaDetails'
+              momo_africa.sender: '#/components/schemas/account.MomoSenderAccountAfricaDetails'
+              qr_brazil: '#/components/schemas/account.QRAccountBrazilDetails'
+              solana: '#/components/schemas/account.SolanaAccount'
+              starknet: '#/components/schemas/account.StarknetAccount'
+              tron: '#/components/schemas/account.TronAccount'
+        memo:
+          type: string
+        purposeCode:
+          type: string
+        confirmation:
+          oneOf:
+          - $ref: '#/components/schemas/transaction_confirmation.TransactionHash'
+          - $ref: '#/components/schemas/transaction_confirmation.TransactionPH'
+          discriminator:
+            propertyName: kind
+            mapping:
+              transaction_hash: '#/components/schemas/transaction_confirmation.TransactionHash'
+              transaction_ph: '#/components/schemas/transaction_confirmation.TransactionPH'
+        virtualAccountId:
+          type: string
+    account.MailingAddress:
+      type: object
+      properties:
+        street_line_1:
+          type: string
+        street_line_2:
+          type: string
+        city:
+          type: string
+        postal_code:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+      required:
+      - street_line_1
+      - city
+      - postal_code
+      - country
+    account.BankAccountDetailsHK:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - schema
+    account.EWalletGT:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        phoneNumber:
+          type: string
+        financialInstitutionId:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - phoneNumber
+      - financialInstitutionId
+      - schema
+    account.BankAccountDetailsCOBreb:
+      type: object
+      properties:
+        name:
+          type: string
+        key:
+          type: string
+        schema:
+          type: string
+      required:
+      - name
+      - key
+      - schema
+    account.TransferInstructionsDisposableAccount:
+      type: object
+      properties:
+        details:
+          oneOf:
+          - $ref: '#/components/schemas/account.BankAccountDetailsSA'
+          - $ref: '#/components/schemas/account.EWalletGT'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSV'
+          - $ref: '#/components/schemas/account.BankAccountDetailsHN'
+          - $ref: '#/components/schemas/account.EWalletPK'
+          - $ref: '#/components/schemas/account.EWalletPH'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSwiftIBAN'
+          - $ref: '#/components/schemas/account.EWalletAlipay'
+          - $ref: '#/components/schemas/account.EWalletID'
+          - $ref: '#/components/schemas/account.EWalletDO'
+          - $ref: '#/components/schemas/account.SolanaAccount'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCL'
+          - $ref: '#/components/schemas/account.BankAccountAfricaDetails'
+          - $ref: '#/components/schemas/account.BankAccountDetailsBD'
+          - $ref: '#/components/schemas/account.BankAccountDetailsJP'
+          - $ref: '#/components/schemas/account.BankAccountDetailsAU'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCA'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSwift'
+          - $ref: '#/components/schemas/account.BankAccountDetailsDO'
+          - $ref: '#/components/schemas/account.BankAccountDetailsJM'
+          - $ref: '#/components/schemas/account.EWallet'
+          - $ref: '#/components/schemas/account.MomoAccountAfricaDetails'
+          - $ref: '#/components/schemas/account.MomoSenderAccountAfricaDetails'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSG'
+          - $ref: '#/components/schemas/account.BankAccountDetailsTH'
+          - $ref: '#/components/schemas/account.BankAccountDetailsTR'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCN'
+          - $ref: '#/components/schemas/account.BankAccountDetailsIN'
+          - $ref: '#/components/schemas/account.BankAccountDetailsBR'
+          - $ref: '#/components/schemas/account.QRAccountBrazilDetails'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCR'
+          - $ref: '#/components/schemas/account.BankAccountDetailsGT'
+          - $ref: '#/components/schemas/account.BankAccountDetailsEG'
+          - $ref: '#/components/schemas/account.BankAccountDetailsPKIBAN'
+          - $ref: '#/components/schemas/account.BankAccountDetailsINUPI'
+          - $ref: '#/components/schemas/account.EvmAccount'
+          - $ref: '#/components/schemas/account.BankAccountDetailsUK'
+          - $ref: '#/components/schemas/account.BankAccountDetailsMX'
+          - $ref: '#/components/schemas/account.BankAccountDetailsIBANLegacy'
+          - $ref: '#/components/schemas/account.BankAccountDetailsMY'
+          - $ref: '#/components/schemas/account.BankAccountDetailsPH'
+          - $ref: '#/components/schemas/account.BankAccountDetailsID'
+          - $ref: '#/components/schemas/account.BankAccountDetailsVN'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCOBreb'
+          - $ref: '#/components/schemas/account.StarknetAccount'
+          - $ref: '#/components/schemas/account.BankAccountDetailsBO'
+          - $ref: '#/components/schemas/account.BankAccountDetailsIL'
+          - $ref: '#/components/schemas/account.EWalletWechat'
+          - $ref: '#/components/schemas/account.BankAccountDetailsKR'
+          - $ref: '#/components/schemas/account.BankAccountDetailsUSJPM'
+          - $ref: '#/components/schemas/account.TronAccount'
+          - $ref: '#/components/schemas/account.BankAccountDetailsMena'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCO'
+          - $ref: '#/components/schemas/account.BankAccountDetailsHK'
+          - $ref: '#/components/schemas/account.BankAccountDetailsPK'
+          - $ref: '#/components/schemas/account.BankAccountDetailsUS'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSepa'
+          - $ref: '#/components/schemas/account.BankAccountDetailsBRPix'
+          discriminator:
+            propertyName: schema
+            mapping:
+              bank_africa: '#/components/schemas/account.BankAccountAfricaDetails'
+              bank_au: '#/components/schemas/account.BankAccountDetailsAU'
+              bank_bd: '#/components/schemas/account.BankAccountDetailsBD'
+              bank_bo: '#/components/schemas/account.BankAccountDetailsBO'
+              bank_br: '#/components/schemas/account.BankAccountDetailsBR'
+              bank_br_pix: '#/components/schemas/account.BankAccountDetailsBRPix'
+              bank_ca: '#/components/schemas/account.BankAccountDetailsCA'
+              bank_cl: '#/components/schemas/account.BankAccountDetailsCL'
+              bank_cn: '#/components/schemas/account.BankAccountDetailsCN'
+              bank_co_breb: '#/components/schemas/account.BankAccountDetailsCOBreb'
+              bank_colombia: '#/components/schemas/account.BankAccountDetailsCO'
+              bank_cr: '#/components/schemas/account.BankAccountDetailsCR'
+              bank_do: '#/components/schemas/account.BankAccountDetailsDO'
+              bank_eg: '#/components/schemas/account.BankAccountDetailsEG'
+              bank_gt: '#/components/schemas/account.BankAccountDetailsGT'
+              bank_hk: '#/components/schemas/account.BankAccountDetailsHK'
+              bank_hn: '#/components/schemas/account.BankAccountDetailsHN'
+              bank_iban: '#/components/schemas/account.BankAccountDetailsIBANLegacy'
+              bank_id: '#/components/schemas/account.BankAccountDetailsID'
+              bank_il: '#/components/schemas/account.BankAccountDetailsIL'
+              bank_in: '#/components/schemas/account.BankAccountDetailsIN'
+              bank_in_upi: '#/components/schemas/account.BankAccountDetailsINUPI'
+              bank_jm: '#/components/schemas/account.BankAccountDetailsJM'
+              bank_jp: '#/components/schemas/account.BankAccountDetailsJP'
+              bank_kr: '#/components/schemas/account.BankAccountDetailsKR'
+              bank_mena: '#/components/schemas/account.BankAccountDetailsMena'
+              bank_mexico: '#/components/schemas/account.BankAccountDetailsMX'
+              bank_my: '#/components/schemas/account.BankAccountDetailsMY'
+              bank_ph: '#/components/schemas/account.BankAccountDetailsPH'
+              bank_pk: '#/components/schemas/account.BankAccountDetailsPK'
+              bank_pk_iban: '#/components/schemas/account.BankAccountDetailsPKIBAN'
+              bank_sa: '#/components/schemas/account.BankAccountDetailsSA'
+              bank_sepa: '#/components/schemas/account.BankAccountDetailsSepa'
+              bank_sg: '#/components/schemas/account.BankAccountDetailsSG'
+              bank_sv: '#/components/schemas/account.BankAccountDetailsSV'
+              bank_swift: '#/components/schemas/account.BankAccountDetailsSwift'
+              bank_swift_iban: '#/components/schemas/account.BankAccountDetailsSwiftIBAN'
+              bank_th: '#/components/schemas/account.BankAccountDetailsTH'
+              bank_tr: '#/components/schemas/account.BankAccountDetailsTR'
+              bank_uk: '#/components/schemas/account.BankAccountDetailsUK'
+              bank_us: '#/components/schemas/account.BankAccountDetailsUS'
+              bank_us_jpm: '#/components/schemas/account.BankAccountDetailsUSJPM'
+              bank_vn: '#/components/schemas/account.BankAccountDetailsVN'
+              evm: '#/components/schemas/account.EvmAccount'
+              ewallet: '#/components/schemas/account.EWallet'
+              ewallet_alipay: '#/components/schemas/account.EWalletAlipay'
+              ewallet_do: '#/components/schemas/account.EWalletDO'
+              ewallet_gt: '#/components/schemas/account.EWalletGT'
+              ewallet_id: '#/components/schemas/account.EWalletID'
+              ewallet_ph: '#/components/schemas/account.EWalletPH'
+              ewallet_pk: '#/components/schemas/account.EWalletPK'
+              ewallet_wechatpay: '#/components/schemas/account.EWalletWechat'
+              momo_africa: '#/components/schemas/account.MomoAccountAfricaDetails'
+              momo_africa.sender: '#/components/schemas/account.MomoSenderAccountAfricaDetails'
+              qr_brazil: '#/components/schemas/account.QRAccountBrazilDetails'
+              solana: '#/components/schemas/account.SolanaAccount'
+              starknet: '#/components/schemas/account.StarknetAccount'
+              tron: '#/components/schemas/account.TronAccount'
+        kind:
+          type: string
+      required:
+      - kind
+    account.BankAccountDetailsHN:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        bankAccountType:
+          type: string
+        accountNumber:
+          type: string
+        phoneNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - bankAccountType
+      - accountNumber
+      - phoneNumber
+      - schema
+    account.BankAccountDetailsSepa:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        IBAN:
+          type: string
+        swiftCode:
+          type: string
+        bankName:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - IBAN
+      - schema
+    account.EWallet:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        phoneNumber:
+          type: string
+        financialInstitutionId:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - phoneNumber
+      - financialInstitutionId
+      - schema
+    transfers_models_v2.TransferMovement:
+      type: object
+      properties:
+        leg:
+          type: string
+        component:
+          type: string
+        currency:
+          type: string
+        amount:
+          type: string
+        amountUSD:
+          type: string
+    account.BankAccountDetailsCA:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        routingCode:
+          type: string
+        branchCode:
+          type: string
+        bankCode:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.MailingAddress'
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - routingCode
+      - beneficiaryAddress
+      - schema
+    account.BankAccountDetailsMena:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        bankName:
+          type: string
+        IBAN:
+          type: string
+        swiftCode:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.BeneficiaryAddressMena'
+        schema:
+          type: string
+      required:
+      - accountType
+      - IBAN
+      - beneficiaryAddress
+      - schema
+    account.BankAccountDetailsTH:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - schema
+    account.BankAccountDetailsTR:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        IBAN:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - IBAN
+      - schema
+    account.BankAccountDetailsSwift:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        bankName:
+          type: string
+        bankAddress:
+          type: string
+        swiftCode:
+          type: string
+        swiftAccountNumber:
+          type: string
+        currency:
+          type: string
+        country:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.MailingAddress'
+        schema:
+          type: string
+      required:
+      - accountType
+      - swiftCode
+      - swiftAccountNumber
+      - currency
+      - beneficiaryAddress
+      - schema
+    account.BankAccountDetailsGT:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        bankAccountType:
+          type: string
+        accountNumber:
+          type: string
+        phoneNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - bankAccountType
+      - accountNumber
+      - phoneNumber
+      - schema
+    account.BeneficiaryAddressMena:
+      type: object
+      properties:
+        street_line_1:
+          type: string
+      required:
+      - street_line_1
+    account.BankAccountDetailsKR:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        phoneNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - phoneNumber
+      - schema
+    account.TransferInstructionsEMV:
+      type: object
+      properties:
+        emv:
+          type: string
+        kind:
+          type: string
+      required:
+      - kind
+    account.BankAccountDetailsJM:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        bankAccountType:
+          type: string
+        accountNumber:
+          type: string
+        branchNumber:
+          type: string
+        phoneNumber:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.MailingAddress'
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - bankAccountType
+      - accountNumber
+      - branchNumber
+      - phoneNumber
+      - beneficiaryAddress
+      - schema
+    transfers_dto_v2.TransferIntentRequest:
+      type: object
+      properties:
+        sender:
+          type: string
+        amountIn:
+          type: string
+        to:
+          type: object
+          additionalProperties:
+            type: string
+        tokenIn:
+          type: string
+        tokenOut:
+          type: string
+        networkIdIn:
+          type: string
+        networkIdOut:
+          type: string
+        authorizationMode:
+          type: string
+    account.EWalletDO:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        phoneNumber:
+          type: string
+        financialInstitutionId:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - phoneNumber
+      - financialInstitutionId
+      - schema
+    account.BankAccountDetailsSA:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        IBAN:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - IBAN
+      - schema
+    account.BankAccountDetailsBRPix:
+      type: object
+      properties:
+        pixKey:
+          type: string
+        name:
+          type: string
+        emv:
+          type: string
+        schema:
+          type: string
+      required:
+      - pixKey
+      - schema
+    account.BankAccountDetailsBD:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        branchNumber:
+          type: string
+        accountNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - branchNumber
+      - accountNumber
+      - schema
+    account.TransferInstructionsExternalAction:
+      type: object
+      properties:
+        message:
+          type: string
+        kind:
+          type: string
+      required:
+      - kind
+    transaction_confirmation.TransactionPH:
+      type: object
+      properties:
+        subRail:
+          type: string
+        referenceNumber:
+          type: string
+        kind:
+          type: string
+      required:
+      - kind
+    transaction_confirmation.TransactionHash:
+      type: object
+      properties:
+        network:
+          type: string
+        hash:
+          type: string
+        eventIdx:
+          type: integer
+          format: int64
+        kind:
+          type: string
+      required:
+      - kind
+    account.TransferInstructionsDetails:
+      type: object
+      properties:
+        details:
+          oneOf:
+          - $ref: '#/components/schemas/account.BankAccountDetailsSA'
+          - $ref: '#/components/schemas/account.EWalletGT'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSV'
+          - $ref: '#/components/schemas/account.BankAccountDetailsHN'
+          - $ref: '#/components/schemas/account.EWalletPK'
+          - $ref: '#/components/schemas/account.EWalletPH'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSwiftIBAN'
+          - $ref: '#/components/schemas/account.EWalletAlipay'
+          - $ref: '#/components/schemas/account.EWalletID'
+          - $ref: '#/components/schemas/account.EWalletDO'
+          - $ref: '#/components/schemas/account.SolanaAccount'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCL'
+          - $ref: '#/components/schemas/account.BankAccountAfricaDetails'
+          - $ref: '#/components/schemas/account.BankAccountDetailsBD'
+          - $ref: '#/components/schemas/account.BankAccountDetailsJP'
+          - $ref: '#/components/schemas/account.BankAccountDetailsAU'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCA'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSwift'
+          - $ref: '#/components/schemas/account.BankAccountDetailsDO'
+          - $ref: '#/components/schemas/account.BankAccountDetailsJM'
+          - $ref: '#/components/schemas/account.EWallet'
+          - $ref: '#/components/schemas/account.MomoAccountAfricaDetails'
+          - $ref: '#/components/schemas/account.MomoSenderAccountAfricaDetails'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSG'
+          - $ref: '#/components/schemas/account.BankAccountDetailsTH'
+          - $ref: '#/components/schemas/account.BankAccountDetailsTR'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCN'
+          - $ref: '#/components/schemas/account.BankAccountDetailsIN'
+          - $ref: '#/components/schemas/account.BankAccountDetailsBR'
+          - $ref: '#/components/schemas/account.QRAccountBrazilDetails'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCR'
+          - $ref: '#/components/schemas/account.BankAccountDetailsGT'
+          - $ref: '#/components/schemas/account.BankAccountDetailsEG'
+          - $ref: '#/components/schemas/account.BankAccountDetailsPKIBAN'
+          - $ref: '#/components/schemas/account.BankAccountDetailsINUPI'
+          - $ref: '#/components/schemas/account.EvmAccount'
+          - $ref: '#/components/schemas/account.BankAccountDetailsUK'
+          - $ref: '#/components/schemas/account.BankAccountDetailsMX'
+          - $ref: '#/components/schemas/account.BankAccountDetailsIBANLegacy'
+          - $ref: '#/components/schemas/account.BankAccountDetailsMY'
+          - $ref: '#/components/schemas/account.BankAccountDetailsPH'
+          - $ref: '#/components/schemas/account.BankAccountDetailsID'
+          - $ref: '#/components/schemas/account.BankAccountDetailsVN'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCOBreb'
+          - $ref: '#/components/schemas/account.StarknetAccount'
+          - $ref: '#/components/schemas/account.BankAccountDetailsBO'
+          - $ref: '#/components/schemas/account.BankAccountDetailsIL'
+          - $ref: '#/components/schemas/account.EWalletWechat'
+          - $ref: '#/components/schemas/account.BankAccountDetailsKR'
+          - $ref: '#/components/schemas/account.BankAccountDetailsUSJPM'
+          - $ref: '#/components/schemas/account.TronAccount'
+          - $ref: '#/components/schemas/account.BankAccountDetailsMena'
+          - $ref: '#/components/schemas/account.BankAccountDetailsCO'
+          - $ref: '#/components/schemas/account.BankAccountDetailsHK'
+          - $ref: '#/components/schemas/account.BankAccountDetailsPK'
+          - $ref: '#/components/schemas/account.BankAccountDetailsUS'
+          - $ref: '#/components/schemas/account.BankAccountDetailsSepa'
+          - $ref: '#/components/schemas/account.BankAccountDetailsBRPix'
+          discriminator:
+            propertyName: schema
+            mapping:
+              bank_africa: '#/components/schemas/account.BankAccountAfricaDetails'
+              bank_au: '#/components/schemas/account.BankAccountDetailsAU'
+              bank_bd: '#/components/schemas/account.BankAccountDetailsBD'
+              bank_bo: '#/components/schemas/account.BankAccountDetailsBO'
+              bank_br: '#/components/schemas/account.BankAccountDetailsBR'
+              bank_br_pix: '#/components/schemas/account.BankAccountDetailsBRPix'
+              bank_ca: '#/components/schemas/account.BankAccountDetailsCA'
+              bank_cl: '#/components/schemas/account.BankAccountDetailsCL'
+              bank_cn: '#/components/schemas/account.BankAccountDetailsCN'
+              bank_co_breb: '#/components/schemas/account.BankAccountDetailsCOBreb'
+              bank_colombia: '#/components/schemas/account.BankAccountDetailsCO'
+              bank_cr: '#/components/schemas/account.BankAccountDetailsCR'
+              bank_do: '#/components/schemas/account.BankAccountDetailsDO'
+              bank_eg: '#/components/schemas/account.BankAccountDetailsEG'
+              bank_gt: '#/components/schemas/account.BankAccountDetailsGT'
+              bank_hk: '#/components/schemas/account.BankAccountDetailsHK'
+              bank_hn: '#/components/schemas/account.BankAccountDetailsHN'
+              bank_iban: '#/components/schemas/account.BankAccountDetailsIBANLegacy'
+              bank_id: '#/components/schemas/account.BankAccountDetailsID'
+              bank_il: '#/components/schemas/account.BankAccountDetailsIL'
+              bank_in: '#/components/schemas/account.BankAccountDetailsIN'
+              bank_in_upi: '#/components/schemas/account.BankAccountDetailsINUPI'
+              bank_jm: '#/components/schemas/account.BankAccountDetailsJM'
+              bank_jp: '#/components/schemas/account.BankAccountDetailsJP'
+              bank_kr: '#/components/schemas/account.BankAccountDetailsKR'
+              bank_mena: '#/components/schemas/account.BankAccountDetailsMena'
+              bank_mexico: '#/components/schemas/account.BankAccountDetailsMX'
+              bank_my: '#/components/schemas/account.BankAccountDetailsMY'
+              bank_ph: '#/components/schemas/account.BankAccountDetailsPH'
+              bank_pk: '#/components/schemas/account.BankAccountDetailsPK'
+              bank_pk_iban: '#/components/schemas/account.BankAccountDetailsPKIBAN'
+              bank_sa: '#/components/schemas/account.BankAccountDetailsSA'
+              bank_sepa: '#/components/schemas/account.BankAccountDetailsSepa'
+              bank_sg: '#/components/schemas/account.BankAccountDetailsSG'
+              bank_sv: '#/components/schemas/account.BankAccountDetailsSV'
+              bank_swift: '#/components/schemas/account.BankAccountDetailsSwift'
+              bank_swift_iban: '#/components/schemas/account.BankAccountDetailsSwiftIBAN'
+              bank_th: '#/components/schemas/account.BankAccountDetailsTH'
+              bank_tr: '#/components/schemas/account.BankAccountDetailsTR'
+              bank_uk: '#/components/schemas/account.BankAccountDetailsUK'
+              bank_us: '#/components/schemas/account.BankAccountDetailsUS'
+              bank_us_jpm: '#/components/schemas/account.BankAccountDetailsUSJPM'
+              bank_vn: '#/components/schemas/account.BankAccountDetailsVN'
+              evm: '#/components/schemas/account.EvmAccount'
+              ewallet: '#/components/schemas/account.EWallet'
+              ewallet_alipay: '#/components/schemas/account.EWalletAlipay'
+              ewallet_do: '#/components/schemas/account.EWalletDO'
+              ewallet_gt: '#/components/schemas/account.EWalletGT'
+              ewallet_id: '#/components/schemas/account.EWalletID'
+              ewallet_ph: '#/components/schemas/account.EWalletPH'
+              ewallet_pk: '#/components/schemas/account.EWalletPK'
+              ewallet_wechatpay: '#/components/schemas/account.EWalletWechat'
+              momo_africa: '#/components/schemas/account.MomoAccountAfricaDetails'
+              momo_africa.sender: '#/components/schemas/account.MomoSenderAccountAfricaDetails'
+              qr_brazil: '#/components/schemas/account.QRAccountBrazilDetails'
+              solana: '#/components/schemas/account.SolanaAccount'
+              starknet: '#/components/schemas/account.StarknetAccount'
+              tron: '#/components/schemas/account.TronAccount'
+        memo:
+          type: string
+        kind:
+          type: string
+      required:
+      - kind
+    account.BankAccountDetailsVN:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - schema
+    account.BankAccountDetailsSG:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - schema
+    account.BankAccountAfricaDetails:
+      type: object
+      properties:
+        financialInstitutionId:
+          type: string
+        bankName:
+          type: string
+        accountNumber:
+          type: string
+        accountName:
+          type: string
+        email:
+          type: string
+        schema:
+          type: string
+      required:
+      - financialInstitutionId
+      - accountNumber
+      - accountName
+      - schema
+    account.BankAccountDetailsPKIBAN:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        IBAN:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - IBAN
+      - schema
+    transfers_models_v2.TransferIntent:
+      type: object
+      properties:
+        id:
+          type: string
+        ownerId:
+          type: string
+        sender:
+          type: string
+        amountIn:
+          type: string
+        to:
+          type: object
+          additionalProperties:
+            type: string
+        tokenIn:
+          type: string
+        tokenOut:
+          type: string
+        networkIdIn:
+          type: string
+        networkIdOut:
+          type: string
+        txHashIn:
+          type: string
+        txHashOut:
+          type: string
+        eventIdxIn:
+          type: integer
+          format: int64
+        eventIdxOut:
+          type: integer
+          format: int64
+        completedAtIn:
+          type: string
+        completedAtOut:
+          type: string
+        gasFee:
+          type: string
+        token:
+          type: string
+        signables:
+          type: array
+          items:
+            $ref: '#/components/schemas/relay_models.Signable'
+        nonce:
+          type: string
+        hash:
+          type: string
+        expiresAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        signer:
+          type: string
+        reference:
+          type: string
+    account.BankAccountDetailsMY:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - schema
+    account.MomoSenderAccountAfricaDetails:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        financialInstitutionId:
+          type: string
+        schema:
+          type: string
+      required:
+      - phoneNumber
+      - financialInstitutionId
+      - schema
+    relay_models.Signable:
+      type: object
+      properties:
+        payload:
+          oneOf:
+          - $ref: '#/components/schemas/relay_signable.SolanaTransaction'
+          - $ref: '#/components/schemas/relay_signable.TypedDataWithMessage--relay_signable.ITypedDataMessage'
+          - $ref: '#/components/schemas/relay_signable.TronTransaction'
+          - $ref: '#/components/schemas/relay_signable.SiweMessage'
+          - $ref: '#/components/schemas/relay_signable.Siwsol'
+          - $ref: '#/components/schemas/relay_signable.SetCodeAuthorization'
+          discriminator:
+            propertyName: kind
+            mapping:
+              evm:setCodeAuthorization: '#/components/schemas/relay_signable.SetCodeAuthorization'
+              evm:siwe_message: '#/components/schemas/relay_signable.SiweMessage'
+              solana:siwsol_message: '#/components/schemas/relay_signable.Siwsol'
+              solana:transaction: '#/components/schemas/relay_signable.SolanaTransaction'
+              tron:transaction: '#/components/schemas/relay_signable.TronTransaction'
+              typed_data: '#/components/schemas/relay_signable.TypedDataWithMessage--relay_signable.ITypedDataMessage'
+        hash:
+          type: string
+        signature:
+          type: string
+        signer:
+          type: string
+    account.MomoAccountAfricaDetails:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        accountName:
+          type: string
+        financialInstitutionId:
+          type: string
+        currency:
+          type: string
+        schema:
+          type: string
+      required:
+      - phoneNumber
+      - accountName
+      - financialInstitutionId
+      - currency
+      - schema
+    account.EvmAccount:
+      type: object
+      properties:
+        address:
+          type: string
+        schema:
+          type: string
+      required:
+      - address
+      - schema
+    account.TransferInstructionsTransferIntent:
+      type: object
+      properties:
+        treasury:
+          type: string
+        kind:
+          type: string
+      required:
+      - kind
+    relay_signable.TronTransactionRawData:
+      type: object
+      properties:
+        contract:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: object
+        ref_block_bytes:
+          type: string
+        ref_block_hash:
+          type: string
+        expiration:
+          type: integer
+          format: int64
+        fee_limit:
+          type: integer
+          format: int64
+        timestamp:
+          type: integer
+          format: int64
+    relay_signable.SetCodeAuthorization:
+      type: object
+      properties:
+        chainId:
+          type: string
+        address:
+          type: string
+        nonce:
+          type: integer
+          format: int64
+        kind:
+          type: string
+      required:
+      - kind
+    account.EWalletPH:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        phoneNumber:
+          type: string
+        financialInstitutionId:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - phoneNumber
+      - financialInstitutionId
+      - schema
+    account.BankAccountDetailsUS:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        bankName:
+          type: string
+        bankAddress:
+          type: string
+        accountName:
+          type: string
+        accountNumber:
+          type: string
+        routingNumber:
+          type: string
+        routingNumberACH:
+          type: string
+        routingNumberWire:
+          type: string
+        routingNumberRTP:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.MailingAddress'
+        schema:
+          type: string
+      required:
+      - accountType
+      - accountNumber
+      - routingNumber
+      - beneficiaryAddress
+      - schema
+    account.BankAccountDetailsID:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - schema
+    transfers_models_v2.Transfer:
+      type: object
+      properties:
+        id:
+          type: string
+        ownerId:
+          type: string
+        status:
+          type: string
+          enum:
+          - awaiting_funds
+          - funds_received
+          - approved
+          - manual_review
+          - payment_submitted
+          - payment_processed
+          - failed
+          - canceled
+          - refund_submitted
+          - refund_processed
+        source:
+          $ref: '#/components/schemas/transfers_models_v2.TransferSide'
+        destination:
+          $ref: '#/components/schemas/transfers_models_v2.TransferSide'
+        fxRate:
+          type: number
+          format: double
+        fxMarkup:
+          type: integer
+          format: int32
+        transferInstructions:
+          oneOf:
+          - $ref: '#/components/schemas/account.TransferInstructionsExternalAction'
+          - $ref: '#/components/schemas/account.TransferInstructionsExternalLink'
+          - $ref: '#/components/schemas/account.TransferInstructionsDetails'
+          - $ref: '#/components/schemas/account.TransferInstructionsTransferIntent'
+          - $ref: '#/components/schemas/account.TransferInstructionsDisposableAccount'
+          - $ref: '#/components/schemas/account.TransferInstructionsEMV'
+          discriminator:
+            propertyName: kind
+            mapping:
+              details: '#/components/schemas/account.TransferInstructionsDetails'
+              disposable_account: '#/components/schemas/account.TransferInstructionsDisposableAccount'
+              emv: '#/components/schemas/account.TransferInstructionsEMV'
+              external_action: '#/components/schemas/account.TransferInstructionsExternalAction'
+              external_link: '#/components/schemas/account.TransferInstructionsExternalLink'
+              transfer_intent: '#/components/schemas/account.TransferInstructionsTransferIntent'
+        createdAt:
+          type: string
+          format: date-time
+        expiresAt:
+          type: string
+          format: date-time
+        breakdown:
+          type: array
+          items:
+            $ref: '#/components/schemas/transfers_models_v2.TransferMovement'
+    account.BankAccountDetailsIN:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        bankName:
+          type: string
+        ifscCode:
+          type: string
+        accountNumber:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.MailingAddress'
+        schema:
+          type: string
+      required:
+      - accountType
+      - ifscCode
+      - accountNumber
+      - schema
+    account.TronAccount:
+      type: object
+      properties:
+        address:
+          type: string
+        schema:
+          type: string
+      required:
+      - address
+      - schema
+    relay_signable.SolanaTransaction:
+      type: object
+      properties:
+        message:
+          type: string
+        feePayer:
+          type: array
+          items:
+            type: integer
+            format: int32
+        pdaSeeds:
+          type: array
+          items:
+            type: string
+        kind:
+          type: string
+      required:
+      - kind
+    account.StarknetAccount:
+      type: object
+      properties:
+        address:
+          type: string
+        schema:
+          type: string
+      required:
+      - address
+      - schema
+    account.EWalletPK:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        phoneNumber:
+          type: string
+        financialInstitutionId:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - phoneNumber
+      - financialInstitutionId
+      - schema
+    account.BankAccountDetailsBO:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
+          type: string
+        bankAccountType:
+          type: string
+        idType:
+          type: string
+        idNumber:
+          type: string
+        taxId:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - financialInstitutionId
+      - accountNumber
+      - bankAccountType
+      - schema
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

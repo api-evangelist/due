@@ -1,0 +1,206 @@
+openapi: 3.0.3
+info:
+  title: Due Account Webhook Endpoints API
+  version: v1
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  contact:
+    email: demo@due.network
+    url: https://www.opendue.com
+servers:
+- url: https://api.due.network
+  description: Production
+- url: https://api.sandbox.due.network
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Webhook Endpoints
+paths:
+  /v1/webhook_endpoints/{webhookId}:
+    delete:
+      parameters:
+      - in: path
+        name: webhookId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bp_models.WebhookEndpoint'
+      operationId: delete_v1-webhook-endpoints-webhookid
+      tags:
+      - Webhook Endpoints
+    post:
+      parameters:
+      - in: path
+        name: webhookId
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/bp_dto.UpdateWebhookEndpointRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bp_models.WebhookEndpoint'
+      operationId: post_v1-webhook-endpoints-webhookid
+      tags:
+      - Webhook Endpoints
+  /v1/webhook_endpoints/{webhookId}/events/:
+    get:
+      parameters:
+      - in: path
+        name: webhookId
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: onlyFailed
+        schema:
+          type: boolean
+      - in: query
+        name: next
+        schema:
+          type: string
+      - in: query
+        name: order
+        schema:
+          type: string
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          format: int32
+      - in: query
+        name: startDate
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: endDate
+        schema:
+          type: string
+          format: date-time
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/repository.CursorPage--bp_models.WebhookEvent'
+      operationId: get_v1-webhook-endpoints-webhookid-events
+      tags:
+      - Webhook Endpoints
+  /v1/webhook_endpoints/{webhookId}/events/{eventId}/retry:
+    post:
+      parameters:
+      - in: path
+        name: webhookId
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: eventId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/bp_models.WebhookEvent'
+      summary: Retry webhook endpoint event
+      operationId: post_v1-webhook-endpoints-webhookid-events-eventid-retry
+      tags:
+      - Webhook Endpoints
+components:
+  schemas:
+    bp_dto.UpdateWebhookEndpointRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        description:
+          type: string
+        events:
+          type: array
+          items:
+            type: string
+        enabled:
+          type: boolean
+    bp_models.WebhookEvent:
+      type: object
+      properties:
+        id:
+          type: string
+        ownerId:
+          type: string
+        occurredAt:
+          type: string
+          format: date-time
+        webhookEndpointId:
+          type: string
+        eventType:
+          type: string
+        eventData:
+          type: array
+          items:
+            type: integer
+            format: int32
+        responseBody:
+          type: string
+        responseStatusCode:
+          type: integer
+          format: int32
+        attempts:
+          type: integer
+          format: int32
+        lastError:
+          type: string
+        lastAttemptAt:
+          type: string
+    repository.CursorPage--bp_models.WebhookEvent:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/bp_models.WebhookEvent'
+        next:
+          type: string
+    bp_models.WebhookEndpoint:
+      type: object
+      properties:
+        id:
+          type: string
+        ownerId:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        subscribedEvents:
+          type: array
+          items:
+            type: string
+        publicKey:
+          type: string
+        enabled:
+          type: boolean
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

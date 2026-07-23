@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: Due Account Financial Institutions API
+  version: v1
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  contact:
+    email: demo@due.network
+    url: https://www.opendue.com
+servers:
+- url: https://api.due.network
+  description: Production
+- url: https://api.sandbox.due.network
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Financial Institutions
+paths:
+  /v1/financial_institutions/{country2}/{schema}:
+    parameters:
+    - $ref: '#/components/parameters/DueAccountIdHeader'
+    get:
+      summary: List financial institutions
+      description: List all financial institutions by schema and country.
+      tags:
+      - Financial Institutions
+      parameters:
+      - in: path
+        name: country2
+        description: Two-letter country code (ISO 3166-1 alpha-2).
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: schema
+        description: Payment method schema (e.g., bank_us, momo_africa).
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/transfers_models.FinancialInstitution'
+      operationId: get_v1-financial-institutions-country2-schema
+  /v1/financial_institutions/{id}:
+    parameters:
+    - $ref: '#/components/parameters/DueAccountIdHeader'
+    get:
+      summary: Get financial institution
+      description: Get financial institution details by id.
+      tags:
+      - Financial Institutions
+      parameters:
+      - in: path
+        name: id
+        description: Unique identifier for the resource.
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/transfers_models.FinancialInstitution'
+      operationId: get_v1-financial-institutions-id
+components:
+  schemas:
+    transfers_models.FinancialInstitution:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        country2:
+          type: string
+        currency:
+          type: string
+        schemas:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer

@@ -1,0 +1,124 @@
+openapi: 3.0.3
+info:
+  title: Due Account Markets API
+  version: v1
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  contact:
+    email: demo@due.network
+    url: https://www.opendue.com
+servers:
+- url: https://api.due.network
+  description: Production
+- url: https://api.sandbox.due.network
+  description: Sandbox
+security:
+- BearerAuth: []
+tags:
+- name: Markets
+paths:
+  /markets/{base}/{quote}:
+    get:
+      operationId: GetMarket
+      summary: Get market
+      description: Retrieves market information for the specified base and quote currencies.
+      tags:
+      - Markets
+      parameters:
+      - in: path
+        name: base
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: quote
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/fx_models.Market'
+  /markets/{base}/{quote}/history:
+    get:
+      operationId: GetMarketHistory
+      summary: Get market history
+      description: Retrieves historical market data for the specified base and quote currencies, with an optional interval.
+      tags:
+      - Markets
+      parameters:
+      - in: path
+        name: base
+        required: true
+        schema:
+          type: string
+      - in: path
+        name: quote
+        required: true
+        schema:
+          type: string
+      - in: query
+        name: interval
+        schema:
+          type: number
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/fx_models.MarketHistoryDatapoint'
+  /markets:
+    get:
+      operationId: GetMarkets
+      summary: List markets
+      description: Retrieves a list of all available FX markets.
+      tags:
+      - Markets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/fx_models.Market'
+components:
+  schemas:
+    fx_models.CurrencyPair:
+      type: object
+      properties:
+        Base:
+          type: string
+        Quote:
+          type: string
+    fx_models.Market:
+      type: object
+      properties:
+        pair:
+          $ref: '#/components/schemas/fx_models.CurrencyPair'
+        rate:
+          type: number
+          format: double
+        markupBps:
+          type: integer
+          format: int32
+        updatedAt:
+          type: string
+    fx_models.MarketHistoryDatapoint:
+      type: object
+      properties:
+        date:
+          type: string
+        rate:
+          type: number
+          format: double
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
