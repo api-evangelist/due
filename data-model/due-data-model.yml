@@ -1,0 +1,97 @@
+generated: '2026-07-18'
+method: derived
+source:
+- openapi/due-openapi-original.yml
+- https://due.readme.io/docs/schemas
+- https://due.readme.io/docs/creating-customers
+summary: >-
+  Entity-relationship graph derived from the assembled OpenAPI component schemas and the object reference.
+  Account is the root entity; every payment, balance, wallet, and compliance record links back to an account.
+id_prefixes:
+  account: acct_
+  transfer: tf_
+  recipient: rcp_
+  webhook_endpoint: whk_
+  webhook_event: wh_evt_
+  tos_acceptance: ta_
+entities:
+- name: Account
+  root: true
+  description: Core entity; a business or individual customer. Carries KYC/KYB status, ToS acceptance, and status log.
+  operations: [post_v1-accounts, get_v1-accounts, get_v1-accounts-accountid]
+  relationships:
+  - { type: has_many, target: Wallet, via: accountId }
+  - { type: has_many, target: VirtualAccount, via: accountId }
+  - { type: has_many, target: Recipient, via: accountId }
+  - { type: has_many, target: Transfer, via: ownerId }
+  - { type: has_one, target: KycSubmission, via: accountId }
+  - { type: has_one, target: TosAcceptance, via: id }
+- name: Wallet
+  description: Non-custodial MPC wallet (Vault) attached to an account for signing and holding assets across EVM networks.
+  operations: [get_v1-wallets-1, post_v1-wallets-1, get_v1-wallets-walletid-balance, post_v1-vaults, post_v1-vaults-sign]
+  relationships:
+  - { type: belongs_to, target: Account, via: accountId }
+  - { type: has_many, target: Credential, via: walletId }
+- name: Credential
+  description: Passkey / signing credential for a Vault wallet.
+  operations: [post_v1-vaults-credentials, get_v1-vaults-credentials, post_v1-vaults-credentials-approve]
+  relationships:
+  - { type: belongs_to, target: Wallet, via: walletId }
+- name: Recipient
+  description: A saved payout destination validated against a payment schema (bank/mobile/crypto).
+  operations: [post_v1-recipients, get_v1-recipients, get_v1-recipients-id, delete_v1-recipients-id]
+  relationships:
+  - { type: belongs_to, target: Account, via: accountId }
+  - { type: belongs_to, target: Schema, via: schema }
+- name: Quote
+  description: A priced FX/transfer quote for a set of currencies and rails; a transfer is created against a quote.
+  operations: [post_v1-transfers-quote, createquote]
+  relationships:
+  - { type: has_one, target: Transfer, via: quoteId }
+- name: Transfer
+  description: A cross-border / on-off-ramp / swap money movement between a source and destination.
+  operations: [post_v1-transfers, get_v1-transfers, get_v1-transfers-id, post_v1-transfers-estimate]
+  relationships:
+  - { type: belongs_to, target: Account, via: ownerId }
+  - { type: belongs_to, target: Quote, via: quoteId }
+  - { type: belongs_to, target: Recipient, via: destination }
+  - { type: has_one, target: TransferIntent, via: transferId }
+- name: TransferIntent
+  description: A blockchain transfer intent submitted for on-chain execution; deduped by client reference.
+  operations: [post_v1-transfer-intents, get_v1-transfer-intents-id, post_v1-transfer-intents-submit]
+  relationships:
+  - { type: belongs_to, target: Transfer, via: transferId }
+- name: VirtualAccount
+  description: Static receiving details (virtual IBAN / stablecoin address) that auto-convert and settle deposits.
+  operations: [post_v1-virtual-accounts, get_v1-virtual-accounts-key, get_v1-virtual-accounts, post_v1-virtual-accounts-key]
+  relationships:
+  - { type: belongs_to, target: Account, via: accountId }
+- name: KycSubmission
+  description: KYC/KYB verification submission (documents, questionnaires, applicants, endorsements).
+  operations: [post_v1-kyc, get_v1-kyc-submissions, get_v1-kyc-submissions-submissionid, post_v1-kyc-submissions-submissionid-complete]
+  relationships:
+  - { type: belongs_to, target: Account, via: accountId }
+- name: Channel
+  description: A transfer rail/channel (bank, mobile money, crypto) available for source or destination.
+  operations: [get_v1-channels]
+  relationships:
+  - { type: belongs_to, target: Schema, via: schema }
+- name: FinancialInstitution
+  description: A bank / institution resolvable by country and schema.
+  operations: [get_v1-financial-institutions-country2-schema, get_v1-financial-institutions-id]
+- name: Schema
+  description: Field/validation descriptor for a payment rail (category bank/mobile/crypto).
+  operations: []
+- name: Market
+  description: An FX market (currency pair) with real-time rate, spread, and history. Public/no-auth.
+  operations: [getmarkets, getmarket, getmarkethistory]
+- name: WebhookEndpoint
+  description: A registered HTTPS endpoint subscribing to event types; carries an Ed25519 public key.
+  operations: [post_v1-webhook-endpoints, get_v1-webhook-endpoints, get_v1-webhook-endpoints-webhookid-events]
+  relationships:
+  - { type: has_many, target: WebhookEvent, via: webhookId }
+- name: WebhookEvent
+  description: A delivered event (transfer.status_changed, bp.kyc.status_changed, bp.tos_accepted).
+  operations: [get_v1-webhook-endpoints-webhookid-events, post_v1-webhook-endpoints-webhookid-events-eventid-retry]
+  relationships:
+  - { type: belongs_to, target: WebhookEndpoint, via: webhookId }

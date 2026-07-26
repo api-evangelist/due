@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: generated
+source: openapi/due-openapi-original.yml
+skills:
+- file: due-onboard-account.md
+  name: Onboard a customer account with KYC/KYB
+  api: openapi/due-openapi-original.yml
+  operations: [post_v1-accounts, get_v1-account-categories, post_v1-kyc, get_v1-kyc, get_v1-accounts-accountid]
+- file: due-cross-border-transfer.md
+  name: Quote and send a cross-border transfer
+  api: openapi/due-openapi-original.yml
+  operations: [get_v1-channels, post_v1-recipients, post_v1-transfers-quote, post_v1-transfers, get_v1-transfers-id]
+- file: due-virtual-account-collection.md
+  name: Collect funds with a virtual account
+  api: openapi/due-openapi-original.yml
+  operations: [post_v1-virtual-accounts, get_v1-virtual-accounts-key, get_v1-virtual-accounts, post_v1-webhook-endpoints]

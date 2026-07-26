@@ -1,0 +1,24 @@
+generated: '2026-07-18'
+method: searched
+source:
+- https://due.readme.io/docs/overview
+- openapi/due-openapi-original.yml
+versioning:
+  scheme: uri-path
+  current: v1
+  docs: https://due.readme.io/reference
+  note: All operations are namespaced under /v1.
+deprecation:
+  policy_url: null
+  sunset_header: null
+  note: No public deprecation or Sunset/Deprecation-header policy (RFC 8594) is documented.
+sla:
+  url: null
+  uptime_target: null
+  note: No public SLA / uptime target is documented.
+status_page:
+  url: https://status.due.network
+  note: >-
+    A dedicated status subdomain exists (status.due.network). At probe time (2026-07-18) its TLS certificate
+    was expired, so the page was not serving over HTTPS; recorded as the provider's status surface.
+deprecated_operations: []

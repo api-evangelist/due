@@ -1,0 +1,63 @@
+generated: '2026-07-18'
+method: searched
+source:
+- https://due.readme.io/docs/overview
+- https://due.readme.io/docs/creating-customers
+- https://due.readme.io/docs/using-webhooks
+- openapi/due-openapi-original.yml
+summary: Cross-cutting request/response semantics for the Due API, captured from the docs and the assembled OpenAPI.
+authentication:
+  style: bearer
+  header: 'Authorization: Bearer <api_key>'
+  note: The API key is presented as an HTTP bearer token. Read-only FX/market endpoints require no authentication.
+  detail: authentication/due-authentication.yml
+account_scoping:
+  header: Due-Account-Id
+  value_example: acct_98765ABCDE
+  note: Per-account operations are scoped by the Due-Account-Id header (seen in webhook fetch and retry examples).
+pagination:
+  style: cursor
+  params:
+  - name: limit
+    in: query
+    description: Maximum number of items to return.
+  - name: next
+    in: query
+    description: Cursor to fetch the next page of results.
+  note: List endpoints return arrays; cursor forwarding uses the `next` query parameter.
+versioning:
+  scheme: uri-path
+  current: v1
+  note: All endpoints are namespaced under /v1 (FX market endpoints and /dev sandbox commands are the exceptions).
+error_envelope:
+  fields: [error_code, message, http_code]
+  validation_variant: { fields: [statusCode, message, code, details], note: '422 schema-validation errors add a details{} map of field->rule.' }
+  catalog: errors/due-error-codes.yml
+idempotency:
+  supported: partial
+  mechanism: client-reference
+  note: >-
+    No general Idempotency-Key header is documented. Transfer intents support a client-supplied `reference`
+    that is de-duplicated server-side (error err_transfer_intent_has_different_id: "A pending intent with this
+    reference has a different ID"), and transfers are created against a pre-created quote. This is reference-scoped
+    dedup, not a documented global idempotency contract.
+webhooks:
+  signing: Ed25519
+  signature_header: X-Webhook-Signature
+  signature_encoding: hex
+  key_delivery: Per-endpoint Ed25519 public key (PEM) returned when the webhook endpoint is created.
+  envelope: { fields: [id, type, data, occurredAt, attemptedAt] }
+  retry: Manual retry via POST /v1/webhook_endpoints/{webhookId}/events/{eventId}/retry
+  catalog: asyncapi/due-webhooks.yml
+identifiers:
+  style: prefixed
+  prefixes:
+    account: acct_
+    transfer: tf_
+    recipient: rcp_
+    webhook_endpoint: whk_
+    webhook_event: wh_evt_
+    tos_acceptance: ta_
+rate_limit_signaling:
+  documented: false
+  note: No rate-limit headers or quotas are documented in the public reference.

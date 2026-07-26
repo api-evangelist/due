@@ -1,0 +1,126 @@
+# Due Documentation
+
+> Documentation for Due
+
+## Guides
+- [Overview](https://due.readme.io/docs/overview.md)
+- [Postman Collection](https://due.readme.io/docs/postman-collection.md)
+- [API Error Codes](https://due.readme.io/docs/api-error-codes.md): All errors returned by the Due API follow a consistent structure. The `error_code` field in the response body uniquely identifies the error type and can be used for programmatic handling.
+- [Geo-coverage](https://due.readme.io/docs/geo-coverage.md)
+- [Networks and Tokens](https://due.readme.io/docs/supported-tokens.md): Outlines the blockchain networks and tokens (assets) supported
+- [Supported Currencies & Payment Methods](https://due.readme.io/docs/supported-payment-methods.md)
+- [Fees](https://due.readme.io/docs/fees.md)
+- [Creating accounts](https://due.readme.io/docs/creating-customers.md)
+- [Wallet linking](https://due.readme.io/docs/wallets.md)
+- [Individual KYC process](https://due.readme.io/docs/individual-kyc-process.md)
+- [Handle KYC status webhooks](https://due.readme.io/docs/handle-kyc-status-webhooks.md): Handle KYC status_changed webhooks for pending, resubmission_required, manual_review, approved, and rejected outcomes.
+- [Business KYB process](https://due.readme.io/docs/business-kyb-process.md): Verify a business account by completing company information, document, questionnaire, and beneficiary requirements through the KYB submission flow.
+- [Sumsub KYC Sharing](https://due.readme.io/docs/sumsub-kyc-sharing.md): Import verified identity data from another Sumsub-integrated platform instead of requiring users to re-verify their identity.
+- [Sumsub KYB Sharing](https://due.readme.io/docs/sumsub-kyb-sharing.md): Import verified business applicant data from Sumsub and complete company requirements through KYB submissions.
+- [Hosted endorsement submission](https://due.readme.io/docs/hosted-kyc-submission.md): Generate a hosted submission link for endorsement-created KYC/KYB submissions.
+- [KYC/KYB endorsements](https://due.readme.io/docs/kyc-endorsements.md): Learn how to use KYC endorsement endpoints to unlock gated virtual account channels, including USD virtual accounts for business users.
+- [USD VA for business requirements](https://due.readme.io/docs/usd-va-for-business-requirements.md): Documents required for USD virtual account business endorsements with Due’s Puerto Rico-based partner bank.
+- [EUR named virtual account endorsement](https://due.readme.io/docs/eur-named-virtual-account-endorsement.md): Request the eur_va_named_v1 endorsement so newly created EUR virtual accounts use named receiving details.
+- [GBP bank virtual account endorsement](https://due.readme.io/docs/gbp-bank-virtual-account-endorsement.md): Request the gbp_bank_v1 endorsement and complete the required individual or business information for GBP bank virtual accounts.
+- [AED bank virtual account endorsement](https://due.readme.io/docs/aed-bank-virtual-account-endorsement.md): Request the aed_bank_v1 endorsement and complete the required individual or business information for AED bank virtual accounts.
+- [TOS Acceptance](https://due.readme.io/docs/tos-acceptance.md): Collect Terms of Service and Privacy Policy acceptance from your users.
+- [Rails and Channels](https://due.readme.io/docs/rails-and-channels.md)
+- [Recipients](https://due.readme.io/docs/recipients-1.md)
+- [Financial Institutions](https://due.readme.io/docs/financial-institutions.md)
+- [Quotes](https://due.readme.io/docs/quotes.md)
+- [Transfer flow](https://due.readme.io/docs/transfer-flow.md)
+- [Fiat to Stablecoin transfers (On-ramps)](https://due.readme.io/docs/fiat-to-stablecoin-transfers-pay-ins.md)
+- [Stablecoin to Fiat transfers (Off-ramps)](https://due.readme.io/docs/stablecoin-to-fiat-transfers.md)
+- [Fiat to fiat transfers (Cross-border)](https://due.readme.io/docs/fiat-to-fiat-tranfsers-cross-border.md)
+- [Stablecoin swaps](https://due.readme.io/docs/stablecoin-to-stablecoin-transfers.md)
+- [Virtual accounts](https://due.readme.io/docs/virtual-accounts.md): Generate dedicated receiving account details that automatically convert deposits between currencies and settlement methods.
+- [Virtual Account Details Rendering](https://due.readme.io/docs/rendering-va-details.md)
+- [Check virtual account micro-deposits](https://due.readme.io/docs/check-micro-deposits.md): Check whether a virtual account has received micro-deposits by filtering transactions with the virtual account ID.
+- [Recipients](https://due.readme.io/docs/recipients.md)
+- [FX Rates](https://due.readme.io/docs/fx-engine.md)
+- [Schemas](https://due.readme.io/docs/schemas.md)
+- [Using Webhooks](https://due.readme.io/docs/using-webhooks.md)
+- [Incoming Events](https://due.readme.io/docs/list-of-events.md)
+- [Overview](https://due.readme.io/docs/overview-1.md)
+- [Create credential](https://due.readme.io/docs/create-credential.md)
+- [Additional Credentials and Activation/Deactivation](https://due.readme.io/docs/additional-credentials-and-activationdeactivation.md)
+- [Create Due Wallet](https://due.readme.io/docs/create-due-vault.md)
+- [Sign with Due Wallet](https://due.readme.io/docs/sign-with-due-vault.md)
+- [Common signing patterns](https://due.readme.io/docs/common-signing-patterns.md)
+- [Python demo script](https://due.readme.io/docs/python-demo-script.md)
+- [Sign with Privy](https://due.readme.io/docs/sign-with-privy.md)
+- [Signing Due Signables from Kernel v3 Smart Accounts](https://due.readme.io/docs/signing-due-signables-from-kernel-v3-smart-accounts.md)
+- [Sandbox configuration](https://due.readme.io/docs/sandbox-configuration.md): Sandbox-only commands and simulation utilities for testing KYC/KYB, pay-ins, webhooks, and transfer flows.
+
+## API Reference
+- [Create account](https://due.readme.io/reference/post_v1-accounts.md): Creates a new customer account (business or individual)
+- [List accounts](https://due.readme.io/reference/get_v1-accounts.md): Lists all accounts linked to your platform or user.
+- [Get account](https://due.readme.io/reference/get_v1-accounts-accountid.md): Retrieves full account details, including status history, KYC status, and ToS acceptance.
+- [Get account categories](https://due.readme.io/reference/get_v1-account-categories.md): Retrieves a list of available account categories
+- [List wallets](https://due.readme.io/reference/get_v1-wallets-1.md): Lists all wallets linked to the account
+- [Create wallet](https://due.readme.io/reference/post_v1-wallets-1.md): Creates wallet and links it to the account
+- [List all channels](https://due.readme.io/reference/get_v1-channels.md): Retrieve a list of all transfer channels.
+- [List financial institutions](https://due.readme.io/reference/get_v1-financial-institutions-country2-schema.md): List all financial institutions by schema and country.
+- [Get financial institution](https://due.readme.io/reference/get_v1-financial-institutions-id.md): Get financial institution details by id.
+- [Get submission](https://due.readme.io/reference/get_v1-kyc-submissions-submissionid.md)
+- [Create KYC session](https://due.readme.io/reference/post_v1-kyc-sessions.md)
+- [Initiate standard KYC/KYB](https://due.readme.io/reference/post_v1-kyc.md): Initiate standard KYC/KYB for an account.
+- [Provide applicant information](https://due.readme.io/reference/post_v1-kyc-submissions-submissionid-info.md)
+- [Request verification document upload token](https://due.readme.io/reference/post_v1-kyc-submissions-submissionid-documents.md)
+- [Upload verification documents](https://due.readme.io/reference/post_v1-kyc-submissions-documents-token.md)
+- [Add questionnaire answers](https://due.readme.io/reference/post_v1-kyc-submissions-submissionid-questionnaires.md)
+- [Complete applicant submission](https://due.readme.io/reference/post_v1-kyc-submissions-submissionid-complete.md)
+- [List open submissions](https://due.readme.io/reference/get_v1-kyc-submissions.md)
+- [Get standard KYC/KYB link](https://due.readme.io/reference/get_v1-kyc.md): Retrieve standard KYC/KYB details and link.
+- [Create a KYC/KYB access session](https://due.readme.io/reference/post_v1-kyc-session.md): Creates a session to access KYC/KYB access token and link
+- [Share Sumsub KYC](https://due.readme.io/reference/post_v1-kyc-sharing-sumsub.md): Share an existing Sumsub applicant
+- [Create child applicant](https://due.readme.io/reference/post_v1-kyc-submissions-submissionid-applicants.md)
+- [Set submission relations](https://due.readme.io/reference/post_v1-kyc-submissions-submissionid-relations.md)
+- [List all recipients](https://due.readme.io/reference/get_v1-recipients.md): List a paginated list of recipients
+- [Create recipient](https://due.readme.io/reference/post_v1-recipients.md): Creates a new recipient with the provided details.
+- [Delete recipient](https://due.readme.io/reference/delete_v1-recipients-id.md): Soft deletes a recipient by id.
+- [Get recipient](https://due.readme.io/reference/get_v1-recipients-id.md): Retrieves details of a specific recipient.
+- [List token transfers](https://due.readme.io/reference/get_v1-token-transfers-address.md)
+- [Get token transfer](https://due.readme.io/reference/get_v1-token-transfers-address-id.md)
+- [Create transfer intent](https://due.readme.io/reference/post_v1-transfer-intents.md): Creates an arbitrary transfer intent for a given set of tokens (in and out) and networks
+- [Get transfer intent](https://due.readme.io/reference/get_v1-transfer-intents-id.md): Get a specific transfer intent by id.
+- [Submit transfer intent](https://due.readme.io/reference/post_v1-transfer-intents-submit.md): Submit transfer intent for an execution on blockchain.
+- [Get TOS data](https://due.readme.io/reference/get_v1-tos-token.md)
+- [Manually accept TOS](https://due.readme.io/reference/post_v1-tos-token.md)
+- [/v1/transfers/estimate](https://due.readme.io/reference/post_v1-transfers-estimate.md)
+- [List all transfers](https://due.readme.io/reference/get_v1-transfers.md): Retrieves a paginated list of transfers.
+- [Create transfer](https://due.readme.io/reference/post_v1-transfers.md): Initiate a transfer for a created quote and provided details.
+- [Get transfer details](https://due.readme.io/reference/get_v1-transfers-id.md): Get details of a specific transfer by id.
+- [Create a transfer intent for a transfer](https://due.readme.io/reference/post_v1-transfers-id-transfer-intent.md): Creates a transfer intent for the specified transfer ID.
+- [Create a transfer quote](https://due.readme.io/reference/post_v1-transfers-quote.md): Create a transfer quote for a set of currencies and rails
+- [Create a funding address](https://due.readme.io/reference/post_v1-transfers-id-funding-address.md): Create a funding address for a specific transfer by id
+- [Create virtual account](https://due.readme.io/reference/post_v1-virtual-accounts.md): Creates a new virtual account with the provided details.
+- [Get a virtual account](https://due.readme.io/reference/get_v1-virtual-accounts-key.md): Retrieves details of a specific virtual account by key.
+- [Update a virtual account](https://due.readme.io/reference/post_v1-virtual-accounts-key.md)
+- [/v1/virtual_accounts](https://due.readme.io/reference/get_v1-virtual-accounts.md)
+- [/v1/virtual_accounts/list](https://due.readme.io/reference/get_v1-virtual-accounts-list.md)
+- [Get usage](https://due.readme.io/reference/get_v1-usage.md)
+- [Get wallet balances](https://due.readme.io/reference/get_v1-wallets-walletid-balance.md): Retrieves balances for a specific wallet
+- [/v1/kyc/endorsements/{code}](https://due.readme.io/reference/post_v1-kyc-endorsements-code.md)
+- [/v1/kyc/endorsements/{code}](https://due.readme.io/reference/get_v1-kyc-endorsements-code.md)
+- [/v1/kyc/endorsements](https://due.readme.io/reference/get_v1-kyc-endorsements.md)
+- [Init the first passkey](https://due.readme.io/reference/post_v1-vaults-credentials-init.md): Creates a Vault user based on the platform_id or user_id and sets up the first credential / passkey for that user;
+- [Create passkey](https://due.readme.io/reference/post_v1-vaults-credentials.md)
+- [List passkeys](https://due.readme.io/reference/get_v1-vaults-credentials.md)
+- [Approve passkey](https://due.readme.io/reference/post_v1-vaults-credentials-approve.md)
+- [Deactivate passkey](https://due.readme.io/reference/post_v1-vaults-credentials-deactivate.md)
+- [Sign](https://due.readme.io/reference/post_v1-vaults-sign.md): Signs an arbitrary message with the passkey
+- [Create vault](https://due.readme.io/reference/post_v1-vaults.md)
+- [List markets](https://due.readme.io/reference/getmarkets.md): Retrieves a list of all available FX markets.
+- [Get market](https://due.readme.io/reference/getmarket.md): Retrieves market information for the specified base and quote currencies.
+- [Get market history](https://due.readme.io/reference/getmarkethistory.md): Retrieves historical market data for the specified base and quote currencies, with an optional interval.
+- [Create FX quote](https://due.readme.io/reference/createquote.md): Creates a new FX quote for the specified input and output currencies and amounts.
+- [List available webhook events](https://due.readme.io/reference/get_v1-webhook-events.md): Retrieves a list of all available events you are allowed to subscribe to
+- [List webhook endpoints](https://due.readme.io/reference/get_v1-webhook-endpoints.md): Retrieves a list of all webhook endpoints added to the platform
+- [Create webhook endpoint](https://due.readme.io/reference/post_v1-webhook-endpoints.md): Creates a new webhook endpoint to get notifications
+- [Delete webhook endpoint](https://due.readme.io/reference/delete_v1-webhook-endpoints-id.md): Deletes webhook endpoint by id
+- [Update webhook endpoint](https://due.readme.io/reference/post_v1-webhook-endpoints-webhookid.md)
+- [Delete webhook endpoint](https://due.readme.io/reference/delete_v1-webhook-endpoints-webhookid.md)
+- [Get webhook endpoint events](https://due.readme.io/reference/get_v1-webhook-endpoints-webhookid-events.md)
+- [Retry webhook endpoint event](https://due.readme.io/reference/post_v1-webhook-endpoints-webhookid-events-eventid-retry.md)
+- [Simulate pay-in](https://due.readme.io/reference/post_dev-payin.md)

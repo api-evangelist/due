@@ -1,0 +1,12 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/due-openapi-original.yml
+workflows:
+- file: due-onboard-account.yml
+  workflowId: onboardAccount
+  title: Onboard a customer account with KYC/KYB
+  summary: Create an account, initiate KYC/KYB, and confirm the account reaches a verified state.
+- file: due-cross-border-transfer.yml
+  workflowId: crossBorderTransfer
+  title: Quote and send a cross-border transfer
+  summary: List channels, create a recipient, price a transfer, initiate it against the quote, and track to settlement.

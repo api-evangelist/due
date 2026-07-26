@@ -1,0 +1,48 @@
+generated: '2026-07-18'
+method: searched
+source:
+- https://due.readme.io/docs/using-webhooks
+- https://due.readme.io/docs/list-of-events
+- https://due.readme.io/docs/handle-kyc-status-webhooks
+spec_type: Webhooks
+summary: >-
+  Due delivers real-time events to registered HTTPS endpoints via HTTP POST. Each webhook endpoint has its own
+  Ed25519 key pair; payloads are signed and the signature is sent hex-encoded in X-Webhook-Signature.
+delivery:
+  transport: https-post
+  content_type: application/json
+  envelope:
+    fields: [id, type, data, occurredAt, attemptedAt]
+    example:
+      id: wh_evt__123
+      type: transfer.status_changed
+      data: {}
+      occurredAt: '2025-09-22T12:00:00Z'
+      attemptedAt: '2025-09-22T12:00:00Z'
+    note: The full changed object is included in the `data` field.
+security:
+  scheme: Ed25519
+  signature_header: X-Webhook-Signature
+  signature_encoding: hex
+  key: Per-endpoint public key (PEM) returned as publicKey when the endpoint is created; verify the raw request body.
+retry:
+  manual: POST /v1/webhook_endpoints/{webhookId}/events/{eventId}/retry
+  note: Retries resend the same signed payload; verification is unchanged.
+management_operations:
+- get_v1-webhook-events        # List available webhook events
+- get_v1-webhook-endpoints     # List webhook endpoints
+- post_v1-webhook-endpoints    # Create webhook endpoint
+- post_v1-webhook-endpoints-webhookid   # Update webhook endpoint
+- delete_v1-webhook-endpoints-webhookid # Delete webhook endpoint
+- get_v1-webhook-endpoints-webhookid-events
+- post_v1-webhook-endpoints-webhookid-events-eventid-retry
+events:
+- type: transfer.status_changed
+  description: A transfer changed status (e.g. payment_processed); the data payload is the full transfer object.
+- type: bp.kyc.status_changed
+  description: An account's KYC/KYB status changed (pending, resubmission_required, manual_review, approved/passed, rejected).
+- type: bp.tos_accepted
+  description: An account accepted the Terms of Service and Privacy Policy.
+note: >-
+  Due publishes no machine-readable AsyncAPI document; this is the webhook catalog derived from the docs.
+  The authoritative subscribable list is returned at runtime by GET /v1/webhook_endpoints/events.

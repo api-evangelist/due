@@ -1,0 +1,62 @@
+arazzo: 1.0.1
+info:
+  title: Due — Quote and send a cross-border transfer
+  version: 1.0.0
+  summary: Onboard is assumed; list channels, create a recipient, quote, send, and track a transfer to settlement.
+sourceDescriptions:
+- name: due
+  url: ../openapi/due-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: crossBorderTransfer
+  summary: Create a recipient, price a transfer, initiate it against the quote, and poll for settlement.
+  inputs:
+    type: object
+    properties:
+      accountId: { type: string, example: acct_XyZpT7HhAJFq12345 }
+      recipient: { type: object }
+      quoteRequest: { type: object }
+  steps:
+  - stepId: listChannels
+    operationId: get_v1-channels
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: createRecipient
+    operationId: post_v1-recipients
+    requestBody:
+      payload: $inputs.recipient
+    outputs:
+      recipientId: $response.body#/id
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: createQuote
+    operationId: post_v1-transfers-quote
+    requestBody:
+      payload: $inputs.quoteRequest
+    outputs:
+      quoteId: $response.body#/id
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: createTransfer
+    operationId: post_v1-transfers
+    requestBody:
+      payload:
+        quoteId: $steps.createQuote.outputs.quoteId
+        destination: $steps.createRecipient.outputs.recipientId
+    outputs:
+      transferId: $response.body#/id
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: getTransfer
+    operationId: get_v1-transfers-id
+    parameters:
+    - name: id
+      in: path
+      value: $steps.createTransfer.outputs.transferId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+  outputs:
+    transferId: $steps.createTransfer.outputs.transferId
+    status: $steps.getTransfer.outputs.status

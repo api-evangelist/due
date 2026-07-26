@@ -1,0 +1,44 @@
+generated: '2026-07-18'
+method: searched
+source: https://due.readme.io/docs/sandbox-configuration
+summary: >-
+  Due exposes a full sandbox environment for testing onboarding, KYC/KYB, pay-ins, webhooks, and transfer flows
+  without triggering production money movement or production verification decisions.
+environments:
+  sandbox:
+    api_base: https://api.sandbox.due.network
+    app_base: https://app.sandbox.due.network
+    commands_base: https://dev.sandbox.due.network
+  production:
+    api_base: https://api.due.network
+    app_base: https://app.due.network
+key_separation:
+  note: Sandbox and production are separated by host (api.sandbox.due.network vs api.due.network) and use environment-scoped API keys presented as bearer tokens.
+simulation_utilities:
+- name: Stub KYC/KYB applicant approval
+  endpoint: POST /dev/sumsub/applicants/{accountId}/approve
+  tool_url: https://dev.sandbox.due.network/commands/sumsub/approve-applicant
+  description: Marks a sandbox Sumsub applicant as approved so you can test gated virtual accounts, endorsements, and post-KYC onboarding.
+- name: Simulate pay-in
+  endpoint: POST /dev/merge/v1/payin
+  alt_endpoint: POST /dev/v1/payin
+  reference: https://due.readme.io/reference/post_dev-payin
+  description: Simulates an incoming pay-in (virtual account deposit) instead of sending real funds, to test transfer status updates, webhook delivery, and reconciliation.
+  example_request:
+    currency: EUR
+    rail: bank_sepa
+    amount: '100.00'
+    reference: test-reference
+    sender: { schema: bank_sepa }
+    recipient: { schema: bank_sepa }
+recommended_flow:
+- Create a sandbox account.
+- Start KYC/KYB for the account.
+- Call /dev/sumsub/applicants/{accountId}/approve (or the approval tool) to approve the applicant.
+- Create the virtual account, transfer, or endorsement to test.
+- Call /dev/merge/v1/payin for flows that depend on incoming funds.
+- Verify webhook delivery and reconcile from the webhook payloads.
+test_values:
+  note: >-
+    Due publishes no fixed magic card numbers or test IBANs (it is a bank/stablecoin rail, not a card acquirer).
+    Test scenarios are driven by the sandbox simulation endpoints above rather than published test credentials.

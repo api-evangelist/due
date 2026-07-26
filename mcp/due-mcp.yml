@@ -1,0 +1,62 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: openapi/due-openapi-original.yml
+note: >-
+  No official hosted/remote MCP server was found for Due (checked docs, npm @modelcontextprotocol, MCP registries).
+  This is a candidate tool list derived from the assembled OpenAPI operations; each tool maps to a real operationId.
+server:
+  name: due
+  transport: http
+tools:
+- name: create_account
+  description: Create a new customer account (business or individual).
+  source_operation: openapi/due-openapi-original.yml#post_v1-accounts
+- name: get_account
+  description: Retrieve full account details including KYC status and ToS acceptance.
+  source_operation: openapi/due-openapi-original.yml#get_v1-accounts-accountid
+- name: list_accounts
+  description: List accounts linked to the platform.
+  source_operation: openapi/due-openapi-original.yml#get_v1-accounts
+- name: initiate_kyc
+  description: Initiate standard KYC/KYB for an account.
+  source_operation: openapi/due-openapi-original.yml#post_v1-kyc
+- name: list_channels
+  description: List all available transfer channels/rails.
+  source_operation: openapi/due-openapi-original.yml#get_v1-channels
+- name: create_recipient
+  description: Create a payout recipient validated against a payment schema.
+  source_operation: openapi/due-openapi-original.yml#post_v1-recipients
+- name: create_transfer_quote
+  description: Create a transfer quote for a set of currencies and rails.
+  source_operation: openapi/due-openapi-original.yml#post_v1-transfers-quote
+- name: create_transfer
+  description: Initiate a transfer for a created quote.
+  source_operation: openapi/due-openapi-original.yml#post_v1-transfers
+- name: get_transfer
+  description: Get details of a specific transfer.
+  source_operation: openapi/due-openapi-original.yml#get_v1-transfers-id
+- name: create_virtual_account
+  description: Create a virtual account for programmable fund collection.
+  source_operation: openapi/due-openapi-original.yml#post_v1-virtual-accounts
+- name: get_virtual_account
+  description: Retrieve a virtual account by key.
+  source_operation: openapi/due-openapi-original.yml#get_v1-virtual-accounts-key
+- name: list_markets
+  description: List available FX markets (public, no auth).
+  source_operation: openapi/due-openapi-original.yml#GetMarkets
+- name: get_market
+  description: Get real-time FX rate for a base/quote pair (public, no auth).
+  source_operation: openapi/due-openapi-original.yml#GetMarket
+- name: create_fx_quote
+  description: Create an FX quote for input/output currencies and amounts.
+  source_operation: openapi/due-openapi-original.yml#CreateQuote
+- name: get_wallet_balance
+  description: Retrieve balances for a specific Vault wallet.
+  source_operation: openapi/due-openapi-original.yml#get_v1-wallets-walletid-balance
+- name: create_webhook_endpoint
+  description: Register a webhook endpoint for event notifications.
+  source_operation: openapi/due-openapi-original.yml#post_v1-webhook-endpoints
+- name: list_webhook_events
+  description: List event types available to subscribe to.
+  source_operation: openapi/due-openapi-original.yml#get_v1-webhook-events

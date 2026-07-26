@@ -1,0 +1,36 @@
+generated: '2026-07-18'
+method: derived
+source:
+- openapi/due-openapi-original.yml
+- https://due.readme.io/docs/api-error-codes
+- https://due.readme.io/docs/using-webhooks
+summary: Cross-cutting standards conformance derived from the assembled OpenAPI, error format, and webhook docs.
+standards:
+- id: oauth2
+  conforms: false
+  evidence: Only an HTTP bearer securityScheme (API key as bearer token) is defined; no oauth2 flows.
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use a custom envelope {error_code, message, http_code}, not application/problem+json.
+- id: json-api
+  conforms: false
+- id: cursor-pagination
+  conforms: true
+  evidence: List endpoints paginate with `limit` + `next` cursor query parameters.
+- id: webhook-signature-ed25519
+  conforms: true
+  evidence: Webhook payloads are signed with Ed25519; signature sent hex-encoded in X-Webhook-Signature.
+- id: iso3166-1-alpha2
+  conforms: true
+  evidence: Account country codes use ISO 3166-1 alpha-2.
+- id: iso4217-currency
+  conforms: true
+  evidence: Fiat currency codes follow ISO 4217; stablecoins referenced by symbol (USDC, EURC, USDT).
+- id: fhir-r4
+  conforms: false
+- id: scim2
+  conforms: false
+- id: psd2
+  conforms: false

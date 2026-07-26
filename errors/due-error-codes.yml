@@ -1,0 +1,368 @@
+generated: '2026-07-18'
+method: searched
+source: https://due.readme.io/docs/api-error-codes
+format: custom
+envelope:
+  fields:
+  - error_code
+  - message
+  - http_code
+  example:
+    error_code: err_recipient_not_found
+    message: Recipient is required
+    http_code: 400
+  note: The error_code field uniquely identifies the error type and is stable for programmatic handling. Schema-validation
+    errors (422) additionally return a details{} map of field->failed-rule.
+error_count: 117
+errors:
+- http_status: 400
+  error_code: err_account_no_wallets
+  description: Account has no wallets created
+- http_status: 400
+  error_code: err_account_cannot_be_completed
+  description: Account cannot be completed in its current status
+- http_status: 400
+  error_code: err_credential_already_approved
+  description: This credential has already been approved
+- http_status: 400
+  error_code: err_credential_not_approved
+  description: This credential has not been approved
+- http_status: 400
+  error_code: err_credential_session_invalid
+  description: This session is not a registration session
+- http_status: 400
+  error_code: err_credential_not_owned
+  description: Credential is not owned
+- http_status: 400
+  error_code: err_otp_invalid
+  description: Invalid OTP code
+- http_status: 400
+  error_code: err_otp_required
+  description: OTP code is required
+- http_status: 400
+  error_code: err_signin_jwt_required
+  description: JWT token is required
+- http_status: 400
+  error_code: err_token_invalid
+  description: Invalid token
+- http_status: 400
+  error_code: err_signup_email_required
+  description: Email is required
+- http_status: 400
+  error_code: err_user_address_taken
+  description: This address is already linked to another account
+- http_status: 400
+  error_code: err_user_address_not_owned
+  description: This address does not belong to your account
+- http_status: 400
+  error_code: err_user_password_already_set
+  description: A password has already been set
+- http_status: 400
+  error_code: err_user_email_taken
+  description: This email is already in use
+- http_status: 400
+  error_code: err_webhook_endpoint_invalid_url
+  description: Invalid URL provided
+- http_status: 400
+  error_code: err_webhook_event_not_supported
+  description: The specified webhook event is not supported
+- http_status: 400
+  error_code: err_market_history_invalid_interval
+  description: The specified interval is invalid
+- http_status: 400
+  error_code: err_channel_not_found
+  description: Channel not found
+- http_status: 400
+  error_code: err_channel_not_found
+  description: Virtual account channel not found
+- http_status: 400
+  error_code: err_channel_restricted
+  description: Channel is restricted in your country
+- http_status: 400
+  error_code: err_channel_restricted_category
+  description: Channel is restricted for your category
+- http_status: 400
+  error_code: err_channel_recipient_country_restricted
+  description: Recipient country is not supported for this channel
+- http_status: 400
+  error_code: err_channel_sender_required
+  description: This channel requires a sender
+- http_status: 400
+  error_code: err_channel_sender_invalid_schema
+  description: Sender schema is invalid
+- http_status: 400
+  error_code: err_purpose_required
+  description: Purpose code is required for this destination
+- http_status: 400
+  error_code: err_purpose_invalid
+  description: Purpose code does not match the channel's purpose code list
+- http_status: 400
+  error_code: err_purpose_not_supported
+  description: Purpose code is not supported for this destination
+- http_status: 400
+  error_code: err_endorsement_required
+  description: Required endorsements are missing
+- http_status: 400
+  error_code: err_recipient_type_not_supported
+  description: Recipient type is not supported for this destination
+- http_status: 400
+  error_code: err_channel_does_not_support_disposable_account
+  description: This channel does not support disposable accounts
+- http_status: 400
+  error_code: err_channel_virtual_account_creation_restricted
+  description: This channel does not support creation of new virtual accounts
+- http_status: 400
+  error_code: err_kyc_not_passed
+  description: KYC not passed
+- http_status: 400
+  error_code: err_kyc_already_passed
+  description: KYC has already been passed
+- http_status: 400
+  error_code: err_kyc_document_requirement_not_satisfied
+  description: Requirement for a document is not satisfied
+- http_status: 400
+  error_code: err_kyc_questionnaire_not_answered
+  description: The required questionnaire has not been answered
+- http_status: 400
+  error_code: err_kyc_questionnaire_reference_answer_not_found
+  description: Reference answer not found for the specified question
+- http_status: 400
+  error_code: err_kyc_questionnaire_answer_not_found
+  description: Answer is missing for the specified question
+- http_status: 400
+  error_code: err_policy_usage_limit_exceeded
+  description: Usage limit exceeded
+- http_status: 400
+  error_code: err_policy_3rd_party_transfer_limit_exceeded
+  description: Third-party transfer limit exceeded
+- http_status: 400
+  error_code: err_policy_transfer_limit_exceeded
+  description: Transfer limit exceeded
+- http_status: 400
+  error_code: err_policy_breached
+  description: This transfer could not be approved due to internal compliance policy
+- http_status: 400
+  error_code: err_quote_limit_below_minimum
+  description: The amount is below the required minimum. Please enter a greater amount.
+- http_status: 400
+  error_code: err_quote_limit_below_fee
+  description: Fees exceeded the estimated quote. Please try again with a higher amount.
+- http_status: 400
+  error_code: err_quote_limit_exceeded
+  description: The amount exceeds the permissible limit. Please enter a smaller amount.
+- http_status: 400
+  error_code: err_estimate_invalid_source_channel_type
+  description: Invalid source channel type
+- http_status: 400
+  error_code: err_estimate_invalid_destination_channel_type
+  description: Invalid destination channel type
+- http_status: 400
+  error_code: err_quote_application_fee_outside_platform
+  description: Application fee is only available for platforms
+- http_status: 400
+  error_code: err_quote_application_fee_one_side_only
+  description: Either source or destination application fee can be specified, not both
+- http_status: 400
+  error_code: err_quote_application_fee_exceeds_internal_fee
+  description: Application fee cannot exceed the transfer fee
+- http_status: 400
+  error_code: err_memo_unsupported
+  description: This payment type does not support memos
+- http_status: 400
+  error_code: err_memo_required
+  description: The memo is required for this payment method
+- http_status: 400
+  error_code: err_memo_invalid_length
+  description: Memo length is outside the allowed range
+- http_status: 400
+  error_code: err_memo_invalid_characters
+  description: Memo must only contain alphanumeric characters and & - . /
+- http_status: 400
+  error_code: err_memo_repeating_character
+  description: Memo must not consist of one repeating character
+- http_status: 400
+  error_code: err_rail_schema_unsupported
+  description: The destination rail does not support this schema
+- http_status: 400
+  error_code: err_recipient_deleted
+  description: This recipient has been deleted
+- http_status: 400
+  error_code: err_recipient_invalidated
+  description: This recipient is no longer valid
+- http_status: 400
+  error_code: err_recipient_required
+  description: Recipient is required
+- http_status: 400
+  error_code: err_tos_ip_address_required
+  description: IP address is required
+- http_status: 400
+  error_code: err_transfer_invalid_destination_id
+  description: Invalid destination ID
+- http_status: 400
+  error_code: err_transfer_invalid_sender_id
+  description: Invalid sender ID
+- http_status: 400
+  error_code: err_transfer_invalid_amount
+  description: Invalid transfer amount
+- http_status: 400
+  error_code: err_transfer_intent_should_be_crypto
+  description: Transfer intent must be a crypto transfer
+- http_status: 400
+  error_code: err_wallet_invalid_address
+  description: This wallet address is empty or invalid
+- http_status: 400
+  error_code: err_transfer_intent_failure
+  description: Transfer intent failure
+- http_status: 400
+  error_code: err_transfer_intent_already_completed
+  description: This transfer intent has already been completed
+- http_status: 400
+  error_code: err_transfer_intent_has_different_id
+  description: A pending intent with this reference has a different ID
+- http_status: 400
+  error_code: err_transfer_intent_invalid_token
+  description: Invalid transfer intent token
+- http_status: 400
+  error_code: err_cctp_not_configured
+  description: CCTP not configured for this network
+- http_status: 400
+  error_code: err_cctp_chain_not_supported
+  description: Chain is unsupported
+- http_status: 400
+  error_code: err_cctp_not_supported
+  description: CCTP is not supported
+- http_status: 400
+  error_code: err_cctp_network_does_not_support_session_key
+  description: This network does not support session key execution
+- http_status: 400
+  error_code: err_cctp_nonce_required
+  description: Nonce is required
+- http_status: 400
+  error_code: err_relay_json_rpc
+  description: A JSON RPC error occurred
+- http_status: 400
+  error_code: err_quote_no_amount
+  description: 'Invalid quote request: you should specify either amount in or out'
+- http_status: 400
+  error_code: err_insufficient_balance
+  description: Insufficient balance
+- http_status: 401
+  error_code: err_signin_invalid_credentials
+  description: Invalid credentials
+- http_status: 401
+  error_code: err_signin_jwt_invalid
+  description: Invalid JWT token
+- http_status: 401
+  error_code: err_signin_jwt_expired
+  description: JWT token has expired
+- http_status: 401
+  error_code: err_wallet_signin_invalid_signature
+  description: Invalid signature
+- http_status: 403
+  error_code: err_aml_risk_score_hit
+  description: Transaction flagged by compliance check
+- http_status: 404
+  error_code: err_credential_missing
+  description: Credential is missing
+- http_status: 404
+  error_code: err_sumsub_applicant_not_found
+  description: Sumsub applicant not found
+- http_status: 404
+  error_code: err_company_formation_document_not_found
+  description: Company formation document not found
+- http_status: 404
+  error_code: err_company_ownership_document_not_found
+  description: Company ownership document not found
+- http_status: 404
+  error_code: err_proof_of_address_not_found
+  description: Proof of address not found
+- http_status: 404
+  error_code: err_id_doc_not_found
+  description: Identity document not found
+- http_status: 404
+  error_code: err_liveness_check_not_found
+  description: Liveness check (selfie) not found
+- http_status: 404
+  error_code: err_occupation_not_found
+  description: Occupation not found
+- http_status: 404
+  error_code: err_ip_address_not_found
+  description: IP address not found
+- http_status: 404
+  error_code: err_kyc_questionnaire_not_found
+  description: Questionnaire with this template ID not found
+- http_status: 409
+  error_code: err_account_external_id_conflict
+  description: An account with this external ID already exists
+- http_status: 409
+  error_code: err_webhook_endpoint_already_exists
+  description: Webhook endpoint already exists
+- http_status: 409
+  error_code: err_kyc_applicant_invalid_status
+  description: Invalid applicant status for this operation
+- http_status: 409
+  error_code: err_kyc_sharing_invalid_status
+  description: Sharing is unavailable for this account due to its current KYC status
+- http_status: 409
+  error_code: err_kyc_sharing_state_terminal
+  description: Sharing reached its terminal state
+- http_status: 409
+  error_code: err_endorsement_already_exists
+  description: Endorsement already exists
+- http_status: 409
+  error_code: err_kyc_root_applicant_already_exists
+  description: A root applicant for this account already exists
+- http_status: 409
+  error_code: err_recipient_already_exists
+  description: Recipient already exists
+- http_status: 422
+  error_code: err_platform_deactivated
+  description: Platform is deactivated
+- http_status: 422
+  error_code: err_user_email_required
+  description: User email is required
+- http_status: 422
+  error_code: err_user_name_required
+  description: User name is required
+- http_status: 422
+  error_code: err_invalid_signed_agreement_id
+  description: Invalid signed agreement ID
+- http_status: 422
+  error_code: err_kyc_sharing_invalid_account_type
+  description: Only individual accounts are supported
+- http_status: 422
+  error_code: err_kyc_sharing_not_possible
+  description: Sharing is not possible due to an account restriction
+- http_status: 422
+  error_code: err_kyc_unsupported_param_combination
+  description: The combination of country, account type, and role is not supported
+- http_status: 422
+  error_code: err_kyc_submission_finalized
+  description: Submission must be open
+- http_status: 422
+  error_code: err_kyc_has_open_submissions
+  description: Applicant has open submissions
+- http_status: 422
+  error_code: err_kyc_document_request_invalid
+  description: Document of this type and variant was not found in submission requirements
+- http_status: 422
+  error_code: err_kyc_validation_error
+  description: Validation error
+- http_status: 422
+  error_code: err_recipient_validation_failed
+  description: Recipient details failed validation. Check account information and try again.
+- http_status: 422
+  error_code: err_tos_region_not_configured
+  description: Not configured for your region
+- http_status: 422
+  error_code: err_transfer_not_awaiting_funds
+  description: Transfer is not awaiting funds
+- http_status: 422
+  error_code: err_derived_account_not_supported
+  description: This account does not support derivation
+- http_status: 428
+  error_code: err_signup_required
+  description: Signup required
+- http_status: 428
+  error_code: err_bvn_required
+  description: BVN not found

@@ -1,0 +1,48 @@
+arazzo: 1.0.1
+info:
+  title: Due — Onboard a customer account with KYC/KYB
+  version: 1.0.0
+  summary: Create an account, initiate KYC/KYB, and confirm the account reaches a verified state.
+sourceDescriptions:
+- name: due
+  url: ../openapi/due-openapi-original.yml
+  type: openapi
+workflows:
+- workflowId: onboardAccount
+  summary: Create an account, start standard KYC/KYB, and fetch the account to confirm status.
+  inputs:
+    type: object
+    properties:
+      account:
+        type: object
+        example: { type: business, name: Rio Co, email: contact+rio@example.com, country: BR, category: accounting_bookkeeping }
+  steps:
+  - stepId: getCategories
+    operationId: get_v1-account-categories
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: createAccount
+    operationId: post_v1-accounts
+    requestBody:
+      payload: $inputs.account
+    outputs:
+      accountId: $response.body#/id
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: initiateKyc
+    operationId: post_v1-kyc
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: getAccount
+    operationId: get_v1-accounts-accountid
+    parameters:
+    - name: accountId
+      in: path
+      value: $steps.createAccount.outputs.accountId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      kycStatus: $response.body#/kyc/status
+  outputs:
+    accountId: $steps.createAccount.outputs.accountId
+    kycStatus: $steps.getAccount.outputs.kycStatus

@@ -1,0 +1,35 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Due API
+  version: 1.0.0
+extends: openapi/due-openapi-original.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-rating: 4
+    x-apievangelist-provenance: Assembled by API Evangelist from Due's per-operation OpenAPI fragments published on due.readme.io (reference pages).
+    x-artifacts:
+      authentication: authentication/due-authentication.yml
+      conventions: conventions/due-conventions.yml
+      errors: errors/due-error-codes.yml
+      data-model: data-model/due-data-model.yml
+      webhooks: asyncapi/due-webhooks.yml
+      sandbox: sandbox/due-sandbox.yml
+      lifecycle: lifecycle/due-lifecycle.yml
+- target: $.info
+  update:
+    x-authentication:
+      style: bearer
+      header: 'Authorization: Bearer <api_key>'
+      account_scoping_header: Due-Account-Id
+- target: $.info
+  update:
+    x-pagination:
+      style: cursor
+      params: [limit, next]
+- target: $.info
+  update:
+    x-webhooks:
+      signing: Ed25519
+      signature_header: X-Webhook-Signature
+      events: [transfer.status_changed, bp.kyc.status_changed, bp.tos_accepted]
