@@ -335,6 +335,8 @@ apis:
   - type: GettingStarted
     url: https://due.readme.io/docs/overview
 common:
+- type: Overlay
+  url: overlays/due-openapi-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/due-agentic-access.yml
 - type: DomainSecurity
