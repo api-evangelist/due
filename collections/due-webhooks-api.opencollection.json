@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Due Account Webhooks API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "delete_v1-webhook-endpoints-id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.due.network/v1/webhook_endpoints/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "get_v1-webhook-endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/webhook_endpoints"
+          }
+        },
+        {
+          "info": {
+            "name": "post_v1-webhook-endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/webhook_endpoints",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "get_v1-webhook-events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/webhook_endpoints/events"
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

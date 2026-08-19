@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Due Account Channels API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Channels",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all channels",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/channels",
+            "params": [
+              {
+                "name": "onlyAvailable",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all transfer channels."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

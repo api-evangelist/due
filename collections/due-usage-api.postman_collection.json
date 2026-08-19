@@ -1,0 +1,118 @@
+{
+  "item": [
+    {
+      "id": "f238a563-9d49-4a4b-8967-bae7ec469f30",
+      "name": "Usage",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d6d8caf-936a-42f6-a011-a5866a9558ec",
+          "name": "Get usage",
+          "request": {
+            "name": "Get usage",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "usage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "66a39c87-5c7b-4f95-ac5e-92c76e79f6ef",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "usage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ownerId\": \"string\",\n    \"period\": \"string\",\n    \"start\": \"1951-06-30T08:06:08.023Z\",\n    \"end\": \"2024-05-20T20:14:49.088Z\",\n    \"kind\": \"string\",\n    \"amount\": \"string\"\n  },\n  {\n    \"ownerId\": \"string\",\n    \"period\": \"string\",\n    \"start\": \"2026-05-02T02:16:01.680Z\",\n    \"end\": \"1994-08-31T13:44:08.785Z\",\n    \"kind\": \"string\",\n    \"amount\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.due.network",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9f8ea742-efb5-42bc-8403-1a549f197aee",
+    "name": "Due Account Usage API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due's per-operation OpenAPI fragments published on due.readme.io.\n\nContact Support:\n Email: demo@due.network",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Due Account Simulate pay-in API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Simulate pay-in",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "post_dev-payin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/dev/payin",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

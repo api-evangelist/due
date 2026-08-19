@@ -2,9 +2,9 @@ generated: '2026-07-18'
 method: derived
 status: candidate
 source: openapi/due-openapi-original.yml
-note: >-
-  No official hosted/remote MCP server was found for Due (checked docs, npm @modelcontextprotocol, MCP registries).
-  This is a candidate tool list derived from the assembled OpenAPI operations; each tool maps to a real operationId.
+note: No official hosted/remote MCP server was found for Due (checked docs, npm @modelcontextprotocol,
+  MCP registries). This is a candidate tool list derived from the assembled OpenAPI operations; each tool
+  maps to a real operationId.
 server:
   name: due
   transport: http
@@ -60,3 +60,9 @@ tools:
 - name: list_webhook_events
   description: List event types available to subscribe to.
   source_operation: openapi/due-openapi-original.yml#get_v1-webhook-events
+deployment:
+  mode: none
+  verified: derived
+  tools: 17
+  checked: '2026-08-12'
+  source: catalog MCP census

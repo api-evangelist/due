@@ -1,0 +1,805 @@
+{
+  "item": [
+    {
+      "id": "5096c132-155d-481d-a71a-b85fda972b18",
+      "name": "Transfers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bce2f711-d73a-473e-8226-9e07cc2576b5",
+          "name": "Get transfer details",
+          "request": {
+            "name": "Get transfer details",
+            "description": {
+              "content": "Get details of a specific transfer by id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "transfers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ce1b55c0-72a5-444c-9473-dfea3cf376d5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "transfers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"ownerId\": \"string\",\n  \"status\": \"payment_processed\",\n  \"source\": {\n    \"amount\": \"string\",\n    \"fee\": \"string\",\n    \"applicationFee\": \"string\",\n    \"totalFee\": \"string\",\n    \"currency\": \"string\",\n    \"rail\": \"string\",\n    \"id\": \"string\",\n    \"label\": \"string\",\n    \"details\": {\n      \"accountType\": \"string\",\n      \"IBAN\": \"string\",\n      \"schema\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"companyName\": \"string\"\n    },\n    \"memo\": \"string\",\n    \"purposeCode\": \"string\",\n    \"confirmation\": {\n      \"kind\": \"string\",\n      \"network\": \"string\",\n      \"hash\": \"string\",\n      \"eventIdx\": 5711\n    },\n    \"virtualAccountId\": \"string\"\n  },\n  \"destination\": {\n    \"amount\": \"string\",\n    \"fee\": \"string\",\n    \"applicationFee\": \"string\",\n    \"totalFee\": \"string\",\n    \"currency\": \"string\",\n    \"rail\": \"string\",\n    \"id\": \"string\",\n    \"label\": \"string\",\n    \"details\": {\n      \"accountType\": \"string\",\n      \"IBAN\": \"string\",\n      \"schema\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"companyName\": \"string\"\n    },\n    \"memo\": \"string\",\n    \"purposeCode\": \"string\",\n    \"confirmation\": {\n      \"kind\": \"string\",\n      \"network\": \"string\",\n      \"hash\": \"string\",\n      \"eventIdx\": 2751\n    },\n    \"virtualAccountId\": \"string\"\n  },\n  \"fxRate\": 6038.678879560435,\n  \"fxMarkup\": 4601,\n  \"transferInstructions\": {\n    \"kind\": \"string\",\n    \"message\": \"string\"\n  },\n  \"createdAt\": \"1967-08-14T07:15:29.809Z\",\n  \"expiresAt\": \"2012-01-30T13:24:12.188Z\",\n  \"breakdown\": [\n    {\n      \"leg\": \"string\",\n      \"component\": \"string\",\n      \"currency\": \"string\",\n      \"amount\": \"string\",\n      \"amountUSD\": \"string\"\n    },\n    {\n      \"leg\": \"string\",\n      \"component\": \"string\",\n      \"currency\": \"string\",\n      \"amount\": \"string\",\n      \"amountUSD\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dffe6653-6992-4846-9804-d4b217414d1d",
+          "name": "List all transfers",
+          "request": {
+            "name": "List all transfers",
+            "description": {
+              "content": "Retrieves a paginated list of transfers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "transfers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Cursor for pagination to fetch the next set of results."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "Order in which results should be returned (e.g., `asc`, `desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "startDate",
+                  "value": "<dateTime>",
+                  "description": "Start date for filtering results (ISO 8601 format)."
+                },
+                {
+                  "disabled": false,
+                  "key": "endDate",
+                  "value": "<dateTime>",
+                  "description": "End date for filtering results (ISO 8601 format)."
+                },
+                {
+                  "disabled": false,
+                  "key": "includeEmpty",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1c0e716-40fa-4513-bcd9-d8e6d95d9b85",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "startDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endDate",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "includeEmpty",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"ownerId\": \"string\",\n      \"status\": \"awaiting_funds\",\n      \"source\": {\n        \"amount\": \"string\",\n        \"fee\": \"string\",\n        \"applicationFee\": \"string\",\n        \"totalFee\": \"string\",\n        \"currency\": \"string\",\n        \"rail\": \"string\",\n        \"id\": \"string\",\n        \"label\": \"string\",\n        \"details\": {\n          \"accountType\": \"string\",\n          \"IBAN\": \"string\",\n          \"schema\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"companyName\": \"string\"\n        },\n        \"memo\": \"string\",\n        \"purposeCode\": \"string\",\n        \"confirmation\": {\n          \"kind\": \"string\",\n          \"network\": \"string\",\n          \"hash\": \"string\",\n          \"eventIdx\": 2877\n        },\n        \"virtualAccountId\": \"string\"\n      },\n      \"destination\": {\n        \"amount\": \"string\",\n        \"fee\": \"string\",\n        \"applicationFee\": \"string\",\n        \"totalFee\": \"string\",\n        \"currency\": \"string\",\n        \"rail\": \"string\",\n        \"id\": \"string\",\n        \"label\": \"string\",\n        \"details\": {\n          \"accountType\": \"string\",\n          \"IBAN\": \"string\",\n          \"schema\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"companyName\": \"string\"\n        },\n        \"memo\": \"string\",\n        \"purposeCode\": \"string\",\n        \"confirmation\": {\n          \"kind\": \"string\",\n          \"network\": \"string\",\n          \"hash\": \"string\",\n          \"eventIdx\": 8490\n        },\n        \"virtualAccountId\": \"string\"\n      },\n      \"fxRate\": 7421.9218520146205,\n      \"fxMarkup\": 3689,\n      \"transferInstructions\": {\n        \"kind\": \"string\",\n        \"message\": \"string\"\n      },\n      \"createdAt\": \"1995-11-03T11:08:45.101Z\",\n      \"expiresAt\": \"1981-08-23T12:24:52.083Z\",\n      \"breakdown\": [\n        {\n          \"leg\": \"string\",\n          \"component\": \"string\",\n          \"currency\": \"string\",\n          \"amount\": \"string\",\n          \"amountUSD\": \"string\"\n        },\n        {\n          \"leg\": \"string\",\n          \"component\": \"string\",\n          \"currency\": \"string\",\n          \"amount\": \"string\",\n          \"amountUSD\": \"string\"\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"ownerId\": \"string\",\n      \"status\": \"canceled\",\n      \"source\": {\n        \"amount\": \"string\",\n        \"fee\": \"string\",\n        \"applicationFee\": \"string\",\n        \"totalFee\": \"string\",\n        \"currency\": \"string\",\n        \"rail\": \"string\",\n        \"id\": \"string\",\n        \"label\": \"string\",\n        \"details\": {\n          \"accountType\": \"string\",\n          \"IBAN\": \"string\",\n          \"schema\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"companyName\": \"string\"\n        },\n        \"memo\": \"string\",\n        \"purposeCode\": \"string\",\n        \"confirmation\": {\n          \"kind\": \"string\",\n          \"network\": \"string\",\n          \"hash\": \"string\",\n          \"eventIdx\": 1919\n        },\n        \"virtualAccountId\": \"string\"\n      },\n      \"destination\": {\n        \"amount\": \"string\",\n        \"fee\": \"string\",\n        \"applicationFee\": \"string\",\n        \"totalFee\": \"string\",\n        \"currency\": \"string\",\n        \"rail\": \"string\",\n        \"id\": \"string\",\n        \"label\": \"string\",\n        \"details\": {\n          \"accountType\": \"string\",\n          \"IBAN\": \"string\",\n          \"schema\": \"string\",\n          \"firstName\": \"string\",\n          \"lastName\": \"string\",\n          \"companyName\": \"string\"\n        },\n        \"memo\": \"string\",\n        \"purposeCode\": \"string\",\n        \"confirmation\": {\n          \"kind\": \"string\",\n          \"network\": \"string\",\n          \"hash\": \"string\",\n          \"eventIdx\": 3973\n        },\n        \"virtualAccountId\": \"string\"\n      },\n      \"fxRate\": 6387.905202962791,\n      \"fxMarkup\": 6477,\n      \"transferInstructions\": {\n        \"kind\": \"string\",\n        \"message\": \"string\"\n      },\n      \"createdAt\": \"1981-07-05T18:42:35.051Z\",\n      \"expiresAt\": \"2006-09-26T04:02:35.522Z\",\n      \"breakdown\": [\n        {\n          \"leg\": \"string\",\n          \"component\": \"string\",\n          \"currency\": \"string\",\n          \"amount\": \"string\",\n          \"amountUSD\": \"string\"\n        },\n        {\n          \"leg\": \"string\",\n          \"component\": \"string\",\n          \"currency\": \"string\",\n          \"amount\": \"string\",\n          \"amountUSD\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c66acea6-3713-4d32-a179-072d65b1857a",
+          "name": "Create transfer",
+          "request": {
+            "name": "Create transfer",
+            "description": {
+              "content": "Initiate a transfer for a created quote and provided details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "transfers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"quote\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"sender\": {\n    \"accountType\": \"<string>\",\n    \"IBAN\": \"<string>\",\n    \"schema\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"companyName\": \"<string>\"\n  },\n  \"memo\": \"<string>\",\n  \"purposeCode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "930f5fce-9a81-4e8f-ae3b-8d1c7368598b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "transfers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"quote\": \"<string>\",\n  \"recipient\": \"<string>\",\n  \"sender\": {\n    \"accountType\": \"<string>\",\n    \"IBAN\": \"<string>\",\n    \"schema\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"companyName\": \"<string>\"\n  },\n  \"memo\": \"<string>\",\n  \"purposeCode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"ownerId\": \"string\",\n  \"status\": \"canceled\",\n  \"source\": {\n    \"amount\": \"string\",\n    \"fee\": \"string\",\n    \"applicationFee\": \"string\",\n    \"totalFee\": \"string\",\n    \"currency\": \"string\",\n    \"rail\": \"string\",\n    \"id\": \"string\",\n    \"label\": \"string\",\n    \"details\": {\n      \"accountType\": \"<string>\",\n      \"IBAN\": \"<string>\",\n      \"schema\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"companyName\": \"<string>\"\n    },\n    \"memo\": \"string\",\n    \"purposeCode\": \"string\",\n    \"confirmation\": {\n      \"kind\": \"string\",\n      \"network\": \"string\",\n      \"hash\": \"string\",\n      \"eventIdx\": 5837\n    },\n    \"virtualAccountId\": \"string\"\n  },\n  \"destination\": {\n    \"amount\": \"string\",\n    \"fee\": \"string\",\n    \"applicationFee\": \"string\",\n    \"totalFee\": \"string\",\n    \"currency\": \"string\",\n    \"rail\": \"string\",\n    \"id\": \"string\",\n    \"label\": \"string\",\n    \"details\": {\n      \"accountType\": \"<string>\",\n      \"IBAN\": \"<string>\",\n      \"schema\": \"<string>\",\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"companyName\": \"<string>\"\n    },\n    \"memo\": \"string\",\n    \"purposeCode\": \"string\",\n    \"confirmation\": {\n      \"kind\": \"string\",\n      \"network\": \"string\",\n      \"hash\": \"string\",\n      \"eventIdx\": 5271\n    },\n    \"virtualAccountId\": \"string\"\n  },\n  \"fxRate\": 1791.0396878342694,\n  \"fxMarkup\": 9340,\n  \"transferInstructions\": {\n    \"kind\": \"string\",\n    \"message\": \"string\"\n  },\n  \"createdAt\": \"1959-08-29T21:34:33.010Z\",\n  \"expiresAt\": \"2021-07-12T08:35:37.571Z\",\n  \"breakdown\": [\n    {\n      \"leg\": \"string\",\n      \"component\": \"string\",\n      \"currency\": \"string\",\n      \"amount\": \"string\",\n      \"amountUSD\": \"string\"\n    },\n    {\n      \"leg\": \"string\",\n      \"component\": \"string\",\n      \"currency\": \"string\",\n      \"amount\": \"string\",\n      \"amountUSD\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a96da12e-4a07-41d1-936d-a2730fb228d7",
+          "name": "post v1-transfers-estimate",
+          "request": {
+            "name": "post v1-transfers-estimate",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "transfers",
+                "estimate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"source\": {\n    \"rail\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"applicationFeeAmount\": \"<string>\",\n    \"applicationFeeBps\": \"<integer>\",\n    \"channelType\": \"<string>\"\n  },\n  \"destination\": {\n    \"rail\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"applicationFeeAmount\": \"<string>\",\n    \"applicationFeeBps\": \"<integer>\",\n    \"channelType\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e1cab573-9c55-4c86-a3a1-38ef41bf4e11",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "transfers",
+                    "estimate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source\": {\n    \"rail\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"applicationFeeAmount\": \"<string>\",\n    \"applicationFeeBps\": \"<integer>\",\n    \"channelType\": \"<string>\"\n  },\n  \"destination\": {\n    \"rail\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"applicationFeeAmount\": \"<string>\",\n    \"applicationFeeBps\": \"<integer>\",\n    \"channelType\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"source\": {\n    \"rail\": \"string\",\n    \"currency\": \"string\",\n    \"amount\": \"string\",\n    \"fee\": \"string\",\n    \"applicationFee\": \"string\",\n    \"totalFee\": \"string\"\n  },\n  \"destination\": {\n    \"rail\": \"string\",\n    \"currency\": \"string\",\n    \"amount\": \"string\",\n    \"fee\": \"string\",\n    \"applicationFee\": \"string\",\n    \"totalFee\": \"string\"\n  },\n  \"fxRate\": 6932.157000204386,\n  \"fxMarkup\": 7835\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12232563-73d5-45b3-b2c3-b3ce6f4bbb54",
+          "name": "Create a funding address",
+          "request": {
+            "name": "Create a funding address",
+            "description": {
+              "content": "Create a funding address for a specific transfer by id",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "transfers",
+                ":id",
+                "funding_address"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1124b0c-588e-4b78-86ae-b9a4743ca5ea",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "transfers",
+                    ":id",
+                    "funding_address"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"kind\": \"string\",\n  \"details\": {\n    \"accountType\": \"<string>\",\n    \"IBAN\": \"<string>\",\n    \"schema\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"companyName\": \"<string>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "65f08a6a-5633-4dd8-9016-e51ed5879aca",
+          "name": "Create a transfer intent for a transfer",
+          "request": {
+            "name": "Create a transfer intent for a transfer",
+            "description": {
+              "content": "Creates a transfer intent for the specified transfer ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "transfers",
+                ":id",
+                "transfer_intent"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"authorizationMode\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1f191767-6e4d-4c6b-b1c9-399e30621611",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "transfers",
+                    ":id",
+                    "transfer_intent"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"authorizationMode\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"ownerId\": \"string\",\n  \"sender\": \"string\",\n  \"amountIn\": \"string\",\n  \"to\": {\n    \"key_0\": \"string\"\n  },\n  \"tokenIn\": \"string\",\n  \"tokenOut\": \"string\",\n  \"networkIdIn\": \"string\",\n  \"networkIdOut\": \"string\",\n  \"txHashIn\": \"string\",\n  \"txHashOut\": \"string\",\n  \"eventIdxIn\": 4605,\n  \"eventIdxOut\": 7965,\n  \"completedAtIn\": \"string\",\n  \"completedAtOut\": \"string\",\n  \"gasFee\": \"string\",\n  \"token\": \"string\",\n  \"signables\": [\n    {\n      \"payload\": {\n        \"kind\": \"string\",\n        \"message\": \"string\",\n        \"feePayer\": [\n          2050,\n          2850\n        ],\n        \"pdaSeeds\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"hash\": \"string\",\n      \"signature\": \"string\",\n      \"signer\": \"string\"\n    },\n    {\n      \"payload\": {\n        \"kind\": \"string\",\n        \"message\": \"string\",\n        \"feePayer\": [\n          5801,\n          2972\n        ],\n        \"pdaSeeds\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      \"hash\": \"string\",\n      \"signature\": \"string\",\n      \"signer\": \"string\"\n    }\n  ],\n  \"nonce\": \"string\",\n  \"hash\": \"string\",\n  \"expiresAt\": \"2016-06-04T13:37:49.120Z\",\n  \"createdAt\": \"1997-09-04T04:58:02.109Z\",\n  \"signer\": \"string\",\n  \"reference\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "72e104da-5eef-4339-a5fc-78652e9be77c",
+          "name": "Create a transfer quote",
+          "request": {
+            "name": "Create a transfer quote",
+            "description": {
+              "content": "Create a transfer quote for a set of currencies and rails",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "transfers",
+                "quote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"source\": {\n    \"rail\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"applicationFeeAmount\": \"<string>\",\n    \"applicationFeeBps\": \"<integer>\"\n  },\n  \"destination\": {\n    \"rail\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"applicationFeeAmount\": \"<string>\",\n    \"applicationFeeBps\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c8a55230-76e6-4a38-89b1-23da2279d331",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "transfers",
+                    "quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"source\": {\n    \"rail\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"applicationFeeAmount\": \"<string>\",\n    \"applicationFeeBps\": \"<integer>\"\n  },\n  \"destination\": {\n    \"rail\": \"<string>\",\n    \"currency\": \"<string>\",\n    \"amount\": \"<string>\",\n    \"applicationFeeAmount\": \"<string>\",\n    \"applicationFeeBps\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"source\": {\n    \"rail\": \"string\",\n    \"currency\": \"string\",\n    \"amount\": \"string\",\n    \"fee\": \"string\",\n    \"applicationFee\": \"string\",\n    \"totalFee\": \"string\"\n  },\n  \"destination\": {\n    \"rail\": \"string\",\n    \"currency\": \"string\",\n    \"amount\": \"string\",\n    \"fee\": \"string\",\n    \"applicationFee\": \"string\",\n    \"totalFee\": \"string\"\n  },\n  \"fxRate\": 6024.16483428164,\n  \"fxMarkup\": 9074,\n  \"token\": \"string\",\n  \"expiresAt\": \"1971-10-13T05:16:50.199Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.due.network",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b88b0584-ebf7-4c21-9706-bf836594bc83",
+    "name": "Due Account Transfers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due's per-operation OpenAPI fragments published on due.readme.io.\n\nContact Support:\n Email: demo@due.network",
+      "type": "text/plain"
+    }
+  }
+}

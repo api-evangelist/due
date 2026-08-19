@@ -1,0 +1,1754 @@
+{
+  "item": [
+    {
+      "id": "81715838-791d-490c-af96-4ba46651de49",
+      "name": "KYC",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e94502e8-bd0f-4138-8891-689238306207",
+          "name": "List open submissions",
+          "request": {
+            "name": "List open submissions",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "submissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3336f701-afbf-4e4d-9e71-8d2688695666",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "submissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"ownerId\": \"string\",\n    \"applicantId\": \"string\",\n    \"status\": \"string\",\n    \"info\": {\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"dob\": \"string\",\n      \"companyName\": \"string\",\n      \"registrationNumber\": \"string\",\n      \"address\": {\n        \"postCode\": \"string\",\n        \"town\": \"string\",\n        \"street\": \"string\",\n        \"country\": \"string\",\n        \"subStreet\": \"string\",\n        \"state\": \"string\",\n        \"stateCode\": \"string\",\n        \"buildingName\": \"string\",\n        \"flatNumber\": \"string\",\n        \"buildingNumber\": \"string\"\n      },\n      \"bvn\": \"string\",\n      \"entityType\": \"string\",\n      \"nationality\": \"string\",\n      \"phone\": \"string\",\n      \"postalAddress\": \"string\",\n      \"ssn\": \"string\",\n      \"tin\": \"string\",\n      \"cpf\": \"string\",\n      \"website\": \"string\",\n      \"location\": {\n        \"latitude\": \"string\",\n        \"longitude\": \"string\"\n      }\n    },\n    \"requirements\": [\n      {\n        \"kind\": \"string\",\n        \"if\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ],\n        \"then\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ]\n      },\n      {\n        \"kind\": \"string\",\n        \"if\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ],\n        \"then\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ]\n      }\n    ],\n    \"documents\": [\n      {\n        \"filename\": \"string\",\n        \"type\": \"string\",\n        \"variant\": \"string\",\n        \"issuingCountry\": \"string\"\n      },\n      {\n        \"filename\": \"string\",\n        \"type\": \"string\",\n        \"variant\": \"string\",\n        \"issuingCountry\": \"string\"\n      }\n    ],\n    \"questionnaires\": [\n      {\n        \"id\": \"string\",\n        \"templateId\": \"string\",\n        \"answers\": [\n          {\n            \"id\": \"string\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"templateId\": \"string\",\n        \"answers\": [\n          {\n            \"id\": \"string\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"presetCode\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"ownerId\": \"string\",\n    \"applicantId\": \"string\",\n    \"status\": \"string\",\n    \"info\": {\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"dob\": \"string\",\n      \"companyName\": \"string\",\n      \"registrationNumber\": \"string\",\n      \"address\": {\n        \"postCode\": \"string\",\n        \"town\": \"string\",\n        \"street\": \"string\",\n        \"country\": \"string\",\n        \"subStreet\": \"string\",\n        \"state\": \"string\",\n        \"stateCode\": \"string\",\n        \"buildingName\": \"string\",\n        \"flatNumber\": \"string\",\n        \"buildingNumber\": \"string\"\n      },\n      \"bvn\": \"string\",\n      \"entityType\": \"string\",\n      \"nationality\": \"string\",\n      \"phone\": \"string\",\n      \"postalAddress\": \"string\",\n      \"ssn\": \"string\",\n      \"tin\": \"string\",\n      \"cpf\": \"string\",\n      \"website\": \"string\",\n      \"location\": {\n        \"latitude\": \"string\",\n        \"longitude\": \"string\"\n      }\n    },\n    \"requirements\": [\n      {\n        \"kind\": \"string\",\n        \"if\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ],\n        \"then\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ]\n      },\n      {\n        \"kind\": \"string\",\n        \"if\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ],\n        \"then\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ]\n      }\n    ],\n    \"documents\": [\n      {\n        \"filename\": \"string\",\n        \"type\": \"string\",\n        \"variant\": \"string\",\n        \"issuingCountry\": \"string\"\n      },\n      {\n        \"filename\": \"string\",\n        \"type\": \"string\",\n        \"variant\": \"string\",\n        \"issuingCountry\": \"string\"\n      }\n    ],\n    \"questionnaires\": [\n      {\n        \"id\": \"string\",\n        \"templateId\": \"string\",\n        \"answers\": [\n          {\n            \"id\": \"string\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"id\": \"string\",\n        \"templateId\": \"string\",\n        \"answers\": [\n          {\n            \"id\": \"string\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"string\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"presetCode\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6df5908c-bcf8-4ddd-81f0-e6b27505a93b",
+          "name": "Get standard KYC/KYB link",
+          "request": {
+            "name": "Get standard KYC/KYB link",
+            "description": {
+              "content": "Retrieve standard KYC/KYB details and link.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "kyc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2507ac22-1bbb-4b2f-994a-2cd60fc7360a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"string\",\n  \"email\": \"string\",\n  \"applicantId\": \"string\",\n  \"externalLink\": \"string\",\n  \"status\": \"passed\",\n  \"country\": \"string\",\n  \"token\": \"string\",\n  \"primaryEntity\": {\n    \"name\": \"string\",\n    \"tosLink\": \"string\",\n    \"privacyPolicyLink\": \"string\",\n    \"country2\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ac6bbc76-2c47-4a1f-b07a-7e19795014bb",
+          "name": "Initiate standard KYC/KYB",
+          "request": {
+            "name": "Initiate standard KYC/KYB",
+            "description": {
+              "content": "Initiate standard KYC/KYB for an account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "kyc"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a749d699-313a-4f81-b366-40a31767c0c0",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"ownerId\": \"string\",\n  \"applicantId\": \"string\",\n  \"status\": \"string\",\n  \"info\": {\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"dob\": \"string\",\n    \"companyName\": \"string\",\n    \"registrationNumber\": \"string\",\n    \"address\": {\n      \"postCode\": \"string\",\n      \"town\": \"string\",\n      \"street\": \"string\",\n      \"country\": \"string\",\n      \"subStreet\": \"string\",\n      \"state\": \"string\",\n      \"stateCode\": \"string\",\n      \"buildingName\": \"string\",\n      \"flatNumber\": \"string\",\n      \"buildingNumber\": \"string\"\n    },\n    \"bvn\": \"string\",\n    \"entityType\": \"string\",\n    \"nationality\": \"string\",\n    \"phone\": \"string\",\n    \"postalAddress\": \"string\",\n    \"ssn\": \"string\",\n    \"tin\": \"string\",\n    \"cpf\": \"string\",\n    \"website\": \"string\",\n    \"location\": {\n      \"latitude\": \"string\",\n      \"longitude\": \"string\"\n    }\n  },\n  \"requirements\": [\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    },\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    }\n  ],\n  \"documents\": [\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    }\n  ],\n  \"questionnaires\": [\n    {\n      \"id\": \"string\",\n      \"templateId\": \"string\",\n      \"answers\": [\n        {\n          \"id\": \"string\",\n          \"value\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"value\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"string\",\n      \"templateId\": \"string\",\n      \"answers\": [\n        {\n          \"id\": \"string\",\n          \"value\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"id\": \"string\",\n          \"value\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"presetCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0dfbdfb6-52ff-4ac7-90f7-2feac03569bd",
+          "name": "Create a KYC/KYB access session",
+          "request": {
+            "name": "Create a KYC/KYB access session",
+            "description": {
+              "content": "Creates a session to access KYC/KYB access token and link",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "session"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4df9b02c-5198-43cf-aad9-bc778520f125",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "session"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"link\": \"string\",\n  \"accessToken\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9b99598e-1bfa-44ef-8679-b4aea5e884f9",
+          "name": "Share Sumsub KYC",
+          "request": {
+            "name": "Share Sumsub KYC",
+            "description": {
+              "content": "Share an existing Sumsub applicant",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "sharing",
+                "sumsub"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"shareToken\": \"<string>\",\n  \"applicantInfo\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"registrationNumber\": \"<string>\",\n    \"address\": {\n      \"postCode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"street\": \"<string>\",\n      \"country\": \"<string>\",\n      \"subStreet\": \"<string>\",\n      \"state\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"buildingName\": \"<string>\",\n      \"flatNumber\": \"<string>\",\n      \"buildingNumber\": \"<string>\"\n    },\n    \"bvn\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"nationality\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"postalAddress\": \"<string>\",\n    \"ssn\": \"<string>\",\n    \"tin\": \"<string>\",\n    \"cpf\": \"<string>\",\n    \"website\": \"<string>\",\n    \"location\": {\n      \"latitude\": \"<string>\",\n      \"longitude\": \"<string>\"\n    }\n  },\n  \"questionnaire\": {\n    \"id\": \"<string>\",\n    \"templateId\": \"<string>\",\n    \"answers\": [\n      {\n        \"id\": \"<string>\",\n        \"value\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "172670c7-a44c-4403-b146-858d83f407f3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "sharing",
+                    "sumsub"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"shareToken\": \"<string>\",\n  \"applicantInfo\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"registrationNumber\": \"<string>\",\n    \"address\": {\n      \"postCode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"street\": \"<string>\",\n      \"country\": \"<string>\",\n      \"subStreet\": \"<string>\",\n      \"state\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"buildingName\": \"<string>\",\n      \"flatNumber\": \"<string>\",\n      \"buildingNumber\": \"<string>\"\n    },\n    \"bvn\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"nationality\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"postalAddress\": \"<string>\",\n    \"ssn\": \"<string>\",\n    \"tin\": \"<string>\",\n    \"cpf\": \"<string>\",\n    \"website\": \"<string>\",\n    \"location\": {\n      \"latitude\": \"<string>\",\n      \"longitude\": \"<string>\"\n    }\n  },\n  \"questionnaire\": {\n    \"id\": \"<string>\",\n    \"templateId\": \"<string>\",\n    \"answers\": [\n      {\n        \"id\": \"<string>\",\n        \"value\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"value\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"submissionId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5db0bdd-3cb9-4c36-b7bd-c4f8698203ab",
+          "name": "Upload verification documents",
+          "request": {
+            "name": "Upload verification documents",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "submissions",
+                "documents",
+                ":token"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "token",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "file",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "24d38a23-2ed8-4771-851b-dba13040091a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "submissions",
+                    "documents",
+                    ":token"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "token",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "file",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"ownerId\": \"string\",\n  \"applicantId\": \"string\",\n  \"status\": \"string\",\n  \"info\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"registrationNumber\": \"<string>\",\n    \"address\": {\n      \"postCode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"street\": \"<string>\",\n      \"country\": \"<string>\",\n      \"subStreet\": \"<string>\",\n      \"state\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"buildingName\": \"<string>\",\n      \"flatNumber\": \"<string>\",\n      \"buildingNumber\": \"<string>\"\n    },\n    \"bvn\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"nationality\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"postalAddress\": \"<string>\",\n    \"ssn\": \"<string>\",\n    \"tin\": \"<string>\",\n    \"cpf\": \"<string>\",\n    \"website\": \"<string>\",\n    \"location\": {\n      \"latitude\": \"<string>\",\n      \"longitude\": \"<string>\"\n    }\n  },\n  \"requirements\": [\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    },\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    }\n  ],\n  \"documents\": [\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    }\n  ],\n  \"questionnaires\": [\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"presetCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2cef5c02-bf28-44b7-8bdb-cc0cd4d2f12c",
+          "name": "Create child applicant",
+          "request": {
+            "name": "Create child applicant",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "submissions",
+                ":submissionId",
+                "applicants"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "submissionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "aa80d1a8-98ab-4c1c-9644-5c63603917a8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "submissions",
+                    ":submissionId",
+                    "applicants"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "submissionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"roles\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"ownerId\": \"string\",\n  \"applicantId\": \"string\",\n  \"status\": \"string\",\n  \"info\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"registrationNumber\": \"<string>\",\n    \"address\": {\n      \"postCode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"street\": \"<string>\",\n      \"country\": \"<string>\",\n      \"subStreet\": \"<string>\",\n      \"state\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"buildingName\": \"<string>\",\n      \"flatNumber\": \"<string>\",\n      \"buildingNumber\": \"<string>\"\n    },\n    \"bvn\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"nationality\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"postalAddress\": \"<string>\",\n    \"ssn\": \"<string>\",\n    \"tin\": \"<string>\",\n    \"cpf\": \"<string>\",\n    \"website\": \"<string>\",\n    \"location\": {\n      \"latitude\": \"<string>\",\n      \"longitude\": \"<string>\"\n    }\n  },\n  \"requirements\": [\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    },\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    }\n  ],\n  \"documents\": [\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    }\n  ],\n  \"questionnaires\": [\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"presetCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea74cbba-8aa0-4cb4-8edb-64682156d278",
+          "name": "Complete applicant submission",
+          "request": {
+            "name": "Complete applicant submission",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "submissions",
+                ":submissionId",
+                "complete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "submissionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "062ad4a6-c4a7-4efa-9b74-97dfd84967ae",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "submissions",
+                    ":submissionId",
+                    "complete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "submissionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"ownerId\": \"string\",\n  \"applicantId\": \"string\",\n  \"status\": \"string\",\n  \"info\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"registrationNumber\": \"<string>\",\n    \"address\": {\n      \"postCode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"street\": \"<string>\",\n      \"country\": \"<string>\",\n      \"subStreet\": \"<string>\",\n      \"state\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"buildingName\": \"<string>\",\n      \"flatNumber\": \"<string>\",\n      \"buildingNumber\": \"<string>\"\n    },\n    \"bvn\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"nationality\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"postalAddress\": \"<string>\",\n    \"ssn\": \"<string>\",\n    \"tin\": \"<string>\",\n    \"cpf\": \"<string>\",\n    \"website\": \"<string>\",\n    \"location\": {\n      \"latitude\": \"<string>\",\n      \"longitude\": \"<string>\"\n    }\n  },\n  \"requirements\": [\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    },\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    }\n  ],\n  \"documents\": [\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    }\n  ],\n  \"questionnaires\": [\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"presetCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a98c230c-825d-4159-929f-9b214be60f8a",
+          "name": "Request verification document upload token",
+          "request": {
+            "name": "Request verification document upload token",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "submissions",
+                ":submissionId",
+                "documents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "submissionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"issuingCountry\": \"<string>\",\n  \"filename\": \"<string>\",\n  \"variant\": \"<string>\",\n  \"extractedData\": {\n    \"number\": \"<string>\",\n    \"serialNumber\": \"<string>\",\n    \"issuedAt\": \"<date>\",\n    \"expiresAt\": \"<date>\",\n    \"mrz\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e0273092-e174-4d1b-949f-89ec119bae0c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "submissions",
+                    ":submissionId",
+                    "documents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "submissionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"issuingCountry\": \"<string>\",\n  \"filename\": \"<string>\",\n  \"variant\": \"<string>\",\n  \"extractedData\": {\n    \"number\": \"<string>\",\n    \"serialNumber\": \"<string>\",\n    \"issuedAt\": \"<date>\",\n    \"expiresAt\": \"<date>\",\n    \"mrz\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2819bf2c-228d-4af4-ba9d-360697b7eec3",
+          "name": "Provide applicant information",
+          "request": {
+            "name": "Provide applicant information",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "submissions",
+                ":submissionId",
+                "info"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "submissionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"dob\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"registrationNumber\": \"<string>\",\n  \"address\": {\n    \"postCode\": \"<string>\",\n    \"town\": \"<string>\",\n    \"street\": \"<string>\",\n    \"country\": \"<string>\",\n    \"subStreet\": \"<string>\",\n    \"state\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"buildingName\": \"<string>\",\n    \"flatNumber\": \"<string>\",\n    \"buildingNumber\": \"<string>\"\n  },\n  \"bvn\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"nationality\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"postalAddress\": \"<string>\",\n  \"ssn\": \"<string>\",\n  \"tin\": \"<string>\",\n  \"cpf\": \"<string>\",\n  \"website\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<string>\",\n    \"longitude\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9cbefa79-95e9-4ae4-a679-c51dbb889dcc",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "submissions",
+                    ":submissionId",
+                    "info"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "submissionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"firstName\": \"<string>\",\n  \"lastName\": \"<string>\",\n  \"dob\": \"<string>\",\n  \"companyName\": \"<string>\",\n  \"registrationNumber\": \"<string>\",\n  \"address\": {\n    \"postCode\": \"<string>\",\n    \"town\": \"<string>\",\n    \"street\": \"<string>\",\n    \"country\": \"<string>\",\n    \"subStreet\": \"<string>\",\n    \"state\": \"<string>\",\n    \"stateCode\": \"<string>\",\n    \"buildingName\": \"<string>\",\n    \"flatNumber\": \"<string>\",\n    \"buildingNumber\": \"<string>\"\n  },\n  \"bvn\": \"<string>\",\n  \"entityType\": \"<string>\",\n  \"nationality\": \"<string>\",\n  \"phone\": \"<string>\",\n  \"postalAddress\": \"<string>\",\n  \"ssn\": \"<string>\",\n  \"tin\": \"<string>\",\n  \"cpf\": \"<string>\",\n  \"website\": \"<string>\",\n  \"location\": {\n    \"latitude\": \"<string>\",\n    \"longitude\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"ownerId\": \"string\",\n  \"applicantId\": \"string\",\n  \"status\": \"string\",\n  \"info\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"registrationNumber\": \"<string>\",\n    \"address\": {\n      \"postCode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"street\": \"<string>\",\n      \"country\": \"<string>\",\n      \"subStreet\": \"<string>\",\n      \"state\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"buildingName\": \"<string>\",\n      \"flatNumber\": \"<string>\",\n      \"buildingNumber\": \"<string>\"\n    },\n    \"bvn\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"nationality\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"postalAddress\": \"<string>\",\n    \"ssn\": \"<string>\",\n    \"tin\": \"<string>\",\n    \"cpf\": \"<string>\",\n    \"website\": \"<string>\",\n    \"location\": {\n      \"latitude\": \"<string>\",\n      \"longitude\": \"<string>\"\n    }\n  },\n  \"requirements\": [\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    },\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    }\n  ],\n  \"documents\": [\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    }\n  ],\n  \"questionnaires\": [\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"presetCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6e71d56f-e8df-4db0-a3a9-cca79b92f0c5",
+          "name": "Add questionnaire answers",
+          "request": {
+            "name": "Add questionnaire answers",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "submissions",
+                ":submissionId",
+                "questionnaires"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "submissionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"templateId\": \"<string>\",\n  \"answers\": [\n    {\n      \"id\": \"<string>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6856059a-214e-4a57-9932-1eacfae6ba01",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "submissions",
+                    ":submissionId",
+                    "questionnaires"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "submissionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"templateId\": \"<string>\",\n  \"answers\": [\n    {\n      \"id\": \"<string>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"value\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"ownerId\": \"string\",\n  \"applicantId\": \"string\",\n  \"status\": \"string\",\n  \"info\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"registrationNumber\": \"<string>\",\n    \"address\": {\n      \"postCode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"street\": \"<string>\",\n      \"country\": \"<string>\",\n      \"subStreet\": \"<string>\",\n      \"state\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"buildingName\": \"<string>\",\n      \"flatNumber\": \"<string>\",\n      \"buildingNumber\": \"<string>\"\n    },\n    \"bvn\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"nationality\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"postalAddress\": \"<string>\",\n    \"ssn\": \"<string>\",\n    \"tin\": \"<string>\",\n    \"cpf\": \"<string>\",\n    \"website\": \"<string>\",\n    \"location\": {\n      \"latitude\": \"<string>\",\n      \"longitude\": \"<string>\"\n    }\n  },\n  \"requirements\": [\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    },\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    }\n  ],\n  \"documents\": [\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    }\n  ],\n  \"questionnaires\": [\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"presetCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8898b1cb-29f8-4bd7-ab00-981cf008552c",
+          "name": "Set submission relations",
+          "request": {
+            "name": "Set submission relations",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "submissions",
+                ":submissionId",
+                "relations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "submissionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  {\n    \"applicantId\": \"<string>\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"shareSize\": \"<string>\"\n  },\n  {\n    \"applicantId\": \"<string>\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"shareSize\": \"<string>\"\n  }\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61ed982c-8646-4332-afaa-011a948d1c54",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "submissions",
+                    ":submissionId",
+                    "relations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "submissionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {\n    \"applicantId\": \"<string>\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"shareSize\": \"<string>\"\n  },\n  {\n    \"applicantId\": \"<string>\",\n    \"roles\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"shareSize\": \"<string>\"\n  }\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"ownerId\": \"string\",\n  \"applicantId\": \"string\",\n  \"status\": \"string\",\n  \"info\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"registrationNumber\": \"<string>\",\n    \"address\": {\n      \"postCode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"street\": \"<string>\",\n      \"country\": \"<string>\",\n      \"subStreet\": \"<string>\",\n      \"state\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"buildingName\": \"<string>\",\n      \"flatNumber\": \"<string>\",\n      \"buildingNumber\": \"<string>\"\n    },\n    \"bvn\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"nationality\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"postalAddress\": \"<string>\",\n    \"ssn\": \"<string>\",\n    \"tin\": \"<string>\",\n    \"cpf\": \"<string>\",\n    \"website\": \"<string>\",\n    \"location\": {\n      \"latitude\": \"<string>\",\n      \"longitude\": \"<string>\"\n    }\n  },\n  \"requirements\": [\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    },\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    }\n  ],\n  \"documents\": [\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    }\n  ],\n  \"questionnaires\": [\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"presetCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "703558ed-288c-4a63-bf4a-7e811e9acdd7",
+          "name": "get v1-kyc-endorsements-code",
+          "request": {
+            "name": "get v1-kyc-endorsements-code",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "endorsements",
+                ":code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0986877f-18a0-4a78-97fd-36264d270850",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "endorsements",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerId\": \"string\",\n  \"code\": \"string\",\n  \"status\": \"string\",\n  \"submission\": {\n    \"id\": \"string\",\n    \"ownerId\": \"string\",\n    \"applicantId\": \"string\",\n    \"status\": \"string\",\n    \"info\": {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"dob\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"address\": {\n        \"postCode\": \"<string>\",\n        \"town\": \"<string>\",\n        \"street\": \"<string>\",\n        \"country\": \"<string>\",\n        \"subStreet\": \"<string>\",\n        \"state\": \"<string>\",\n        \"stateCode\": \"<string>\",\n        \"buildingName\": \"<string>\",\n        \"flatNumber\": \"<string>\",\n        \"buildingNumber\": \"<string>\"\n      },\n      \"bvn\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"postalAddress\": \"<string>\",\n      \"ssn\": \"<string>\",\n      \"tin\": \"<string>\",\n      \"cpf\": \"<string>\",\n      \"website\": \"<string>\",\n      \"location\": {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\"\n      }\n    },\n    \"requirements\": [\n      {\n        \"kind\": \"string\",\n        \"if\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ],\n        \"then\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ]\n      },\n      {\n        \"kind\": \"string\",\n        \"if\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ],\n        \"then\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ]\n      }\n    ],\n    \"documents\": [\n      {\n        \"filename\": \"string\",\n        \"type\": \"string\",\n        \"variant\": \"string\",\n        \"issuingCountry\": \"string\"\n      },\n      {\n        \"filename\": \"string\",\n        \"type\": \"string\",\n        \"variant\": \"string\",\n        \"issuingCountry\": \"string\"\n      }\n    ],\n    \"questionnaires\": [\n      {\n        \"id\": \"<string>\",\n        \"templateId\": \"<string>\",\n        \"answers\": [\n          {\n            \"id\": \"<string>\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"templateId\": \"<string>\",\n        \"answers\": [\n          {\n            \"id\": \"<string>\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"presetCode\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "623ec54f-1a4e-4446-a7c6-8396750d8bcb",
+          "name": "post v1-kyc-endorsements-code",
+          "request": {
+            "name": "post v1-kyc-endorsements-code",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "endorsements",
+                ":code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "code",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1c136f5-94ec-476a-a412-12a14784713d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "endorsements",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"ownerId\": \"string\",\n  \"code\": \"string\",\n  \"status\": \"string\",\n  \"submission\": {\n    \"id\": \"string\",\n    \"ownerId\": \"string\",\n    \"applicantId\": \"string\",\n    \"status\": \"string\",\n    \"info\": {\n      \"firstName\": \"<string>\",\n      \"lastName\": \"<string>\",\n      \"dob\": \"<string>\",\n      \"companyName\": \"<string>\",\n      \"registrationNumber\": \"<string>\",\n      \"address\": {\n        \"postCode\": \"<string>\",\n        \"town\": \"<string>\",\n        \"street\": \"<string>\",\n        \"country\": \"<string>\",\n        \"subStreet\": \"<string>\",\n        \"state\": \"<string>\",\n        \"stateCode\": \"<string>\",\n        \"buildingName\": \"<string>\",\n        \"flatNumber\": \"<string>\",\n        \"buildingNumber\": \"<string>\"\n      },\n      \"bvn\": \"<string>\",\n      \"entityType\": \"<string>\",\n      \"nationality\": \"<string>\",\n      \"phone\": \"<string>\",\n      \"postalAddress\": \"<string>\",\n      \"ssn\": \"<string>\",\n      \"tin\": \"<string>\",\n      \"cpf\": \"<string>\",\n      \"website\": \"<string>\",\n      \"location\": {\n        \"latitude\": \"<string>\",\n        \"longitude\": \"<string>\"\n      }\n    },\n    \"requirements\": [\n      {\n        \"kind\": \"string\",\n        \"if\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ],\n        \"then\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ]\n      },\n      {\n        \"kind\": \"string\",\n        \"if\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ],\n        \"then\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n          }\n        ]\n      }\n    ],\n    \"documents\": [\n      {\n        \"filename\": \"string\",\n        \"type\": \"string\",\n        \"variant\": \"string\",\n        \"issuingCountry\": \"string\"\n      },\n      {\n        \"filename\": \"string\",\n        \"type\": \"string\",\n        \"variant\": \"string\",\n        \"issuingCountry\": \"string\"\n      }\n    ],\n    \"questionnaires\": [\n      {\n        \"id\": \"<string>\",\n        \"templateId\": \"<string>\",\n        \"answers\": [\n          {\n            \"id\": \"<string>\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"id\": \"<string>\",\n        \"templateId\": \"<string>\",\n        \"answers\": [\n          {\n            \"id\": \"<string>\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"id\": \"<string>\",\n            \"value\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    ],\n    \"presetCode\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c3340956-f74b-432a-a203-2ac43674ea05",
+          "name": "get v1-kyc-endorsements",
+          "request": {
+            "name": "get v1-kyc-endorsements",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "endorsements"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "30d39e79-eb87-4652-bd9c-3f7dbb4bcc8b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "endorsements"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"ownerId\": \"string\",\n    \"code\": \"string\",\n    \"status\": \"string\",\n    \"submission\": {\n      \"id\": \"string\",\n      \"ownerId\": \"string\",\n      \"applicantId\": \"string\",\n      \"status\": \"string\",\n      \"info\": {\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"dob\": \"<string>\",\n        \"companyName\": \"<string>\",\n        \"registrationNumber\": \"<string>\",\n        \"address\": {\n          \"postCode\": \"<string>\",\n          \"town\": \"<string>\",\n          \"street\": \"<string>\",\n          \"country\": \"<string>\",\n          \"subStreet\": \"<string>\",\n          \"state\": \"<string>\",\n          \"stateCode\": \"<string>\",\n          \"buildingName\": \"<string>\",\n          \"flatNumber\": \"<string>\",\n          \"buildingNumber\": \"<string>\"\n        },\n        \"bvn\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"nationality\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"postalAddress\": \"<string>\",\n        \"ssn\": \"<string>\",\n        \"tin\": \"<string>\",\n        \"cpf\": \"<string>\",\n        \"website\": \"<string>\",\n        \"location\": {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\"\n        }\n      },\n      \"requirements\": [\n        {\n          \"kind\": \"string\",\n          \"if\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"then\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"kind\": \"string\",\n          \"if\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"then\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"documents\": [\n        {\n          \"filename\": \"string\",\n          \"type\": \"string\",\n          \"variant\": \"string\",\n          \"issuingCountry\": \"string\"\n        },\n        {\n          \"filename\": \"string\",\n          \"type\": \"string\",\n          \"variant\": \"string\",\n          \"issuingCountry\": \"string\"\n        }\n      ],\n      \"questionnaires\": [\n        {\n          \"id\": \"<string>\",\n          \"templateId\": \"<string>\",\n          \"answers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"templateId\": \"<string>\",\n          \"answers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"presetCode\": \"string\"\n    }\n  },\n  {\n    \"ownerId\": \"string\",\n    \"code\": \"string\",\n    \"status\": \"string\",\n    \"submission\": {\n      \"id\": \"string\",\n      \"ownerId\": \"string\",\n      \"applicantId\": \"string\",\n      \"status\": \"string\",\n      \"info\": {\n        \"firstName\": \"<string>\",\n        \"lastName\": \"<string>\",\n        \"dob\": \"<string>\",\n        \"companyName\": \"<string>\",\n        \"registrationNumber\": \"<string>\",\n        \"address\": {\n          \"postCode\": \"<string>\",\n          \"town\": \"<string>\",\n          \"street\": \"<string>\",\n          \"country\": \"<string>\",\n          \"subStreet\": \"<string>\",\n          \"state\": \"<string>\",\n          \"stateCode\": \"<string>\",\n          \"buildingName\": \"<string>\",\n          \"flatNumber\": \"<string>\",\n          \"buildingNumber\": \"<string>\"\n        },\n        \"bvn\": \"<string>\",\n        \"entityType\": \"<string>\",\n        \"nationality\": \"<string>\",\n        \"phone\": \"<string>\",\n        \"postalAddress\": \"<string>\",\n        \"ssn\": \"<string>\",\n        \"tin\": \"<string>\",\n        \"cpf\": \"<string>\",\n        \"website\": \"<string>\",\n        \"location\": {\n          \"latitude\": \"<string>\",\n          \"longitude\": \"<string>\"\n        }\n      },\n      \"requirements\": [\n        {\n          \"kind\": \"string\",\n          \"if\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"then\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"kind\": \"string\",\n          \"if\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ],\n          \"then\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"documents\": [\n        {\n          \"filename\": \"string\",\n          \"type\": \"string\",\n          \"variant\": \"string\",\n          \"issuingCountry\": \"string\"\n        },\n        {\n          \"filename\": \"string\",\n          \"type\": \"string\",\n          \"variant\": \"string\",\n          \"issuingCountry\": \"string\"\n        }\n      ],\n      \"questionnaires\": [\n        {\n          \"id\": \"<string>\",\n          \"templateId\": \"<string>\",\n          \"answers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"templateId\": \"<string>\",\n          \"answers\": [\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          ]\n        }\n      ],\n      \"presetCode\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8e91dbf-6816-4cb8-9dfb-f5d2ceff3c0e",
+          "name": "Get submission",
+          "request": {
+            "name": "Get submission",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "submissions",
+                ":submissionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "submissionId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b0545041-ee18-4009-a620-8dfd160ce7ea",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "submissions",
+                    ":submissionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "submissionId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"ownerId\": \"string\",\n  \"applicantId\": \"string\",\n  \"status\": \"string\",\n  \"info\": {\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"dob\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"registrationNumber\": \"<string>\",\n    \"address\": {\n      \"postCode\": \"<string>\",\n      \"town\": \"<string>\",\n      \"street\": \"<string>\",\n      \"country\": \"<string>\",\n      \"subStreet\": \"<string>\",\n      \"state\": \"<string>\",\n      \"stateCode\": \"<string>\",\n      \"buildingName\": \"<string>\",\n      \"flatNumber\": \"<string>\",\n      \"buildingNumber\": \"<string>\"\n    },\n    \"bvn\": \"<string>\",\n    \"entityType\": \"<string>\",\n    \"nationality\": \"<string>\",\n    \"phone\": \"<string>\",\n    \"postalAddress\": \"<string>\",\n    \"ssn\": \"<string>\",\n    \"tin\": \"<string>\",\n    \"cpf\": \"<string>\",\n    \"website\": \"<string>\",\n    \"location\": {\n      \"latitude\": \"<string>\",\n      \"longitude\": \"<string>\"\n    }\n  },\n  \"requirements\": [\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    },\n    {\n      \"kind\": \"string\",\n      \"if\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ],\n      \"then\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/kyc_entities.RequirementsSchemaConditional detected>\"\n        }\n      ]\n    }\n  ],\n  \"documents\": [\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    },\n    {\n      \"filename\": \"string\",\n      \"type\": \"string\",\n      \"variant\": \"string\",\n      \"issuingCountry\": \"string\"\n    }\n  ],\n  \"questionnaires\": [\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"templateId\": \"<string>\",\n      \"answers\": [\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"id\": \"<string>\",\n          \"value\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ]\n    }\n  ],\n  \"presetCode\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83ed1d0c-e637-4e1f-9030-174a4cb00091",
+          "name": "Create KYC session",
+          "request": {
+            "name": "Create KYC session",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "kyc",
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"submissionId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "08e708b3-4770-4d9b-a9a7-233bb96c6d86",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "kyc",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"submissionId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.due.network",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "61af0534-86c0-41e3-a285-5070993e0d60",
+    "name": "Due Account KYC API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due's per-operation OpenAPI fragments published on due.readme.io.\n\nContact Support:\n Email: demo@due.network",
+      "type": "text/plain"
+    }
+  }
+}

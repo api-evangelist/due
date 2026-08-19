@@ -1,0 +1,310 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Due Account KYC API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "KYC",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List open submissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/kyc/submissions"
+          },
+          "docs": "List open submissions"
+        },
+        {
+          "info": {
+            "name": "Get standard KYC/KYB link",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/kyc"
+          },
+          "docs": "Retrieve standard KYC/KYB details and link."
+        },
+        {
+          "info": {
+            "name": "Initiate standard KYC/KYB",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/kyc"
+          },
+          "docs": "Initiate standard KYC/KYB for an account."
+        },
+        {
+          "info": {
+            "name": "Create a KYC/KYB access session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/kyc/session"
+          },
+          "docs": "Creates a session to access KYC/KYB access token and link"
+        },
+        {
+          "info": {
+            "name": "Share Sumsub KYC",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/kyc/sharing/sumsub",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Share an existing Sumsub applicant"
+        },
+        {
+          "info": {
+            "name": "Upload verification documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/kyc/submissions/documents/:token",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Upload verification documents"
+        },
+        {
+          "info": {
+            "name": "Create child applicant",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/kyc/submissions/:submissionId/applicants",
+            "params": [
+              {
+                "name": "submissionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create child applicant"
+        },
+        {
+          "info": {
+            "name": "Complete applicant submission",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/kyc/submissions/:submissionId/complete",
+            "params": [
+              {
+                "name": "submissionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Complete applicant submission"
+        },
+        {
+          "info": {
+            "name": "Request verification document upload token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/kyc/submissions/:submissionId/documents",
+            "params": [
+              {
+                "name": "submissionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request verification document upload token"
+        },
+        {
+          "info": {
+            "name": "Provide applicant information",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/kyc/submissions/:submissionId/info",
+            "params": [
+              {
+                "name": "submissionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Provide applicant information"
+        },
+        {
+          "info": {
+            "name": "Add questionnaire answers",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/kyc/submissions/:submissionId/questionnaires",
+            "params": [
+              {
+                "name": "submissionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add questionnaire answers"
+        },
+        {
+          "info": {
+            "name": "Set submission relations",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/kyc/submissions/:submissionId/relations",
+            "params": [
+              {
+                "name": "submissionId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set submission relations"
+        },
+        {
+          "info": {
+            "name": "get_v1-kyc-endorsements-code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/kyc/endorsements/:code",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "post_v1-kyc-endorsements-code",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/kyc/endorsements/:code",
+            "params": [
+              {
+                "name": "code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "get_v1-kyc-endorsements",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/kyc/endorsements"
+          }
+        },
+        {
+          "info": {
+            "name": "Get submission",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/kyc/submissions/:submissionId",
+            "params": [
+              {
+                "name": "submissionId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get submission"
+        },
+        {
+          "info": {
+            "name": "Create KYC session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/kyc/sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create KYC session"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

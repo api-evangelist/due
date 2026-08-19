@@ -1,0 +1,356 @@
+{
+  "item": [
+    {
+      "id": "6d443aa8-e045-427a-be88-43855c6a8def",
+      "name": "Markets",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ca4c24c9-0214-4bb9-9d19-0cde17ee410d",
+          "name": "Get market",
+          "request": {
+            "name": "Get market",
+            "description": {
+              "content": "Retrieves market information for the specified base and quote currencies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":base",
+                ":quote"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "base",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quote",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "857cd27a-fb84-4946-9a63-7aab6de40925",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":base",
+                    ":quote"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "base",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quote",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pair\": {\n    \"Base\": \"string\",\n    \"Quote\": \"string\"\n  },\n  \"rate\": 6251.127917959467,\n  \"markupBps\": 9823,\n  \"updatedAt\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "25413d2d-0c6d-4bfb-a4a9-e879a3b6a68a",
+          "name": "Get market history",
+          "request": {
+            "name": "Get market history",
+            "description": {
+              "content": "Retrieves historical market data for the specified base and quote currencies, with an optional interval.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets",
+                ":base",
+                ":quote",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "interval",
+                  "value": "<number>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "base",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "quote",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "196b2be0-b60a-42e6-9ef9-cba091d57fc7",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets",
+                    ":base",
+                    ":quote",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "interval",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "base",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "quote",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"date\": \"string\",\n    \"rate\": 5004.3552245694145\n  },\n  {\n    \"date\": \"string\",\n    \"rate\": 1249.4351558402407\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0ae2593e-43c5-438b-8b5a-e8da5debe6f2",
+          "name": "List markets",
+          "request": {
+            "name": "List markets",
+            "description": {
+              "content": "Retrieves a list of all available FX markets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "markets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "918e0992-ec26-4d98-a97d-39a22859366d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "markets"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"pair\": {\n      \"Base\": \"string\",\n      \"Quote\": \"string\"\n    },\n    \"rate\": 7806.513051615792,\n    \"markupBps\": 964,\n    \"updatedAt\": \"string\"\n  },\n  {\n    \"pair\": {\n      \"Base\": \"string\",\n      \"Quote\": \"string\"\n    },\n    \"rate\": 7601.628739552656,\n    \"markupBps\": 8321,\n    \"updatedAt\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.due.network",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aa07d1e9-05ca-433f-a44e-c9efa6ff67c8",
+    "name": "Due Account Markets API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due's per-operation OpenAPI fragments published on due.readme.io.\n\nContact Support:\n Email: demo@due.network",
+      "type": "text/plain"
+    }
+  }
+}

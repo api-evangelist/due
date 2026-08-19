@@ -1,0 +1,460 @@
+{
+  "item": [
+    {
+      "id": "f6eff092-da68-4073-8f28-ed7af7de53cb",
+      "name": "Recipients",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5689bb6a-a2cc-49b0-bff2-710430afe188",
+          "name": "Delete recipient",
+          "request": {
+            "name": "Delete recipient",
+            "description": {
+              "content": "Soft deletes a recipient by id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "recipients",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3ec7af2a-6d6b-4a35-b815-3e08ea67a727",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "recipients",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "29520353-c620-424b-99de-485938d9272c",
+          "name": "Get recipient",
+          "request": {
+            "name": "Get recipient",
+            "description": {
+              "content": "Retrieves details of a specific recipient.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "recipients",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Unique identifier for the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "03c8db8a-9d9a-482c-bb60-cea54e7bbfed",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "recipients",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Unique identifier for the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"label\": \"string\",\n  \"details\": {\n    \"accountType\": \"string\",\n    \"IBAN\": \"string\",\n    \"schema\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"companyName\": \"string\"\n  },\n  \"isExternal\": false,\n  \"isActive\": false,\n  \"isValid\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bcc9319d-8d29-4c9a-a0d6-1c54c1fb1c76",
+          "name": "List all recipients",
+          "request": {
+            "name": "List all recipients",
+            "description": {
+              "content": "List a paginated list of recipients",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "recipients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "withDeleted",
+                  "value": "<boolean>",
+                  "description": "Include recipients that have been marked as deleted."
+                },
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Cursor for pagination to fetch the next set of results."
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "Order in which results should be returned (e.g., `asc`, `desc`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "52166802-0539-448b-b2b6-92dadb3c1468",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "recipients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "withDeleted",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "order",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"details\": {\n        \"accountType\": \"string\",\n        \"IBAN\": \"string\",\n        \"schema\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"companyName\": \"string\"\n      },\n      \"isExternal\": true,\n      \"isActive\": true,\n      \"isValid\": true\n    },\n    {\n      \"id\": \"string\",\n      \"label\": \"string\",\n      \"details\": {\n        \"accountType\": \"string\",\n        \"IBAN\": \"string\",\n        \"schema\": \"string\",\n        \"firstName\": \"string\",\n        \"lastName\": \"string\",\n        \"companyName\": \"string\"\n      },\n      \"isExternal\": false,\n      \"isActive\": true,\n      \"isValid\": true\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c7b2f0ed-b675-4b9d-81ff-f01eebd620ed",
+          "name": "Create recipient",
+          "request": {
+            "name": "Create recipient",
+            "description": {
+              "content": "Creates a new recipient with the provided details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "recipients"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"details\": {\n    \"accountType\": \"<string>\",\n    \"IBAN\": \"<string>\",\n    \"schema\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"companyName\": \"<string>\"\n  },\n  \"isExternal\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e2b5ab19-9dbc-4125-8ee8-63a9cddd5995",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "recipients"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"details\": {\n    \"accountType\": \"<string>\",\n    \"IBAN\": \"<string>\",\n    \"schema\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"companyName\": \"<string>\"\n  },\n  \"isExternal\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"label\": \"string\",\n  \"details\": {\n    \"accountType\": \"<string>\",\n    \"IBAN\": \"<string>\",\n    \"schema\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"companyName\": \"<string>\"\n  },\n  \"isExternal\": false,\n  \"isActive\": true,\n  \"isValid\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.due.network",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "93ccd314-60b3-46c4-bedd-fcae6dab3ca5",
+    "name": "Due Account Recipients API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due's per-operation OpenAPI fragments published on due.readme.io.\n\nContact Support:\n Email: demo@due.network",
+      "type": "text/plain"
+    }
+  }
+}

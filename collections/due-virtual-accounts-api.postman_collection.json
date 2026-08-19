@@ -1,0 +1,628 @@
+{
+  "item": [
+    {
+      "id": "3bed339b-6502-4bd0-bd3f-2e356b96fde3",
+      "name": "Virtual Accounts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bf887eba-e868-4cae-a20f-a5ffd478fdb0",
+          "name": "Get a virtual account",
+          "request": {
+            "name": "Get a virtual account",
+            "description": {
+              "content": "Retrieves details of a specific virtual account by key.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "virtual_accounts",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) Unique key to identify the virtual account."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00740265-efa3-497d-9a23-d062d632247d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "virtual_accounts",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) Unique key to identify the virtual account."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"key\": \"string\",\n  \"ownerId\": \"string\",\n  \"walletId\": \"string\",\n  \"destination\": \"string\",\n  \"schemaIn\": \"string\",\n  \"currencyIn\": \"string\",\n  \"railOut\": \"string\",\n  \"currencyOut\": \"string\",\n  \"reference\": \"string\",\n  \"details\": {\n    \"accountType\": \"string\",\n    \"IBAN\": \"string\",\n    \"schema\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"companyName\": \"string\"\n  },\n  \"memo\": \"string\",\n  \"isActive\": true,\n  \"createdAt\": \"2024-09-30T10:18:49.474Z\",\n  \"applicationFeeBps\": 4167,\n  \"applicationFeeAmount\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "90d31489-c4a0-4944-a620-2c0be06ba584",
+          "name": "Update a virtual account",
+          "request": {
+            "name": "Update a virtual account",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "virtual_accounts",
+                ":key"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "key",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"applicationFeeBps\": \"<integer>\",\n  \"applicationFeeAmount\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2a3b5aa6-5721-43ea-8b6d-31e49d304edb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "virtual_accounts",
+                    ":key"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "key",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"applicationFeeBps\": \"<integer>\",\n  \"applicationFeeAmount\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"key\": \"string\",\n  \"ownerId\": \"string\",\n  \"walletId\": \"string\",\n  \"destination\": \"string\",\n  \"schemaIn\": \"string\",\n  \"currencyIn\": \"string\",\n  \"railOut\": \"string\",\n  \"currencyOut\": \"string\",\n  \"reference\": \"string\",\n  \"details\": {\n    \"accountType\": \"string\",\n    \"IBAN\": \"string\",\n    \"schema\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"companyName\": \"string\"\n  },\n  \"memo\": \"string\",\n  \"isActive\": true,\n  \"createdAt\": \"2024-09-30T10:18:49.474Z\",\n  \"applicationFeeBps\": 4167,\n  \"applicationFeeAmount\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7dc6e4b8-63a7-4412-8dbe-e59cdea11efa",
+          "name": "get v1-virtual-accounts-list",
+          "request": {
+            "name": "get v1-virtual-accounts-list",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "virtual_accounts",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "destination",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "schemaIn",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "currencyIn",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "railOut",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "currencyOut",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "isActive",
+                  "value": "<boolean>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d795cc3d-42bd-4902-a400-f1ea8b58d40c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "virtual_accounts",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "destination",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "schemaIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currencyIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "railOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currencyOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "isActive",
+                      "value": "<boolean>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"key\": \"string\",\n    \"ownerId\": \"string\",\n    \"walletId\": \"string\",\n    \"destination\": \"string\",\n    \"schemaIn\": \"string\",\n    \"currencyIn\": \"string\",\n    \"railOut\": \"string\",\n    \"currencyOut\": \"string\",\n    \"reference\": \"string\",\n    \"details\": {\n      \"accountType\": \"string\",\n      \"IBAN\": \"string\",\n      \"schema\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"companyName\": \"string\"\n    },\n    \"memo\": \"string\",\n    \"isActive\": true,\n    \"createdAt\": \"2025-12-04T06:41:25.377Z\",\n    \"applicationFeeBps\": 6236,\n    \"applicationFeeAmount\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"key\": \"string\",\n    \"ownerId\": \"string\",\n    \"walletId\": \"string\",\n    \"destination\": \"string\",\n    \"schemaIn\": \"string\",\n    \"currencyIn\": \"string\",\n    \"railOut\": \"string\",\n    \"currencyOut\": \"string\",\n    \"reference\": \"string\",\n    \"details\": {\n      \"accountType\": \"string\",\n      \"IBAN\": \"string\",\n      \"schema\": \"string\",\n      \"firstName\": \"string\",\n      \"lastName\": \"string\",\n      \"companyName\": \"string\"\n    },\n    \"memo\": \"string\",\n    \"isActive\": true,\n    \"createdAt\": \"1980-12-01T15:36:51.615Z\",\n    \"applicationFeeBps\": 1042,\n    \"applicationFeeAmount\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "70bcdfdb-5b76-4a91-b774-307cdd61beb1",
+          "name": "get v1-virtual-accounts",
+          "request": {
+            "name": "get v1-virtual-accounts",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "virtual_accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "destination",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "schemaIn",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "currencyIn",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "railOut",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "currencyOut",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "reference",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a450655e-ee79-46de-95cc-e6d17890b6aa",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "virtual_accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "destination",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "schemaIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currencyIn",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "railOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "currencyOut",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "reference",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"key\": \"string\",\n  \"ownerId\": \"string\",\n  \"walletId\": \"string\",\n  \"destination\": \"string\",\n  \"schemaIn\": \"string\",\n  \"currencyIn\": \"string\",\n  \"railOut\": \"string\",\n  \"currencyOut\": \"string\",\n  \"reference\": \"string\",\n  \"details\": {\n    \"accountType\": \"string\",\n    \"IBAN\": \"string\",\n    \"schema\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"companyName\": \"string\"\n  },\n  \"memo\": \"string\",\n  \"isActive\": true,\n  \"createdAt\": \"2024-09-30T10:18:49.474Z\",\n  \"applicationFeeBps\": 4167,\n  \"applicationFeeAmount\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4f9552d7-38d6-413b-8d6b-3fd39db36e6d",
+          "name": "Create virtual account",
+          "request": {
+            "name": "Create virtual account",
+            "description": {
+              "content": "Creates a new virtual account with the provided details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "virtual_accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"destination\": \"<string>\",\n  \"schemaIn\": \"<string>\",\n  \"railOut\": \"<string>\",\n  \"currencyOut\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"currencyIn\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e1b4099f-3503-4b8b-8ce8-25e244ff445f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "virtual_accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"destination\": \"<string>\",\n  \"schemaIn\": \"<string>\",\n  \"railOut\": \"<string>\",\n  \"currencyOut\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"currencyIn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"key\": \"string\",\n  \"ownerId\": \"string\",\n  \"walletId\": \"string\",\n  \"destination\": \"string\",\n  \"schemaIn\": \"string\",\n  \"currencyIn\": \"string\",\n  \"railOut\": \"string\",\n  \"currencyOut\": \"string\",\n  \"reference\": \"string\",\n  \"details\": {\n    \"accountType\": \"string\",\n    \"IBAN\": \"string\",\n    \"schema\": \"string\",\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"companyName\": \"string\"\n  },\n  \"memo\": \"string\",\n  \"isActive\": true,\n  \"createdAt\": \"2024-09-30T10:18:49.474Z\",\n  \"applicationFeeBps\": 4167,\n  \"applicationFeeAmount\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.due.network",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cdff0222-889c-4c39-ad88-3998a19171df",
+    "name": "Due Account Virtual Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due's per-operation OpenAPI fragments published on due.readme.io.\n\nContact Support:\n Email: demo@due.network",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "item": [
+    {
+      "id": "dbfea5a4-6902-4ec3-8d95-fc582d64ca7e",
+      "name": "Simulate pay-in",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "66c88970-4c11-4c5b-999e-89c3265d008a",
+          "name": "post dev-payin",
+          "request": {
+            "name": "post dev-payin",
+            "description": {},
+            "url": {
+              "path": [
+                "dev",
+                "payin"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"currency\": \"<string>\",\n  \"rail\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"sender\": {\n    \"accountType\": \"<string>\",\n    \"bsbCode\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"beneficiaryAddress\": {\n      \"street_line_1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"street_line_2\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"schema\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"bankName\": \"<string>\"\n  },\n  \"recipient\": {\n    \"accountType\": \"<string>\",\n    \"financialInstitutionId\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"routingCode\": \"<string>\",\n    \"beneficiaryAddress\": {\n      \"street_line_1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"street_line_2\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"schema\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"bankCode\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0c561f61-5fd0-4dda-9a47-ea8fdad4887b",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "dev",
+                    "payin"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"currency\": \"<string>\",\n  \"rail\": \"<string>\",\n  \"amount\": \"<string>\",\n  \"reference\": \"<string>\",\n  \"sender\": {\n    \"accountType\": \"<string>\",\n    \"bsbCode\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"beneficiaryAddress\": {\n      \"street_line_1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"street_line_2\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"schema\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"bankName\": \"<string>\"\n  },\n  \"recipient\": {\n    \"accountType\": \"<string>\",\n    \"financialInstitutionId\": \"<string>\",\n    \"accountNumber\": \"<string>\",\n    \"routingCode\": \"<string>\",\n    \"beneficiaryAddress\": {\n      \"street_line_1\": \"<string>\",\n      \"city\": \"<string>\",\n      \"postal_code\": \"<string>\",\n      \"country\": \"<string>\",\n      \"street_line_2\": \"<string>\",\n      \"state\": \"<string>\"\n    },\n    \"schema\": \"<string>\",\n    \"firstName\": \"<string>\",\n    \"lastName\": \"<string>\",\n    \"companyName\": \"<string>\",\n    \"branchCode\": \"<string>\",\n    \"bankCode\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.due.network",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "08d021d8-9566-4459-90d7-74abd2ca08c4",
+    "name": "Due Account Simulate pay-in API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due's per-operation OpenAPI fragments published on due.readme.io.\n\nContact Support:\n Email: demo@due.network",
+      "type": "text/plain"
+    }
+  }
+}

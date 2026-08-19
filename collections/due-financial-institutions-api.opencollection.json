@@ -1,0 +1,68 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Due Account Financial Institutions API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Financial Institutions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List financial institutions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/financial_institutions/:country2/:schema",
+            "params": [
+              {
+                "name": "country2",
+                "value": "",
+                "type": "path",
+                "description": "Two-letter country code (ISO 3166-1 alpha-2)."
+              },
+              {
+                "name": "schema",
+                "value": "",
+                "type": "path",
+                "description": "Payment method schema (e.g., bank_us, momo_africa)."
+              }
+            ]
+          },
+          "docs": "List all financial institutions by schema and country."
+        },
+        {
+          "info": {
+            "name": "Get financial institution",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/financial_institutions/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Get financial institution details by id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

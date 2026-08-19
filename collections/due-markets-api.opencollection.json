@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Due Account Markets API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Markets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get market",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/markets/:base/:quote",
+            "params": [
+              {
+                "name": "base",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "quote",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieves market information for the specified base and quote currencies."
+        },
+        {
+          "info": {
+            "name": "Get market history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/markets/:base/:quote/history",
+            "params": [
+              {
+                "name": "base",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "quote",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "interval",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves historical market data for the specified base and quote currencies, with an optional interval."
+        },
+        {
+          "info": {
+            "name": "List markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/markets"
+          },
+          "docs": "Retrieves a list of all available FX markets."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

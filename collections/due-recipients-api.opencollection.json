@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Due Account Recipients API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Recipients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/recipients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific recipient."
+        },
+        {
+          "info": {
+            "name": "Delete recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.due.network/v1/recipients/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Soft deletes a recipient by id."
+        },
+        {
+          "info": {
+            "name": "List all recipients",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/recipients",
+            "params": [
+              {
+                "name": "withDeleted",
+                "value": "",
+                "type": "query",
+                "description": "Include recipients that have been marked as deleted."
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination to fetch the next set of results."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Order in which results should be returned (e.g., `asc`, `desc`)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              }
+            ]
+          },
+          "docs": "List a paginated list of recipients"
+        },
+        {
+          "info": {
+            "name": "Create recipient",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/recipients",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new recipient with the provided details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

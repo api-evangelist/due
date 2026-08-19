@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Due Account Webhook Endpoints API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhook Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "post_v1-webhook-endpoints-webhookid",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/webhook_endpoints/:webhookId",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "delete_v1-webhook-endpoints-webhookid",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.due.network/v1/webhook_endpoints/:webhookId",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "get_v1-webhook-endpoints-webhookid-events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/webhook_endpoints/:webhookId/events/",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "onlyFailed",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Retry webhook endpoint event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/webhook_endpoints/:webhookId/events/:eventId/retry",
+            "params": [
+              {
+                "name": "webhookId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "eventId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retry webhook endpoint event"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

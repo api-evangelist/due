@@ -1,0 +1,778 @@
+{
+  "item": [
+    {
+      "id": "26c20e3f-e039-402e-9a12-e3144d26f734",
+      "name": "Vaults",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "11ea777f-21da-4b36-9a85-db73a2432b83",
+          "name": "get v1-vaults-credentials",
+          "request": {
+            "name": "get v1-vaults-credentials",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "vaults",
+                "credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3522074b-1d77-46aa-81c2-2fa322379286",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "vaults",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"kind\": \"string\",\n    \"algorithm\": \"string\",\n    \"location\": {\n      \"deviceType\": \"string\",\n      \"deviceOS\": \"string\",\n      \"deviceName\": \"string\"\n    },\n    \"name\": \"string\",\n    \"publicKey\": \"string\",\n    \"hasWalletAccess\": true,\n    \"createdAt\": \"2001-10-11T05:25:44.214Z\",\n    \"recoveryShard\": \"string\",\n    \"approveUntil\": \"string\",\n    \"isActive\": true\n  },\n  {\n    \"id\": \"string\",\n    \"kind\": \"string\",\n    \"algorithm\": \"string\",\n    \"location\": {\n      \"deviceType\": \"string\",\n      \"deviceOS\": \"string\",\n      \"deviceName\": \"string\"\n    },\n    \"name\": \"string\",\n    \"publicKey\": \"string\",\n    \"hasWalletAccess\": false,\n    \"createdAt\": \"2003-10-12T02:29:07.726Z\",\n    \"recoveryShard\": \"string\",\n    \"approveUntil\": \"string\",\n    \"isActive\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf88933b-1911-4d77-b77c-2b6e1893a7c2",
+          "name": "post v1-vaults-credentials",
+          "request": {
+            "name": "post v1-vaults-credentials",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "vaults",
+                "credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"Response\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "50ee5065-f7ba-4b52-9c95-88df36b25dee",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "vaults",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"Response\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"kind\": \"string\",\n  \"algorithm\": \"string\",\n  \"location\": {\n    \"deviceType\": \"string\",\n    \"deviceOS\": \"string\",\n    \"deviceName\": \"string\"\n  },\n  \"name\": \"string\",\n  \"publicKey\": \"string\",\n  \"hasWalletAccess\": false,\n  \"createdAt\": \"2002-05-28T18:36:16.664Z\",\n  \"recoveryShard\": \"string\",\n  \"approveUntil\": \"string\",\n  \"isActive\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9fe4216e-119f-43e3-992d-2f2add08e5c5",
+          "name": "post v1-vaults-credentials-approve",
+          "request": {
+            "name": "post v1-vaults-credentials-approve",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "vaults",
+                "credentials",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payload\": {\n    \"credentialId\": \"<string>\"\n  },\n  \"signature\": {\n    \"challengeIdentifier\": \"<string>\",\n    \"firstFactor\": {\n      \"kind\": \"<string>\",\n      \"credId\": \"<string>\",\n      \"clientData\": \"<byte>\",\n      \"authenticatorData\": \"<byte>\",\n      \"signature\": \"<byte>\",\n      \"userHandle\": \"<byte>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0893deef-7ebd-4806-8b12-5f020d464d7f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "vaults",
+                    "credentials",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payload\": {\n    \"credentialId\": \"<string>\"\n  },\n  \"signature\": {\n    \"challengeIdentifier\": \"<string>\",\n    \"firstFactor\": {\n      \"kind\": \"<string>\",\n      \"credId\": \"<string>\",\n      \"clientData\": \"<byte>\",\n      \"authenticatorData\": \"<byte>\",\n      \"signature\": \"<byte>\",\n      \"userHandle\": \"<byte>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"kind\": \"string\",\n  \"algorithm\": \"string\",\n  \"location\": {\n    \"deviceType\": \"string\",\n    \"deviceOS\": \"string\",\n    \"deviceName\": \"string\"\n  },\n  \"name\": \"string\",\n  \"publicKey\": \"string\",\n  \"hasWalletAccess\": false,\n  \"createdAt\": \"2002-05-28T18:36:16.664Z\",\n  \"recoveryShard\": \"string\",\n  \"approveUntil\": \"string\",\n  \"isActive\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "befc50a7-3953-4ddf-9f7d-3571a40fdffc",
+              "name": "Action Signature Required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "vaults",
+                    "credentials",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payload\": {\n    \"credentialId\": \"<string>\"\n  },\n  \"signature\": {\n    \"challengeIdentifier\": \"<string>\",\n    \"firstFactor\": {\n      \"kind\": \"<string>\",\n      \"credId\": \"<string>\",\n      \"clientData\": \"<byte>\",\n      \"authenticatorData\": \"<byte>\",\n      \"signature\": \"<byte>\",\n      \"userHandle\": \"<byte>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"factors\": {\n    \"Fido2\": {\n      \"publicKey\": {\n        \"challenge\": \"string\",\n        \"timeout\": 731,\n        \"rpId\": \"string\",\n        \"allowCredentials\": [\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"transports\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"transports\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"userVerification\": \"discouraged\",\n        \"extensions\": {}\n      }\n    },\n    \"Key\": {\n      \"kind\": \"string\",\n      \"credId\": \"string\",\n      \"clientData\": \"string\",\n      \"signature\": \"string\"\n    }\n  },\n  \"challengeIdentifier\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12018182-0cab-440d-ac8f-8bbd2b8a217a",
+          "name": "post v1-vaults-credentials-deactivate",
+          "request": {
+            "name": "post v1-vaults-credentials-deactivate",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "vaults",
+                "credentials",
+                "deactivate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payload\": {\n    \"credentialId\": \"<string>\"\n  },\n  \"signature\": {\n    \"challengeIdentifier\": \"<string>\",\n    \"firstFactor\": {\n      \"kind\": \"<string>\",\n      \"credId\": \"<string>\",\n      \"clientData\": \"<byte>\",\n      \"authenticatorData\": \"<byte>\",\n      \"signature\": \"<byte>\",\n      \"userHandle\": \"<byte>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b3436abd-9eea-47cb-b91f-20130f21a90f",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "vaults",
+                    "credentials",
+                    "deactivate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payload\": {\n    \"credentialId\": \"<string>\"\n  },\n  \"signature\": {\n    \"challengeIdentifier\": \"<string>\",\n    \"firstFactor\": {\n      \"kind\": \"<string>\",\n      \"credId\": \"<string>\",\n      \"clientData\": \"<byte>\",\n      \"authenticatorData\": \"<byte>\",\n      \"signature\": \"<byte>\",\n      \"userHandle\": \"<byte>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"kind\": \"string\",\n  \"algorithm\": \"string\",\n  \"location\": {\n    \"deviceType\": \"string\",\n    \"deviceOS\": \"string\",\n    \"deviceName\": \"string\"\n  },\n  \"name\": \"string\",\n  \"publicKey\": \"string\",\n  \"hasWalletAccess\": false,\n  \"createdAt\": \"2002-05-28T18:36:16.664Z\",\n  \"recoveryShard\": \"string\",\n  \"approveUntil\": \"string\",\n  \"isActive\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d37b55ba-e06c-4c74-9293-bfe669899bfd",
+          "name": "post v1-vaults-credentials-init",
+          "request": {
+            "name": "post v1-vaults-credentials-init",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "vaults",
+                "credentials",
+                "init"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"location\": {\n    \"deviceType\": \"<string>\",\n    \"deviceOS\": \"<string>\",\n    \"deviceName\": \"<string>\"\n  },\n  \"recoveryShard\": \"<byte>\",\n  \"kind\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "18e5d448-5337-4306-b20b-ea6ca5cf5356",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "vaults",
+                    "credentials",
+                    "init"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"location\": {\n    \"deviceType\": \"<string>\",\n    \"deviceOS\": \"<string>\",\n    \"deviceName\": \"<string>\"\n  },\n  \"recoveryShard\": \"<byte>\",\n  \"kind\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cab2304d-6df3-4a7e-9d02-dc7f31bb7001",
+          "name": "post v1-vaults-sign",
+          "request": {
+            "name": "post v1-vaults-sign",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "vaults",
+                "sign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payload\": {\n    \"walletId\": \"<string>\",\n    \"keyId\": \"<string>\",\n    \"hash\": \"<string>\"\n  },\n  \"signature\": {\n    \"challengeIdentifier\": \"<string>\",\n    \"firstFactor\": {\n      \"kind\": \"<string>\",\n      \"credId\": \"<string>\",\n      \"clientData\": \"<byte>\",\n      \"authenticatorData\": \"<byte>\",\n      \"signature\": \"<byte>\",\n      \"userHandle\": \"<byte>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a83f124d-ec35-4da2-94d9-f8db9a91b445",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "vaults",
+                    "sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payload\": {\n    \"walletId\": \"<string>\",\n    \"keyId\": \"<string>\",\n    \"hash\": \"<string>\"\n  },\n  \"signature\": {\n    \"challengeIdentifier\": \"<string>\",\n    \"firstFactor\": {\n      \"kind\": \"<string>\",\n      \"credId\": \"<string>\",\n      \"clientData\": \"<byte>\",\n      \"authenticatorData\": \"<byte>\",\n      \"signature\": \"<byte>\",\n      \"userHandle\": \"<byte>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"hash\": \"string\",\n  \"signature\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9aa06619-cbda-4c7d-8180-17a5e9a9c509",
+          "name": "post v1-vaults",
+          "request": {
+            "name": "post v1-vaults",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "vaults"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payload\": \"<object>\",\n  \"signature\": {\n    \"challengeIdentifier\": \"<string>\",\n    \"firstFactor\": {\n      \"kind\": \"<string>\",\n      \"credId\": \"<string>\",\n      \"clientData\": \"<byte>\",\n      \"authenticatorData\": \"<byte>\",\n      \"signature\": \"<byte>\",\n      \"userHandle\": \"<byte>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a9e9c7db-9ef3-48bc-a2d9-bb5f583082d3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "vaults"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"payload\": \"<object>\",\n  \"signature\": {\n    \"challengeIdentifier\": \"<string>\",\n    \"firstFactor\": {\n      \"kind\": \"<string>\",\n      \"credId\": \"<string>\",\n      \"clientData\": \"<byte>\",\n      \"authenticatorData\": \"<byte>\",\n      \"signature\": \"<byte>\",\n      \"userHandle\": \"<byte>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"address\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.due.network",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e7790934-e353-4849-b561-ee40f68c8826",
+    "name": "Due Account Vaults API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due's per-operation OpenAPI fragments published on due.readme.io.\n\nContact Support:\n Email: demo@due.network",
+      "type": "text/plain"
+    }
+  }
+}

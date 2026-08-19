@@ -1,0 +1,149 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Due Account Blockchain Transfers API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Blockchain Transfers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get token transfer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/token_transfers/:address/:id",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get token transfer"
+        },
+        {
+          "info": {
+            "name": "List token transfers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/token_transfers/:address",
+            "params": [
+              {
+                "name": "address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "next",
+                "value": "",
+                "type": "query",
+                "description": "Cursor for pagination to fetch the next set of results."
+              },
+              {
+                "name": "order",
+                "value": "",
+                "type": "query",
+                "description": "Order in which results should be returned (e.g., `asc`, `desc`)."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "startDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date for filtering results (ISO 8601 format)."
+              },
+              {
+                "name": "endDate",
+                "value": "",
+                "type": "query",
+                "description": "Start date for filtering results (ISO 8601 format)."
+              },
+              {
+                "name": "includeEmpty",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List token transfers"
+        },
+        {
+          "info": {
+            "name": "Get transfer intent",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/transfer_intents/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the resource."
+              }
+            ]
+          },
+          "docs": "Get a specific transfer intent by id."
+        },
+        {
+          "info": {
+            "name": "Submit transfer intent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/transfer_intents/submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit transfer intent for an execution on blockchain."
+        },
+        {
+          "info": {
+            "name": "Create transfer intent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/transfer_intents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates an arbitrary transfer intent for a given set of tokens (in and out) and networks"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

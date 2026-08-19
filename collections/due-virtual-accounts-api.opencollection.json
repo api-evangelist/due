@@ -1,0 +1,164 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Due Account Virtual Accounts API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Virtual Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a virtual account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/virtual_accounts/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path",
+                "description": "Unique key to identify the virtual account."
+              }
+            ]
+          },
+          "docs": "Retrieves details of a specific virtual account by key."
+        },
+        {
+          "info": {
+            "name": "Update a virtual account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/virtual_accounts/:key",
+            "params": [
+              {
+                "name": "key",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a virtual account"
+        },
+        {
+          "info": {
+            "name": "get_v1-virtual-accounts-list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/virtual_accounts/list",
+            "params": [
+              {
+                "name": "destination",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "schemaIn",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "currencyIn",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "railOut",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "currencyOut",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "isActive",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "get_v1-virtual-accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.due.network/v1/virtual_accounts",
+            "params": [
+              {
+                "name": "destination",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "schemaIn",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "currencyIn",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "railOut",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "currencyOut",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reference",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          }
+        },
+        {
+          "info": {
+            "name": "Create virtual account",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.due.network/v1/virtual_accounts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new virtual account with the provided details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

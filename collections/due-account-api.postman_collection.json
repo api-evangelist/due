@@ -1,0 +1,424 @@
+{
+  "item": [
+    {
+      "id": "2cb4fc5f-4821-43a7-9dc8-17ef12afcfcc",
+      "name": "Account",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1c1ec8ab-08fe-4227-a965-f362f3413720",
+          "name": "Get account categories",
+          "request": {
+            "name": "Get account categories",
+            "description": {
+              "content": "Retrieves a list of available account categories",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "account_categories",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "accountType",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4a959315-74cc-4e80-88f3-cbbbc0a293f3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "account_categories",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "next",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "accountType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"code\": \"string\",\n      \"accountType\": \"string\",\n      \"active\": true\n    },\n    {\n      \"code\": \"string\",\n      \"accountType\": \"string\",\n      \"active\": false\n    }\n  ],\n  \"next\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0da0da8a-e3e5-49cf-8607-7f7574e1931e",
+          "name": "Get account",
+          "request": {
+            "name": "Get account",
+            "description": {
+              "content": "Retrieves full account details, including status history, KYC status, and ToS acceptance.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "accounts",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ae4fe2e0-1b9d-4d6b-8b9d-eb1e8093c114",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounts",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"string\",\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"country\": \"string\",\n  \"category\": \"string\",\n  \"externalId\": \"string\",\n  \"status\": \"string\",\n  \"statusLog\": [\n    {\n      \"status\": \"string\",\n      \"timestamp\": \"1984-05-07T10:57:15.270Z\",\n      \"reason\": \"string\",\n      \"code\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"timestamp\": \"1977-11-12T06:05:02.987Z\",\n      \"reason\": \"string\",\n      \"code\": \"string\"\n    }\n  ],\n  \"kyc\": {\n    \"status\": \"failed\",\n    \"link\": \"string\"\n  },\n  \"tos\": {\n    \"id\": \"string\",\n    \"entityName\": \"string\",\n    \"status\": \"pending\",\n    \"link\": \"string\",\n    \"documentLinks\": {\n      \"tos\": \"string\",\n      \"privacyPolicy\": \"string\"\n    },\n    \"acceptedAt\": \"string\",\n    \"token\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2726f971-9667-41ab-95b8-1826be0ceaa6",
+          "name": "List accounts",
+          "request": {
+            "name": "List accounts",
+            "description": {
+              "content": "Lists all accounts linked to your platform or user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "accounts",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2dd0c93-25bd-45b8-8178-18bf2691a776",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"type\": \"string\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"country\": \"string\",\n    \"category\": \"string\",\n    \"externalId\": \"string\",\n    \"status\": \"string\",\n    \"statusLog\": [\n      {\n        \"status\": \"string\",\n        \"timestamp\": \"1969-06-24T10:27:15.275Z\",\n        \"reason\": \"string\",\n        \"code\": \"string\"\n      },\n      {\n        \"status\": \"string\",\n        \"timestamp\": \"1992-03-07T07:49:41.774Z\",\n        \"reason\": \"string\",\n        \"code\": \"string\"\n      }\n    ],\n    \"kyc\": {\n      \"status\": \"failed\",\n      \"link\": \"string\"\n    },\n    \"tos\": {\n      \"id\": \"string\",\n      \"entityName\": \"string\",\n      \"status\": \"accepted\",\n      \"link\": \"string\",\n      \"documentLinks\": {\n        \"tos\": \"string\",\n        \"privacyPolicy\": \"string\"\n      },\n      \"acceptedAt\": \"string\",\n      \"token\": \"string\"\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"type\": \"string\",\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"country\": \"string\",\n    \"category\": \"string\",\n    \"externalId\": \"string\",\n    \"status\": \"string\",\n    \"statusLog\": [\n      {\n        \"status\": \"string\",\n        \"timestamp\": \"1952-04-23T11:16:07.708Z\",\n        \"reason\": \"string\",\n        \"code\": \"string\"\n      },\n      {\n        \"status\": \"string\",\n        \"timestamp\": \"1963-07-24T01:23:24.376Z\",\n        \"reason\": \"string\",\n        \"code\": \"string\"\n      }\n    ],\n    \"kyc\": {\n      \"status\": \"resubmission_required\",\n      \"link\": \"string\"\n    },\n    \"tos\": {\n      \"id\": \"string\",\n      \"entityName\": \"string\",\n      \"status\": \"pending\",\n      \"link\": \"string\",\n      \"documentLinks\": {\n        \"tos\": \"string\",\n        \"privacyPolicy\": \"string\"\n      },\n      \"acceptedAt\": \"string\",\n      \"token\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77e345f5-714e-4c33-b38d-2ad83d8daca2",
+          "name": "Create account",
+          "request": {
+            "name": "Create account",
+            "description": {
+              "content": "Creates a new customer account (business or individual)",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"country\": \"<string>\",\n  \"category\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"kycReturnUrl\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bdb3b484-5314-42d8-976c-2d73a493eb0e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"name\": \"<string>\",\n  \"email\": \"<string>\",\n  \"country\": \"<string>\",\n  \"category\": \"<string>\",\n  \"externalId\": \"<string>\",\n  \"kycReturnUrl\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"string\",\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"country\": \"string\",\n  \"category\": \"string\",\n  \"externalId\": \"string\",\n  \"status\": \"string\",\n  \"statusLog\": [\n    {\n      \"status\": \"string\",\n      \"timestamp\": \"1987-04-02T07:39:37.701Z\",\n      \"reason\": \"string\",\n      \"code\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"timestamp\": \"1959-09-02T05:28:52.542Z\",\n      \"reason\": \"string\",\n      \"code\": \"string\"\n    }\n  ],\n  \"kyc\": {\n    \"status\": \"passed\",\n    \"link\": \"string\"\n  },\n  \"tos\": {\n    \"id\": \"string\",\n    \"entityName\": \"string\",\n    \"status\": \"accepted\",\n    \"link\": \"string\",\n    \"documentLinks\": {\n      \"tos\": \"string\",\n      \"privacyPolicy\": \"string\"\n    },\n    \"acceptedAt\": \"string\",\n    \"token\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.due.network",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "614f4a11-faab-4476-95f9-3e5c557e7572",
+    "name": "Due Account API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due's per-operation OpenAPI fragments published on due.readme.io.\n\nContact Support:\n Email: demo@due.network",
+      "type": "text/plain"
+    }
+  }
+}
