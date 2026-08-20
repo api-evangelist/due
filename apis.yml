@@ -39,6 +39,15 @@ tags:
 - Foreign Exchange
 - KYC
 - Wallets
+tags_raw:
+- Payments
+- Cross-Border Payments
+- Stablecoins
+- Fintech
+- Virtual Accounts
+- Foreign Exchange
+- KYC
+- Wallets
 - API
 maintainers:
 - FN: Kin Lane
@@ -164,6 +173,8 @@ apis:
   humanURL: https://due.readme.io
   baseURL: https://api.due.network
   tags:
+  - Quotes
+  tags_raw:
   - Quote
   properties:
   - type: OpenAPI
@@ -260,6 +271,8 @@ apis:
   humanURL: https://due.readme.io
   baseURL: https://api.due.network
   tags:
+  - Vault
+  tags_raw:
   - Vaults
   properties:
   - type: OpenAPI
@@ -324,6 +337,8 @@ apis:
   humanURL: https://due.readme.io
   baseURL: https://api.due.network
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
