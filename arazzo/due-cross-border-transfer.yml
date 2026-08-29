@@ -4,8 +4,14 @@ info:
   version: 1.0.0
   summary: Onboard is assumed; list channels, create a recipient, quote, send, and track a transfer to settlement.
 sourceDescriptions:
-- name: due
-  url: ../openapi/due-openapi-original.yml
+- name: channelsApi
+  url: ../openapi/due-channels-api-openapi.yml
+  type: openapi
+- name: recipientsApi
+  url: ../openapi/due-recipients-api-openapi.yml
+  type: openapi
+- name: transfersApi
+  url: ../openapi/due-transfers-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: crossBorderTransfer
@@ -13,9 +19,9 @@ workflows:
   inputs:
     type: object
     properties:
-      accountId: { type: string, example: acct_XyZpT7HhAJFq12345 }
-      recipient: { type: object }
-      quoteRequest: { type: object }
+      accountId: {type: string, example: acct_XyZpT7HhAJFq12345}
+      recipient: {type: object}
+      quoteRequest: {type: object}
   steps:
   - stepId: listChannels
     operationId: get_v1-channels

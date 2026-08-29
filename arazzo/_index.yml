@@ -1,6 +1,6 @@
-generated: '2026-07-18'
-method: derived
-source: openapi/due-openapi-original.yml
+x-generated: '2026-07-18'
+x-method: derived
+x-source: openapi/due-openapi-original.yml
 workflows:
 - file: due-onboard-account.yml
   workflowId: onboardAccount

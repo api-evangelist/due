@@ -4,8 +4,11 @@ info:
   version: 1.0.0
   summary: Create an account, initiate KYC/KYB, and confirm the account reaches a verified state.
 sourceDescriptions:
-- name: due
-  url: ../openapi/due-openapi-original.yml
+- name: accountApi
+  url: ../openapi/due-account-api-openapi.yml
+  type: openapi
+- name: kycApi
+  url: ../openapi/due-kyc-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: onboardAccount
@@ -15,7 +18,7 @@ workflows:
     properties:
       account:
         type: object
-        example: { type: business, name: Rio Co, email: contact+rio@example.com, country: BR, category: accounting_bookkeeping }
+        example: {type: business, name: Rio Co, email: contact+rio@example.com, country: BR, category: accounting_bookkeeping}
   steps:
   - stepId: getCategories
     operationId: get_v1-account-categories
