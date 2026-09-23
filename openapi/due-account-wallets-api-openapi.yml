@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Due Account Account Wallets API
+  title: Due Account Wallets API
   version: v1
-  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiatstablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
   contact:
     email: demo@due.network
     url: https://www.opendue.com
@@ -55,15 +55,6 @@ paths:
       operationId: post_v1-wallets-1
 components:
   schemas:
-    bp_models.Wallet:
-      type: object
-      properties:
-        id:
-          type: string
-        address:
-          type: string
-        preferences:
-          $ref: '#/components/schemas/bp_models.WalletPreferences'
     bp_dto.AddWalletRequest:
       type: object
       properties:
@@ -76,6 +67,15 @@ components:
           type: array
           items:
             type: string
+    bp_models.Wallet:
+      type: object
+      properties:
+        id:
+          type: string
+        address:
+          type: string
+        preferences:
+          $ref: '#/components/schemas/bp_models.WalletPreferences'
   securitySchemes:
     BearerAuth:
       type: http

@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Due Account Webhooks API
+  title: Due Webhooks API
   version: v1
-  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiatstablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
   contact:
     email: demo@due.network
     url: https://www.opendue.com
@@ -34,6 +34,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/bp_models.WebhookEndpoint'
       operationId: delete_v1-webhook-endpoints-id
+      summary: Delete v1 webhook endpoints id
+      x-summary-source: derived
   /v1/webhook_endpoints:
     get:
       tags:
@@ -48,6 +50,8 @@ paths:
                 items:
                   $ref: '#/components/schemas/bp_models.WebhookEndpoint'
       operationId: get_v1-webhook-endpoints
+      summary: Get v1 webhook endpoints
+      x-summary-source: derived
     post:
       tags:
       - Webhooks
@@ -65,6 +69,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/bp_models.WebhookEndpoint'
       operationId: post_v1-webhook-endpoints
+      summary: Post v1 webhook endpoints
+      x-summary-source: derived
   /v1/webhook_endpoints/events:
     get:
       tags:
@@ -79,19 +85,10 @@ paths:
                 items:
                   type: string
       operationId: get_v1-webhook-events
+      summary: Get v1 webhook events
+      x-summary-source: derived
 components:
   schemas:
-    bp_dto.CreateWebhookEndpointRequest:
-      type: object
-      properties:
-        url:
-          type: string
-        description:
-          type: string
-        events:
-          type: array
-          items:
-            type: string
     bp_models.WebhookEndpoint:
       type: object
       properties:
@@ -111,6 +108,17 @@ components:
           type: string
         enabled:
           type: boolean
+    bp_dto.CreateWebhookEndpointRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        description:
+          type: string
+        events:
+          type: array
+          items:
+            type: string
   securitySchemes:
     BearerAuth:
       type: http

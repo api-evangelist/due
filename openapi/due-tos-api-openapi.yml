@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Due Account TOS API
+  title: Due TOS API
   version: v1
-  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiatstablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
   contact:
     email: demo@due.network
     url: https://www.opendue.com
@@ -61,12 +61,10 @@ paths:
       operationId: post_v1-tos-token
 components:
   schemas:
-    transfers_models_v2.LinkSet:
+    transfers_dto_v2.AcceptTosRequest:
       type: object
       properties:
-        tos:
-          type: string
-        privacyPolicy:
+        ipAddress:
           type: string
     transfers_models_v2.TosAcceptance:
       type: object
@@ -88,10 +86,12 @@ components:
           type: string
         token:
           type: string
-    transfers_dto_v2.AcceptTosRequest:
+    transfers_models_v2.LinkSet:
       type: object
       properties:
-        ipAddress:
+        tos:
+          type: string
+        privacyPolicy:
           type: string
   securitySchemes:
     BearerAuth:

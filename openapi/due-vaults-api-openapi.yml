@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Due Account Vaults API
+  title: Due Vaults API
   version: v1
-  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiatstablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
   contact:
     email: demo@due.network
     url: https://www.opendue.com
@@ -30,6 +30,8 @@ paths:
       operationId: get_v1-vaults-credentials
       tags:
       - Vaults
+      summary: Get v1 vaults credentials
+      x-summary-source: derived
     post:
       requestBody:
         required: true
@@ -47,6 +49,8 @@ paths:
       operationId: post_v1-vaults-credentials
       tags:
       - Vaults
+      summary: Post v1 vaults credentials
+      x-summary-source: derived
   /v1/vaults/credentials/approve:
     post:
       requestBody:
@@ -71,6 +75,8 @@ paths:
       operationId: post_v1-vaults-credentials-approve
       tags:
       - Vaults
+      summary: Post v1 vaults credentials approve
+      x-summary-source: derived
   /v1/vaults/credentials/deactivate:
     post:
       requestBody:
@@ -89,6 +95,8 @@ paths:
       operationId: post_v1-vaults-credentials-deactivate
       tags:
       - Vaults
+      summary: Post v1 vaults credentials deactivate
+      x-summary-source: derived
   /v1/vaults/credentials/init:
     post:
       requestBody:
@@ -107,6 +115,8 @@ paths:
       operationId: post_v1-vaults-credentials-init
       tags:
       - Vaults
+      summary: Post v1 vaults credentials init
+      x-summary-source: derived
   /v1/vaults/sign:
     post:
       requestBody:
@@ -125,6 +135,8 @@ paths:
       operationId: post_v1-vaults-sign
       tags:
       - Vaults
+      summary: Post v1 vaults sign
+      x-summary-source: derived
   /v1/vaults:
     post:
       requestBody:
@@ -143,6 +155,8 @@ paths:
       operationId: post_v1-vaults
       tags:
       - Vaults
+      summary: Post v1 vaults
+      x-summary-source: derived
 components:
   schemas:
     dfns_entities.Fido2CredentialFactor:
@@ -166,109 +180,35 @@ components:
           type: string
       required:
       - kind
-    dfns_entities.KeyCredentialFactor:
-      type: object
-      properties:
-        credId:
-          type: string
-        clientData:
-          type: string
-          format: byte
-        signature:
-          type: string
-          format: byte
-        kind:
-          type: string
-      required:
-      - kind
-    dfnsdto.SignedEnvelope--bp_dto.DfnsTmpSignatureRequest:
-      type: object
-      properties:
-        payload:
-          $ref: '#/components/schemas/bp_dto.DfnsTmpSignatureRequest'
-        signature:
-          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
-    dfnsdto.ActionAllowedFactorsSet:
-      type: object
-      properties:
-        Fido2:
-          $ref: '#/components/schemas/protocol.CredentialAssertion'
-        Key:
-          $ref: '#/components/schemas/dfns_entities.KeyCredentialFactor'
     bp_dto.PasskeyApprovalRequest:
       type: object
       properties:
         credentialId:
           type: string
-    SignatureRequiredErr:
+    bp_dto.CredentialCreation:
       type: object
       properties:
-        factors:
-          $ref: '#/components/schemas/dfnsdto.ActionAllowedFactorsSet'
-        challengeIdentifier:
-          type: string
-    dfnsdto.SignedEnvelope--bp_dto.PasskeyDeactivateRequest:
+        Data:
+          type: object
+    bp_models.PassKeyCredentialLocation:
       type: object
       properties:
-        payload:
-          $ref: '#/components/schemas/bp_dto.PasskeyDeactivateRequest'
-        signature:
-          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
-    bp_dto.PasskeyCreationRequest:
+        deviceType:
+          type: string
+        deviceOS:
+          type: string
+        deviceName:
+          type: string
+    protocol.CredentialAssertion:
       type: object
       properties:
-        name:
-          type: string
-        location:
-          $ref: '#/components/schemas/bp_models.PassKeyCredentialLocation'
-        recoveryShard:
-          type: string
-          format: byte
-        kind:
-          type: string
-    dfnsdto.ActionAuthenticationResponse:
+        publicKey:
+          $ref: '#/components/schemas/protocol.PublicKeyCredentialRequestOptions'
+    bp_dto.CredentialCreationResponse:
       type: object
       properties:
-        challengeIdentifier:
-          type: string
-        firstFactor:
-          oneOf:
-          - $ref: '#/components/schemas/dfns_entities.Fido2CredentialFactor'
-          - $ref: '#/components/schemas/dfns_entities.KeyCredentialFactor'
-          discriminator:
-            propertyName: kind
-            mapping:
-              Fido2: '#/components/schemas/dfns_entities.Fido2CredentialFactor'
-              Key: '#/components/schemas/dfns_entities.KeyCredentialFactor'
-    protocol.CredentialDescriptor:
-      type: object
-      properties:
-        type:
-          type: string
-          enum:
-          - public-key
-        id:
-          type: string
-          format: byte
-        transports:
-          type: array
-          items:
-            type: string
-            enum:
-            - usb
-            - nfc
-            - ble
-            - hybrid
-            - internal
-    bp_dto.DfnsTmpSignatureRequest:
-      type: object
-      properties:
-        walletId:
-          type: string
-        keyId:
-          type: string
-        hash:
-          type: string
+        Response:
+          type: object
     bp_dto.DfnsSignature:
       type: object
       properties:
@@ -276,23 +216,6 @@ components:
           type: string
         signature:
           type: string
-    dfnsdto.SignedEnvelope--bp_dto.PasskeyApprovalRequest:
-      type: object
-      properties:
-        payload:
-          $ref: '#/components/schemas/bp_dto.PasskeyApprovalRequest'
-        signature:
-          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
-    bp_dto.PasskeyDeactivateRequest:
-      type: object
-      properties:
-        credentialId:
-          type: string
-    protocol.CredentialAssertion:
-      type: object
-      properties:
-        publicKey:
-          $ref: '#/components/schemas/protocol.PublicKeyCredentialRequestOptions'
     protocol.PublicKeyCredentialRequestOptions:
       type: object
       properties:
@@ -316,27 +239,20 @@ components:
           - discouraged
         extensions:
           type: object
-    bp_models.PassKeyCredentialLocation:
+    dfnsdto.SignedEnvelope--bp_dto.DfnsTmpSignatureRequest:
       type: object
       properties:
-        deviceType:
-          type: string
-        deviceOS:
-          type: string
-        deviceName:
-          type: string
-    bp_models.MPCWalletEvm:
+        payload:
+          $ref: '#/components/schemas/bp_dto.DfnsTmpSignatureRequest'
+        signature:
+          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
+    SignatureRequiredErr:
       type: object
       properties:
-        id:
+        factors:
+          $ref: '#/components/schemas/dfnsdto.ActionAllowedFactorsSet'
+        challengeIdentifier:
           type: string
-        address:
-          type: string
-    bp_dto.CredentialCreation:
-      type: object
-      properties:
-        Data:
-          type: object
     bp_models.PasskeyCredential:
       type: object
       properties:
@@ -364,11 +280,34 @@ components:
           type: string
         isActive:
           type: boolean
-    bp_dto.CredentialCreationResponse:
+    bp_dto.DfnsTmpSignatureRequest:
       type: object
       properties:
-        Response:
-          type: object
+        walletId:
+          type: string
+        keyId:
+          type: string
+        hash:
+          type: string
+    bp_dto.PasskeyDeactivateRequest:
+      type: object
+      properties:
+        credentialId:
+          type: string
+    dfnsdto.ActionAuthenticationResponse:
+      type: object
+      properties:
+        challengeIdentifier:
+          type: string
+        firstFactor:
+          oneOf:
+          - $ref: '#/components/schemas/dfns_entities.Fido2CredentialFactor'
+          - $ref: '#/components/schemas/dfns_entities.KeyCredentialFactor'
+          discriminator:
+            propertyName: kind
+            mapping:
+              Fido2: '#/components/schemas/dfns_entities.Fido2CredentialFactor'
+              Key: '#/components/schemas/dfns_entities.KeyCredentialFactor'
     dfnsdto.SignedEnvelope--any:
       type: object
       properties:
@@ -376,6 +315,81 @@ components:
           type: object
         signature:
           $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
+    dfnsdto.SignedEnvelope--bp_dto.PasskeyApprovalRequest:
+      type: object
+      properties:
+        payload:
+          $ref: '#/components/schemas/bp_dto.PasskeyApprovalRequest'
+        signature:
+          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
+    bp_models.MPCWalletEvm:
+      type: object
+      properties:
+        id:
+          type: string
+        address:
+          type: string
+    dfnsdto.ActionAllowedFactorsSet:
+      type: object
+      properties:
+        Fido2:
+          $ref: '#/components/schemas/protocol.CredentialAssertion'
+        Key:
+          $ref: '#/components/schemas/dfns_entities.KeyCredentialFactor'
+    dfnsdto.SignedEnvelope--bp_dto.PasskeyDeactivateRequest:
+      type: object
+      properties:
+        payload:
+          $ref: '#/components/schemas/bp_dto.PasskeyDeactivateRequest'
+        signature:
+          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
+    dfns_entities.KeyCredentialFactor:
+      type: object
+      properties:
+        credId:
+          type: string
+        clientData:
+          type: string
+          format: byte
+        signature:
+          type: string
+          format: byte
+        kind:
+          type: string
+      required:
+      - kind
+    protocol.CredentialDescriptor:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - public-key
+        id:
+          type: string
+          format: byte
+        transports:
+          type: array
+          items:
+            type: string
+            enum:
+            - usb
+            - nfc
+            - ble
+            - hybrid
+            - internal
+    bp_dto.PasskeyCreationRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        location:
+          $ref: '#/components/schemas/bp_models.PassKeyCredentialLocation'
+        recoveryShard:
+          type: string
+          format: byte
+        kind:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http

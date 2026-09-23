@@ -1,8 +1,8 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Due Account Channels API
+  title: Due Channels API
   version: v1
-  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiat<->stablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
+  description: 'Due provides borderless payment infrastructure: cross-border transfers, fiatstablecoin on/off-ramps, virtual accounts, FX rates, KYC/KYB onboarding, non-custodial MPC wallets (Vault), and webhooks. Assembled by API Evangelist from Due''s per-operation OpenAPI fragments published on due.readme.io.'
   contact:
     email: demo@due.network
     url: https://www.opendue.com
@@ -41,45 +41,17 @@ paths:
       operationId: get_v1-channels
 components:
   schemas:
-    transfers_models_v2.Permissions:
+    transfers_models.RailReferenceRuleSet:
       type: object
       properties:
-        eligibleResidencies:
-          type: array
-          items:
-            type: string
-        restrictedResidencies:
-          type: array
-          items:
-            type: string
-        eligibleCategories:
-          type: array
-          items:
-            type: string
-        restrictedCategories:
-          type: array
-          items:
-            type: string
-        restrictedRecipientCountries:
-          type: array
-          items:
-            type: string
-        eligibleRecipientCountries:
-          type: array
-          items:
-            type: string
-        recipientAccountTypes:
-          type: array
-          items:
-            type: string
-        virtualAccounts:
-          $ref: '#/components/schemas/transfers_models_v2.PermissionsVirtualAccounts'
-        payouts:
-          $ref: '#/components/schemas/transfers_models_v2.PermissionsPayouts'
-        requiredSenderSchemaOneOf:
-          type: array
-          items:
-            type: string
+        minCharacters:
+          type: integer
+          format: int32
+        maxCharacters:
+          type: integer
+          format: int32
+        required:
+          type: boolean
     transfers_models_v2.PermissionsPayouts:
       type: object
       properties:
@@ -123,16 +95,53 @@ components:
           type: array
           items:
             type: string
-    transfers_models.RailReferenceRuleSet:
+    transfers_models_v2.Permissions:
       type: object
       properties:
-        minCharacters:
-          type: integer
-          format: int32
-        maxCharacters:
-          type: integer
-          format: int32
-        required:
+        eligibleResidencies:
+          type: array
+          items:
+            type: string
+        restrictedResidencies:
+          type: array
+          items:
+            type: string
+        eligibleCategories:
+          type: array
+          items:
+            type: string
+        restrictedCategories:
+          type: array
+          items:
+            type: string
+        restrictedRecipientCountries:
+          type: array
+          items:
+            type: string
+        eligibleRecipientCountries:
+          type: array
+          items:
+            type: string
+        recipientAccountTypes:
+          type: array
+          items:
+            type: string
+        virtualAccounts:
+          $ref: '#/components/schemas/transfers_models_v2.PermissionsVirtualAccounts'
+        payouts:
+          $ref: '#/components/schemas/transfers_models_v2.PermissionsPayouts'
+        requiredSenderSchemaOneOf:
+          type: array
+          items:
+            type: string
+    transfers_models_v2.PermissionsVirtualAccounts:
+      type: object
+      properties:
+        canUseExisting:
+          type: boolean
+        canOpenNew:
+          type: boolean
+        named:
           type: boolean
     transfers_models_v2.RailSettings:
       type: object
@@ -147,15 +156,6 @@ components:
           type: array
           items:
             type: string
-    transfers_models_v2.PermissionsVirtualAccounts:
-      type: object
-      properties:
-        canUseExisting:
-          type: boolean
-        canOpenNew:
-          type: boolean
-        named:
-          type: boolean
   securitySchemes:
     BearerAuth:
       type: http
