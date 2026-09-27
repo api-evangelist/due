@@ -61,11 +61,6 @@ paths:
       operationId: post_v1-tos-token
 components:
   schemas:
-    transfers_dto_v2.AcceptTosRequest:
-      type: object
-      properties:
-        ipAddress:
-          type: string
     transfers_models_v2.TosAcceptance:
       type: object
       properties:
@@ -92,6 +87,11 @@ components:
         tos:
           type: string
         privacyPolicy:
+          type: string
+    transfers_dto_v2.AcceptTosRequest:
+      type: object
+      properties:
+        ipAddress:
           type: string
   securitySchemes:
     BearerAuth:

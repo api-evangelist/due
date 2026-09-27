@@ -52,6 +52,45 @@ components:
           format: int32
         required:
           type: boolean
+    transfers_models_v2.Permissions:
+      type: object
+      properties:
+        eligibleResidencies:
+          type: array
+          items:
+            type: string
+        restrictedResidencies:
+          type: array
+          items:
+            type: string
+        eligibleCategories:
+          type: array
+          items:
+            type: string
+        restrictedCategories:
+          type: array
+          items:
+            type: string
+        restrictedRecipientCountries:
+          type: array
+          items:
+            type: string
+        eligibleRecipientCountries:
+          type: array
+          items:
+            type: string
+        recipientAccountTypes:
+          type: array
+          items:
+            type: string
+        virtualAccounts:
+          $ref: '#/components/schemas/transfers_models_v2.PermissionsVirtualAccounts'
+        payouts:
+          $ref: '#/components/schemas/transfers_models_v2.PermissionsPayouts'
+        requiredSenderSchemaOneOf:
+          type: array
+          items:
+            type: string
     transfers_models_v2.PermissionsPayouts:
       type: object
       properties:
@@ -92,45 +131,6 @@ components:
             items:
               type: string
         endorsementsRequired:
-          type: array
-          items:
-            type: string
-    transfers_models_v2.Permissions:
-      type: object
-      properties:
-        eligibleResidencies:
-          type: array
-          items:
-            type: string
-        restrictedResidencies:
-          type: array
-          items:
-            type: string
-        eligibleCategories:
-          type: array
-          items:
-            type: string
-        restrictedCategories:
-          type: array
-          items:
-            type: string
-        restrictedRecipientCountries:
-          type: array
-          items:
-            type: string
-        eligibleRecipientCountries:
-          type: array
-          items:
-            type: string
-        recipientAccountTypes:
-          type: array
-          items:
-            type: string
-        virtualAccounts:
-          $ref: '#/components/schemas/transfers_models_v2.PermissionsVirtualAccounts'
-        payouts:
-          $ref: '#/components/schemas/transfers_models_v2.PermissionsPayouts'
-        requiredSenderSchemaOneOf:
           type: array
           items:
             type: string

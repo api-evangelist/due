@@ -97,26 +97,6 @@ paths:
       operationId: post_v1-accounts
 components:
   schemas:
-    transfers_models_v2.TosAcceptance:
-      type: object
-      properties:
-        id:
-          type: string
-        entityName:
-          type: string
-        status:
-          type: string
-          enum:
-          - accepted
-          - pending
-        link:
-          type: string
-        documentLinks:
-          $ref: '#/components/schemas/transfers_models_v2.LinkSet'
-        acceptedAt:
-          type: string
-        token:
-          type: string
     bp_dto.CreateAccountRequestV1:
       type: object
       properties:
@@ -133,25 +113,6 @@ components:
         externalId:
           type: string
         kycReturnUrl:
-          type: string
-    transfers_models_v2.LinkSet:
-      type: object
-      properties:
-        tos:
-          type: string
-        privacyPolicy:
-          type: string
-    status_log.Record:
-      type: object
-      properties:
-        status:
-          type: string
-        timestamp:
-          type: string
-          format: date-time
-        reason:
-          type: string
-        code:
           type: string
     bp_models.AccountV1:
       type: object
@@ -189,14 +150,44 @@ components:
           type: string
         active:
           type: boolean
-    repository.CursorPage--transfers_models.AccountCategory:
+    status_log.Record:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/transfers_models.AccountCategory'
-        next:
+        status:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        reason:
+          type: string
+        code:
+          type: string
+    transfers_models_v2.LinkSet:
+      type: object
+      properties:
+        tos:
+          type: string
+        privacyPolicy:
+          type: string
+    transfers_models_v2.TosAcceptance:
+      type: object
+      properties:
+        id:
+          type: string
+        entityName:
+          type: string
+        status:
+          type: string
+          enum:
+          - accepted
+          - pending
+        link:
+          type: string
+        documentLinks:
+          $ref: '#/components/schemas/transfers_models_v2.LinkSet'
+        acceptedAt:
+          type: string
+        token:
           type: string
     transfers_models_v2.OwnerKyc:
       type: object
@@ -209,6 +200,15 @@ components:
           - passed
           - failed
         link:
+          type: string
+    repository.CursorPage--transfers_models.AccountCategory:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/transfers_models.AccountCategory'
+        next:
           type: string
   securitySchemes:
     BearerAuth:

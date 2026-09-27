@@ -134,25 +134,6 @@ paths:
       - Webhook Endpoints
 components:
   schemas:
-    bp_models.WebhookEndpoint:
-      type: object
-      properties:
-        id:
-          type: string
-        ownerId:
-          type: string
-        description:
-          type: string
-        url:
-          type: string
-        subscribedEvents:
-          type: array
-          items:
-            type: string
-        publicKey:
-          type: string
-        enabled:
-          type: boolean
     bp_models.WebhookEvent:
       type: object
       properties:
@@ -193,6 +174,25 @@ components:
             $ref: '#/components/schemas/bp_models.WebhookEvent'
         next:
           type: string
+    bp_models.WebhookEndpoint:
+      type: object
+      properties:
+        id:
+          type: string
+        ownerId:
+          type: string
+        description:
+          type: string
+        url:
+          type: string
+        subscribedEvents:
+          type: array
+          items:
+            type: string
+        publicKey:
+          type: string
+        enabled:
+          type: boolean
     bp_dto.UpdateWebhookEndpointRequest:
       type: object
       properties:

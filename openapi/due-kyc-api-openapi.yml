@@ -381,39 +381,19 @@ paths:
       - KYC
 components:
   schemas:
-    kyc_questionnaire.QuestionnaireTemplate:
+    kyc_questionnaire.KYCQuestionnaireQuestionAccountCategory:
       type: object
       properties:
-        templateId:
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/kyc_questionnaire.KYCQuestionnaireQuestionChoiceOption'
+        resourceURL:
           type: string
-        questions:
-          type: array
-          items:
-            $ref: '#/components/schemas/kyc_questionnaire.Question'
-    kyc_dto.DocumentUploadToken:
-      type: object
-      properties:
-        token:
-          type: string
-    kyc_entities.RequirementsSchemaStatic:
-      type: object
-      properties:
-        info:
-          type: array
-          items:
-            $ref: '#/components/schemas/due_reflect.FieldDescriptor'
-        documents:
-          type: array
-          items:
-            $ref: '#/components/schemas/kyc_document.KYCDocumentRequirementSet'
-        questionnaires:
-          type: array
-          items:
-            $ref: '#/components/schemas/kyc_questionnaire.QuestionnaireTemplate'
-        kind:
+        type:
           type: string
       required:
-      - kind
+      - type
     kyc_questionnaire.Question:
       type: object
       properties:
@@ -452,99 +432,16 @@ components:
               number: '#/components/schemas/kyc_questionnaire.KYCQuestionnaireQuestionNumber'
               text: '#/components/schemas/kyc_questionnaire.KYCQuestionnaireQuestionText'
               time: '#/components/schemas/kyc_questionnaire.KYCQuestionnaireQuestionTime'
-    transfers_models_v2.KYCSession:
+    kyc_questionnaire.KYCQuestionnaireQuestionMultipleChoice:
       type: object
       properties:
-        link:
-          type: string
-        accessToken:
-          type: string
-    kyc_required_info.Location:
-      type: object
-      properties:
-        latitude:
-          type: string
-        longitude:
-          type: string
-      required:
-      - latitude
-      - longitude
-    kyc_questionnaire.Answer:
-      type: object
-      properties:
-        id:
-          type: string
-        value:
+        options:
           type: array
           items:
-            type: string
-    kyc_questionnaire.KYCQuestionnaireQuestionChoiceOption:
-      type: object
-      properties:
-        id:
-          type: string
-        label:
-          type: string
-    kyc_questionnaire.RequiredCondition:
-      type: object
-      properties:
-        id:
-          type: string
-        value:
-          type: string
-    transfers_models_v2.SumsubSharedKYC:
-      type: object
-      properties:
-        status:
-          type: string
-        submissionId:
-          type: string
-    kyc_entities.Beneficiary:
-      type: object
-      properties:
-        applicantId:
-          type: string
-        roles:
-          type: array
-          items:
-            type: string
-        shareSize:
-          type: string
-    kyc_dto.KYCDocumentUploadTokenRequest:
-      type: object
-      properties:
-        type:
-          type: string
-        variant:
-          type: string
-        issuingCountry:
-          type: string
-        filename:
-          type: string
-        extractedData:
-          type: object
-          properties:
-            number:
-              type: string
-            serialNumber:
-              type: string
-            issuedAt:
-              type: string
-              format: date
-            expiresAt:
-              type: string
-              format: date
-            mrz:
-              type: array
-              items:
-                type: string
-      required:
-      - type
-      - issuingCountry
-      - filename
-    kyc_questionnaire.KYCQuestionnaireQuestionFiles:
-      type: object
-      properties:
+            $ref: '#/components/schemas/kyc_questionnaire.KYCQuestionnaireQuestionChoiceOption'
+        min:
+          type: integer
+          format: int32
         max:
           type: integer
           format: int32
@@ -552,45 +449,41 @@ components:
           type: string
       required:
       - type
-    due_reflect.FieldDescriptor:
+    kyc_questionnaire.RequiredCondition:
       type: object
       properties:
-        key:
+        id:
+          type: string
+        value:
+          type: string
+    kyc_questionnaire.QuestionnaireTemplate:
+      type: object
+      properties:
+        templateId:
+          type: string
+        questions:
+          type: array
+          items:
+            $ref: '#/components/schemas/kyc_questionnaire.Question'
+    kyc_questionnaire.KYCQuestionnaireQuestionMultipleCountries:
+      type: object
+      properties:
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/kyc_questionnaire.KYCQuestionnaireQuestionChoiceOption'
+        min:
+          type: integer
+          format: int32
+        max:
+          type: integer
+          format: int32
+        resourceURL:
           type: string
         type:
           type: string
-        oneOf:
-          type: array
-          items:
-            type: string
-        required:
-          type: boolean
-        requiredIf:
-          type: string
-        excludedUnless:
-          type: string
-        fields:
-          type: array
-          items:
-            $ref: '#/components/schemas/due_reflect.FieldDescriptor'
-    kyc_document.KYCDocumentRequirement:
-      type: object
-      properties:
-        type:
-          type: string
-        variants:
-          type: array
-          items:
-            type: string
-    kyc_dto.CreateChildApplicantRequest:
-      type: object
-      properties:
-        type:
-          type: string
-        roles:
-          type: array
-          items:
-            type: string
+      required:
+      - type
     kyc_document.KYCDocument:
       type: object
       properties:
@@ -602,6 +495,56 @@ components:
           type: string
         issuingCountry:
           type: string
+    transfers_models_v2.SumsubSharedKYC:
+      type: object
+      properties:
+        status:
+          type: string
+        submissionId:
+          type: string
+    kyc_questionnaire.QuestionnaireAnswered:
+      type: object
+      properties:
+        id:
+          type: string
+        templateId:
+          type: string
+        answers:
+          type: array
+          items:
+            $ref: '#/components/schemas/kyc_questionnaire.Answer'
+    kyc_entities.RequirementsSchemaStatic:
+      type: object
+      properties:
+        info:
+          type: array
+          items:
+            $ref: '#/components/schemas/due_reflect.FieldDescriptor'
+        documents:
+          type: array
+          items:
+            $ref: '#/components/schemas/kyc_document.KYCDocumentRequirementSet'
+        questionnaires:
+          type: array
+          items:
+            $ref: '#/components/schemas/kyc_questionnaire.QuestionnaireTemplate'
+        kind:
+          type: string
+      required:
+      - kind
+    kyc_questionnaire.KYCQuestionnaireQuestionNumber:
+      type: object
+      properties:
+        min:
+          type: number
+          format: double
+        max:
+          type: number
+          format: double
+        type:
+          type: string
+      required:
+      - type
     kyc_entities.Submission:
       type: object
       properties:
@@ -638,15 +581,181 @@ components:
             $ref: '#/components/schemas/kyc_questionnaire.QuestionnaireAnswered'
         presetCode:
           type: string
-    kyc_questionnaire.KYCQuestionnaireQuestionText:
+    transfers_models.SumsubKYC:
       type: object
       properties:
-        format:
+        id:
+          type: string
+        type:
+          type: string
+        email:
+          type: string
+        applicantId:
+          type: string
+        externalLink:
+          type: string
+        status:
+          type: string
+          enum:
+          - pending
+          - resubmission_required
+          - passed
+          - failed
+        country:
+          type: string
+        token:
+          type: string
+        primaryEntity:
+          $ref: '#/components/schemas/transfers_models.LegalEntity'
+    due_reflect.FieldDescriptor:
+      type: object
+      properties:
+        key:
+          type: string
+        type:
+          type: string
+        oneOf:
+          type: array
+          items:
+            type: string
+        required:
+          type: boolean
+        requiredIf:
+          type: string
+        excludedUnless:
+          type: string
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/due_reflect.FieldDescriptor'
+    kyc_questionnaire.KYCQuestionnaireQuestionDate:
+      type: object
+      properties:
+        from:
+          type: string
+        to:
           type: string
         type:
           type: string
       required:
       - type
+    kyc_dto.KYCDocumentUploadTokenRequest:
+      type: object
+      properties:
+        type:
+          type: string
+        variant:
+          type: string
+        issuingCountry:
+          type: string
+        filename:
+          type: string
+        extractedData:
+          type: object
+          properties:
+            number:
+              type: string
+            serialNumber:
+              type: string
+            issuedAt:
+              type: string
+              format: date
+            expiresAt:
+              type: string
+              format: date
+            mrz:
+              type: array
+              items:
+                type: string
+      required:
+      - type
+      - issuingCountry
+      - filename
+    kyc_questionnaire.Answer:
+      type: object
+      properties:
+        id:
+          type: string
+        value:
+          type: array
+          items:
+            type: string
+    kyc_entities.ApplicantInfo:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        dob:
+          type: string
+        companyName:
+          type: string
+        registrationNumber:
+          type: string
+        address:
+          $ref: '#/components/schemas/kyc_required_info.Address'
+        bvn:
+          type: string
+        entityType:
+          type: string
+        nationality:
+          type: string
+        phone:
+          type: string
+        postalAddress:
+          type: string
+        ssn:
+          type: string
+        tin:
+          type: string
+        cpf:
+          type: string
+        website:
+          type: string
+        location:
+          $ref: '#/components/schemas/kyc_required_info.Location'
+      required:
+      - firstName
+      - lastName
+      - dob
+      - companyName
+      - registrationNumber
+      - address
+      - bvn
+      - entityType
+      - nationality
+      - phone
+      - postalAddress
+      - ssn
+      - tin
+      - cpf
+      - website
+    kyc_dto.DocumentUploadToken:
+      type: object
+      properties:
+        token:
+          type: string
+    kyc_questionnaire.KYCQuestionnaireQuestionChoice:
+      type: object
+      properties:
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/kyc_questionnaire.KYCQuestionnaireQuestionChoiceOption'
+        type:
+          type: string
+      required:
+      - type
+    kyc_document.KYCDocumentRequirement:
+      type: object
+      properties:
+        type:
+          type: string
+        variants:
+          type: array
+          items:
+            type: string
     kyc_questionnaire.KYCQuestionnaireQuestionBoolean:
       type: object
       properties:
@@ -701,120 +810,6 @@ components:
       - postCode
       - town
       - street
-    kyc_questionnaire.KYCQuestionnaireQuestionMultipleChoice:
-      type: object
-      properties:
-        options:
-          type: array
-          items:
-            $ref: '#/components/schemas/kyc_questionnaire.KYCQuestionnaireQuestionChoiceOption'
-        min:
-          type: integer
-          format: int32
-        max:
-          type: integer
-          format: int32
-        type:
-          type: string
-      required:
-      - type
-    kyc_questionnaire.KYCQuestionnaireQuestionChoice:
-      type: object
-      properties:
-        options:
-          type: array
-          items:
-            $ref: '#/components/schemas/kyc_questionnaire.KYCQuestionnaireQuestionChoiceOption'
-        type:
-          type: string
-      required:
-      - type
-    kyc_questionnaire.KYCQuestionnaireQuestionTime:
-      type: object
-      properties:
-        from:
-          type: string
-        to:
-          type: string
-        type:
-          type: string
-      required:
-      - type
-    kyc_questionnaire.KYCQuestionnaireQuestionNumber:
-      type: object
-      properties:
-        min:
-          type: number
-          format: double
-        max:
-          type: number
-          format: double
-        type:
-          type: string
-      required:
-      - type
-    kyc_entities.ApplicantInfo:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        dob:
-          type: string
-        companyName:
-          type: string
-        registrationNumber:
-          type: string
-        address:
-          $ref: '#/components/schemas/kyc_required_info.Address'
-        bvn:
-          type: string
-        entityType:
-          type: string
-        nationality:
-          type: string
-        phone:
-          type: string
-        postalAddress:
-          type: string
-        ssn:
-          type: string
-        tin:
-          type: string
-        cpf:
-          type: string
-        website:
-          type: string
-        location:
-          $ref: '#/components/schemas/kyc_required_info.Location'
-      required:
-      - firstName
-      - lastName
-      - dob
-      - companyName
-      - registrationNumber
-      - address
-      - bvn
-      - entityType
-      - nationality
-      - phone
-      - postalAddress
-      - ssn
-      - tin
-      - cpf
-      - website
-    transfers_models.LegalEntity:
-      type: object
-      properties:
-        name:
-          type: string
-        tosLink:
-          type: string
-        privacyPolicyLink:
-          type: string
-        country2:
-          type: string
     kyc_entities.RequirementsSchemaConditional:
       type: object
       properties:
@@ -848,16 +843,18 @@ components:
           type: string
       required:
       - kind
-    kyc_document.KYCDocumentRequirementSet:
+    transfers_models.LegalEntity:
       type: object
       properties:
-        category:
+        name:
           type: string
-        oneOf:
-          type: array
-          items:
-            $ref: '#/components/schemas/kyc_document.KYCDocumentRequirement'
-    kyc_questionnaire.KYCQuestionnaireQuestionDate:
+        tosLink:
+          type: string
+        privacyPolicyLink:
+          type: string
+        country2:
+          type: string
+    kyc_questionnaire.KYCQuestionnaireQuestionTime:
       type: object
       properties:
         from:
@@ -868,84 +865,57 @@ components:
           type: string
       required:
       - type
-    transfers_models.SumsubKYC:
+    kyc_dto.CreateChildApplicantRequest:
+      type: object
+      properties:
+        type:
+          type: string
+        roles:
+          type: array
+          items:
+            type: string
+    kyc_questionnaire.KYCQuestionnaireQuestionChoiceOption:
       type: object
       properties:
         id:
           type: string
-        type:
+        label:
           type: string
-        email:
-          type: string
-        applicantId:
-          type: string
-        externalLink:
-          type: string
-        status:
-          type: string
-          enum:
-          - pending
-          - resubmission_required
-          - passed
-          - failed
-        country:
-          type: string
-        token:
-          type: string
-        primaryEntity:
-          $ref: '#/components/schemas/transfers_models.LegalEntity'
-    kyc_questionnaire.KYCQuestionnaireQuestionMultipleCountries:
+    kyc_document.KYCDocumentRequirementSet:
       type: object
       properties:
-        options:
+        category:
+          type: string
+        oneOf:
           type: array
           items:
-            $ref: '#/components/schemas/kyc_questionnaire.KYCQuestionnaireQuestionChoiceOption'
-        min:
-          type: integer
-          format: int32
-        max:
-          type: integer
-          format: int32
-        resourceURL:
+            $ref: '#/components/schemas/kyc_document.KYCDocumentRequirement'
+    kyc_required_info.Location:
+      type: object
+      properties:
+        latitude:
+          type: string
+        longitude:
+          type: string
+      required:
+      - latitude
+      - longitude
+    kyc_questionnaire.KYCQuestionnaireQuestionText:
+      type: object
+      properties:
+        format:
           type: string
         type:
           type: string
       required:
       - type
-    transfers_dto.ShareSumsubKYCRequest:
+    transfers_models_v2.KYCSession:
       type: object
       properties:
-        shareToken:
+        link:
           type: string
-        applicantInfo:
-          $ref: '#/components/schemas/kyc_entities.ApplicantInfo'
-        questionnaire:
-          $ref: '#/components/schemas/kyc_questionnaire.QuestionnaireAnswered'
-    kyc_questionnaire.KYCQuestionnaireQuestionAccountCategory:
-      type: object
-      properties:
-        options:
-          type: array
-          items:
-            $ref: '#/components/schemas/kyc_questionnaire.KYCQuestionnaireQuestionChoiceOption'
-        resourceURL:
+        accessToken:
           type: string
-        type:
-          type: string
-      required:
-      - type
-    kyc_questionnaire.QuestionnaireAnswered:
-      type: object
-      properties:
-        id:
-          type: string
-        templateId:
-          type: string
-        answers:
-          type: array
-          items:
-            $ref: '#/components/schemas/kyc_questionnaire.Answer'
     kyc_questionnaire.KYCQuestionnaireQuestionDateTime:
       type: object
       properties:
@@ -959,11 +929,36 @@ components:
           type: string
       required:
       - type
-    kyc_dto.KYCSessionCreateRequest:
+    kyc_entities.Beneficiary:
       type: object
       properties:
-        submissionId:
+        applicantId:
           type: string
+        roles:
+          type: array
+          items:
+            type: string
+        shareSize:
+          type: string
+    transfers_dto.ShareSumsubKYCRequest:
+      type: object
+      properties:
+        shareToken:
+          type: string
+        applicantInfo:
+          $ref: '#/components/schemas/kyc_entities.ApplicantInfo'
+        questionnaire:
+          $ref: '#/components/schemas/kyc_questionnaire.QuestionnaireAnswered'
+    kyc_questionnaire.KYCQuestionnaireQuestionFiles:
+      type: object
+      properties:
+        max:
+          type: integer
+          format: int32
+        type:
+          type: string
+      required:
+      - type
     due_jwt.JwtToken:
       type: object
       properties:
@@ -980,6 +975,11 @@ components:
           type: string
         submission:
           $ref: '#/components/schemas/kyc_entities.Submission'
+    kyc_dto.KYCSessionCreateRequest:
+      type: object
+      properties:
+        submissionId:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http

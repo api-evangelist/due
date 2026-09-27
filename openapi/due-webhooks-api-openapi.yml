@@ -89,6 +89,17 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    bp_dto.CreateWebhookEndpointRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        description:
+          type: string
+        events:
+          type: array
+          items:
+            type: string
     bp_models.WebhookEndpoint:
       type: object
       properties:
@@ -108,17 +119,6 @@ components:
           type: string
         enabled:
           type: boolean
-    bp_dto.CreateWebhookEndpointRequest:
-      type: object
-      properties:
-        url:
-          type: string
-        description:
-          type: string
-        events:
-          type: array
-          items:
-            type: string
   securitySchemes:
     BearerAuth:
       type: http

@@ -60,13 +60,6 @@ components:
       properties:
         address:
           type: string
-    bp_models.WalletPreferences:
-      type: object
-      properties:
-        selectedNetworks:
-          type: array
-          items:
-            type: string
     bp_models.Wallet:
       type: object
       properties:
@@ -76,6 +69,13 @@ components:
           type: string
         preferences:
           $ref: '#/components/schemas/bp_models.WalletPreferences'
+    bp_models.WalletPreferences:
+      type: object
+      properties:
+        selectedNetworks:
+          type: array
+          items:
+            type: string
   securitySchemes:
     BearerAuth:
       type: http
