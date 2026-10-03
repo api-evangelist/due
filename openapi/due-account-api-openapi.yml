@@ -97,6 +97,27 @@ paths:
       operationId: post_v1-accounts
 components:
   schemas:
+    status_log.Record:
+      type: object
+      properties:
+        status:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+        reason:
+          type: string
+        code:
+          type: string
+    repository.CursorPage--transfers_models.AccountCategory:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/transfers_models.AccountCategory'
+        next:
+          type: string
     bp_dto.CreateAccountRequestV1:
       type: object
       properties:
@@ -113,6 +134,13 @@ components:
         externalId:
           type: string
         kycReturnUrl:
+          type: string
+    transfers_models_v2.LinkSet:
+      type: object
+      properties:
+        tos:
+          type: string
+        privacyPolicy:
           type: string
     bp_models.AccountV1:
       type: object
@@ -150,25 +178,6 @@ components:
           type: string
         active:
           type: boolean
-    status_log.Record:
-      type: object
-      properties:
-        status:
-          type: string
-        timestamp:
-          type: string
-          format: date-time
-        reason:
-          type: string
-        code:
-          type: string
-    transfers_models_v2.LinkSet:
-      type: object
-      properties:
-        tos:
-          type: string
-        privacyPolicy:
-          type: string
     transfers_models_v2.TosAcceptance:
       type: object
       properties:
@@ -200,15 +209,6 @@ components:
           - passed
           - failed
         link:
-          type: string
-    repository.CursorPage--transfers_models.AccountCategory:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/transfers_models.AccountCategory'
-        next:
           type: string
   securitySchemes:
     BearerAuth:

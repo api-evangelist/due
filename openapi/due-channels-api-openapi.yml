@@ -41,6 +41,57 @@ paths:
       operationId: get_v1-channels
 components:
   schemas:
+    transfers_models_v2.Channel:
+      type: object
+      properties:
+        rail:
+          type: string
+        railSettings:
+          $ref: '#/components/schemas/transfers_models_v2.RailSettings'
+        currencyCode:
+          type: string
+        feeBps:
+          type: integer
+          format: int32
+        feeFixed:
+          type: string
+        limitMin:
+          type: string
+        limitMax:
+          type: string
+        kycLevels:
+          type: array
+          items:
+            type: string
+        type:
+          type: string
+        accountType:
+          type: string
+        permissions:
+          $ref: '#/components/schemas/transfers_models_v2.Permissions'
+        purposeCodes:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        endorsementsRequired:
+          type: array
+          items:
+            type: string
+    transfers_models_v2.RailSettings:
+      type: object
+      properties:
+        rail:
+          type: string
+        speed:
+          type: string
+        memoConfig:
+          $ref: '#/components/schemas/transfers_models.RailReferenceRuleSet'
+        schemas:
+          type: array
+          items:
+            type: string
     transfers_models.RailReferenceRuleSet:
       type: object
       properties:
@@ -91,49 +142,6 @@ components:
           type: array
           items:
             type: string
-    transfers_models_v2.PermissionsPayouts:
-      type: object
-      properties:
-        named:
-          type: boolean
-    transfers_models_v2.Channel:
-      type: object
-      properties:
-        rail:
-          type: string
-        railSettings:
-          $ref: '#/components/schemas/transfers_models_v2.RailSettings'
-        currencyCode:
-          type: string
-        feeBps:
-          type: integer
-          format: int32
-        feeFixed:
-          type: string
-        limitMin:
-          type: string
-        limitMax:
-          type: string
-        kycLevels:
-          type: array
-          items:
-            type: string
-        type:
-          type: string
-        accountType:
-          type: string
-        permissions:
-          $ref: '#/components/schemas/transfers_models_v2.Permissions'
-        purposeCodes:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        endorsementsRequired:
-          type: array
-          items:
-            type: string
     transfers_models_v2.PermissionsVirtualAccounts:
       type: object
       properties:
@@ -143,19 +151,11 @@ components:
           type: boolean
         named:
           type: boolean
-    transfers_models_v2.RailSettings:
+    transfers_models_v2.PermissionsPayouts:
       type: object
       properties:
-        rail:
-          type: string
-        speed:
-          type: string
-        memoConfig:
-          $ref: '#/components/schemas/transfers_models.RailReferenceRuleSet'
-        schemas:
-          type: array
-          items:
-            type: string
+        named:
+          type: boolean
   securitySchemes:
     BearerAuth:
       type: http

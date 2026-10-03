@@ -40,6 +40,13 @@ paths:
       operationId: get_v1-wallets-walletid-balance
 components:
   schemas:
+    transfers_dto_v2.WalletBalanceResponse:
+      type: object
+      properties:
+        balances:
+          type: array
+          items:
+            $ref: '#/components/schemas/transfers_models_v2.WalletBalance'
     transfers_models_v2.WalletBalance:
       type: object
       properties:
@@ -49,13 +56,6 @@ components:
           type: string
         balance:
           type: string
-    transfers_dto_v2.WalletBalanceResponse:
-      type: object
-      properties:
-        balances:
-          type: array
-          items:
-            $ref: '#/components/schemas/transfers_models_v2.WalletBalance'
   securitySchemes:
     BearerAuth:
       type: http

@@ -38,97 +38,8 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    account.QRAccountBrazilDetails:
-      type: object
-      properties:
-        emv:
-          type: string
-        pixKey:
-          type: string
-        name:
-          type: string
-        nin:
-          type: string
-        financialInstitutionId:
-          type: string
-        branchNumber:
-          type: string
-        accountNumber:
-          type: string
-        bankAccountType:
-          type: string
-        schema:
-          type: string
-      required:
-      - emv
-      - schema
-    account.BankAccountDetailsColombia:
-      type: object
-      properties:
-        accountType:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        companyName:
-          type: string
-        financialInstitutionId:
-          type: string
-        bankAccountType:
-          type: string
-        accountNumber:
-          type: string
-        idType:
-          type: string
-        idNumber:
-          type: string
-        schema:
-          type: string
-      required:
-      - accountType
-      - financialInstitutionId
-      - bankAccountType
-      - accountNumber
-      - idNumber
-      - schema
-    account.BankAccountDetailsBR:
-      type: object
-      properties:
-        name:
-          type: string
-        nin:
-          type: string
-        financialInstitutionId:
-          type: string
-        branchNumber:
-          type: string
-        accountNumber:
-          type: string
-        bankAccountType:
-          type: string
-        bankName:
-          type: string
-        schema:
-          type: string
-      required:
-      - name
-      - nin
-      - financialInstitutionId
-      - branchNumber
-      - accountNumber
-      - bankAccountType
-      - schema
-    account.EvmAccount:
-      type: object
-      properties:
-        address:
-          type: string
-        schema:
-          type: string
-      required:
-      - address
-      - schema
+    decimal.Decimal:
+      type: string
     account.BankAccountDetailsSepa:
       type: object
       properties:
@@ -152,7 +63,66 @@ components:
       - accountType
       - IBAN
       - schema
+    account.BankAccountMexicoDetails:
+      type: object
+      properties:
+        bankName:
+          type: string
+        clabe:
+          type: string
+        beneficiaryName:
+          type: string
+        email:
+          type: string
+        schema:
+          type: string
+      required:
+      - clabe
+      - beneficiaryName
+      - schema
     account.TronAccount:
+      type: object
+      properties:
+        address:
+          type: string
+        schema:
+          type: string
+      required:
+      - address
+      - schema
+    account.BankAccountDetailsSwiftIBAN:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        bankName:
+          type: string
+        bankAddress:
+          type: string
+        IBAN:
+          type: string
+        swiftCode:
+          type: string
+        currency:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.MailingAddress'
+        schema:
+          type: string
+      required:
+      - accountType
+      - IBAN
+      - swiftCode
+      - currency
+      - beneficiaryAddress
+      - schema
+    account.EvmAccount:
       type: object
       properties:
         address:
@@ -196,6 +166,60 @@ components:
       - currency
       - beneficiaryAddress
       - schema
+    account.StarknetAccount:
+      type: object
+      properties:
+        address:
+          type: string
+        schema:
+          type: string
+      required:
+      - address
+      - schema
+    account.BankAccountDetailsIBAN:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        bankName:
+          type: string
+        IBAN:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - bankName
+      - IBAN
+      - schema
+    account.BankAccountDetailsUK:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        accountNumber:
+          type: string
+        sortCode:
+          type: string
+        schema:
+          type: string
+      required:
+      - accountType
+      - accountNumber
+      - sortCode
+      - schema
     account.BankAccountDetailsCA:
       type: object
       properties:
@@ -227,6 +251,181 @@ components:
       - accountNumber
       - routingCode
       - beneficiaryAddress
+      - schema
+    account.BankAccountDetailsUS:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        bankName:
+          type: string
+        bankAddress:
+          type: string
+        accountName:
+          type: string
+        accountNumber:
+          type: string
+        routingNumber:
+          type: string
+        routingNumberACH:
+          type: string
+        routingNumberWire:
+          type: string
+        routingNumberRTP:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.MailingAddress'
+        schema:
+          type: string
+      required:
+      - accountType
+      - accountNumber
+      - routingNumber
+      - beneficiaryAddress
+      - schema
+    account.MailingAddress:
+      type: object
+      properties:
+        street_line_1:
+          type: string
+        street_line_2:
+          type: string
+        city:
+          type: string
+        postal_code:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+      required:
+      - street_line_1
+      - city
+      - postal_code
+      - country
+    account.BankAccountAfricaDetails:
+      type: object
+      properties:
+        financialInstitutionId:
+          type: string
+        bankName:
+          type: string
+        accountNumber:
+          type: string
+        accountName:
+          type: string
+        email:
+          type: string
+        schema:
+          type: string
+      required:
+      - financialInstitutionId
+      - accountNumber
+      - accountName
+      - schema
+    account.BankAccountDetailsBR:
+      type: object
+      properties:
+        name:
+          type: string
+        nin:
+          type: string
+        financialInstitutionId:
+          type: string
+        branchNumber:
+          type: string
+        accountNumber:
+          type: string
+        bankAccountType:
+          type: string
+        bankName:
+          type: string
+        schema:
+          type: string
+      required:
+      - name
+      - nin
+      - financialInstitutionId
+      - branchNumber
+      - accountNumber
+      - bankAccountType
+      - schema
+    account.MomoAccountAfricaDetails:
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        accountName:
+          type: string
+        financialInstitutionId:
+          type: string
+        currency:
+          type: string
+        schema:
+          type: string
+      required:
+      - phoneNumber
+      - accountName
+      - financialInstitutionId
+      - currency
+      - schema
+    account.BankAccountDetailsMena:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        bankName:
+          type: string
+        IBAN:
+          type: string
+        swiftCode:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.BeneficiaryAddressMena'
+        schema:
+          type: string
+      required:
+      - accountType
+      - IBAN
+      - beneficiaryAddress
+      - schema
+    account.BankAccountDetailsIN:
+      type: object
+      properties:
+        accountType:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        companyName:
+          type: string
+        bankName:
+          type: string
+        ifscCode:
+          type: string
+        accountNumber:
+          type: string
+        beneficiaryAddress:
+          $ref: '#/components/schemas/account.MailingAddress'
+        schema:
+          type: string
+      required:
+      - accountType
+      - ifscCode
+      - accountNumber
       - schema
     integrations.PayinRequest:
       type: object
@@ -333,7 +532,7 @@ components:
               qr_brazil: '#/components/schemas/account.QRAccountBrazilDetails'
               starknet: '#/components/schemas/account.StarknetAccount'
               tron: '#/components/schemas/account.TronAccount'
-    account.BankAccountDetailsMY:
+    account.BankAccountDetailsColombia:
       type: object
       properties:
         accountType:
@@ -346,119 +545,22 @@ components:
           type: string
         financialInstitutionId:
           type: string
+        bankAccountType:
+          type: string
         accountNumber:
+          type: string
+        idType:
+          type: string
+        idNumber:
           type: string
         schema:
           type: string
       required:
       - accountType
       - financialInstitutionId
+      - bankAccountType
       - accountNumber
-      - schema
-    account.BankAccountDetailsIBAN:
-      type: object
-      properties:
-        accountType:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        companyName:
-          type: string
-        bankName:
-          type: string
-        IBAN:
-          type: string
-        schema:
-          type: string
-      required:
-      - accountType
-      - bankName
-      - IBAN
-      - schema
-    account.BankAccountDetailsIN:
-      type: object
-      properties:
-        accountType:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        companyName:
-          type: string
-        bankName:
-          type: string
-        ifscCode:
-          type: string
-        accountNumber:
-          type: string
-        beneficiaryAddress:
-          $ref: '#/components/schemas/account.MailingAddress'
-        schema:
-          type: string
-      required:
-      - accountType
-      - ifscCode
-      - accountNumber
-      - schema
-    account.BankAccountAfricaDetails:
-      type: object
-      properties:
-        financialInstitutionId:
-          type: string
-        bankName:
-          type: string
-        accountNumber:
-          type: string
-        accountName:
-          type: string
-        email:
-          type: string
-        schema:
-          type: string
-      required:
-      - financialInstitutionId
-      - accountNumber
-      - accountName
-      - schema
-    account.BankAccountDetailsUS:
-      type: object
-      properties:
-        accountType:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        companyName:
-          type: string
-        bankName:
-          type: string
-        bankAddress:
-          type: string
-        accountName:
-          type: string
-        accountNumber:
-          type: string
-        routingNumber:
-          type: string
-        routingNumberACH:
-          type: string
-        routingNumberWire:
-          type: string
-        routingNumberRTP:
-          type: string
-        beneficiaryAddress:
-          $ref: '#/components/schemas/account.MailingAddress'
-        schema:
-          type: string
-      required:
-      - accountType
-      - accountNumber
-      - routingNumber
-      - beneficiaryAddress
+      - idNumber
       - schema
     account.BankAccountDetailsAU:
       type: object
@@ -487,55 +589,6 @@ components:
       - accountNumber
       - beneficiaryAddress
       - schema
-    account.MomoAccountAfricaDetails:
-      type: object
-      properties:
-        phoneNumber:
-          type: string
-        accountName:
-          type: string
-        financialInstitutionId:
-          type: string
-        currency:
-          type: string
-        schema:
-          type: string
-      required:
-      - phoneNumber
-      - accountName
-      - financialInstitutionId
-      - currency
-      - schema
-    account.MailingAddress:
-      type: object
-      properties:
-        street_line_1:
-          type: string
-        street_line_2:
-          type: string
-        city:
-          type: string
-        postal_code:
-          type: string
-        country:
-          type: string
-        state:
-          type: string
-      required:
-      - street_line_1
-      - city
-      - postal_code
-      - country
-    account.StarknetAccount:
-      type: object
-      properties:
-        address:
-          type: string
-        schema:
-          type: string
-      required:
-      - address
-      - schema
     account.BeneficiaryAddressMena:
       type: object
       properties:
@@ -543,87 +596,29 @@ components:
           type: string
       required:
       - street_line_1
-    decimal.Decimal:
-      type: string
-    account.BankAccountDetailsMena:
+    account.QRAccountBrazilDetails:
       type: object
       properties:
-        accountType:
+        emv:
           type: string
-        firstName:
+        pixKey:
           type: string
-        lastName:
+        name:
           type: string
-        companyName:
+        nin:
           type: string
-        bankName:
+        financialInstitutionId:
           type: string
-        IBAN:
-          type: string
-        swiftCode:
-          type: string
-        beneficiaryAddress:
-          $ref: '#/components/schemas/account.BeneficiaryAddressMena'
-        schema:
-          type: string
-      required:
-      - accountType
-      - IBAN
-      - beneficiaryAddress
-      - schema
-    account.BankAccountDetailsUK:
-      type: object
-      properties:
-        accountType:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        companyName:
+        branchNumber:
           type: string
         accountNumber:
           type: string
-        sortCode:
+        bankAccountType:
           type: string
         schema:
           type: string
       required:
-      - accountType
-      - accountNumber
-      - sortCode
-      - schema
-    account.BankAccountDetailsSwiftIBAN:
-      type: object
-      properties:
-        accountType:
-          type: string
-        firstName:
-          type: string
-        lastName:
-          type: string
-        companyName:
-          type: string
-        bankName:
-          type: string
-        bankAddress:
-          type: string
-        IBAN:
-          type: string
-        swiftCode:
-          type: string
-        currency:
-          type: string
-        beneficiaryAddress:
-          $ref: '#/components/schemas/account.MailingAddress'
-        schema:
-          type: string
-      required:
-      - accountType
-      - IBAN
-      - swiftCode
-      - currency
-      - beneficiaryAddress
+      - emv
       - schema
     account.BankAccountDetailsCN:
       type: object
@@ -650,22 +645,27 @@ components:
       - accountNumber
       - beneficiaryAddress
       - schema
-    account.BankAccountMexicoDetails:
+    account.BankAccountDetailsMY:
       type: object
       properties:
-        bankName:
+        accountType:
           type: string
-        clabe:
+        firstName:
           type: string
-        beneficiaryName:
+        lastName:
           type: string
-        email:
+        companyName:
+          type: string
+        financialInstitutionId:
+          type: string
+        accountNumber:
           type: string
         schema:
           type: string
       required:
-      - clabe
-      - beneficiaryName
+      - accountType
+      - financialInstitutionId
+      - accountNumber
       - schema
   securitySchemes:
     BearerAuth:

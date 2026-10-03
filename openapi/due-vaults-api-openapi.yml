@@ -159,13 +159,26 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    dfnsdto.SignedEnvelope--bp_dto.PasskeyApprovalRequest:
+    dfns_entities.KeyCredentialFactor:
       type: object
       properties:
-        payload:
-          $ref: '#/components/schemas/bp_dto.PasskeyApprovalRequest'
+        credId:
+          type: string
+        clientData:
+          type: string
+          format: byte
         signature:
-          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
+          type: string
+          format: byte
+        kind:
+          type: string
+      required:
+      - kind
+    protocol.CredentialAssertion:
+      type: object
+      properties:
+        publicKey:
+          $ref: '#/components/schemas/protocol.PublicKeyCredentialRequestOptions'
     bp_models.PassKeyCredentialLocation:
       type: object
       properties:
@@ -175,13 +188,38 @@ components:
           type: string
         deviceName:
           type: string
-    dfnsdto.SignedEnvelope--bp_dto.DfnsTmpSignatureRequest:
+    bp_dto.DfnsTmpSignatureRequest:
       type: object
       properties:
-        payload:
-          $ref: '#/components/schemas/bp_dto.DfnsTmpSignatureRequest'
-        signature:
-          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
+        walletId:
+          type: string
+        keyId:
+          type: string
+        hash:
+          type: string
+    protocol.PublicKeyCredentialRequestOptions:
+      type: object
+      properties:
+        challenge:
+          type: string
+          format: byte
+        timeout:
+          type: integer
+          format: int32
+        rpId:
+          type: string
+        allowCredentials:
+          type: array
+          items:
+            $ref: '#/components/schemas/protocol.CredentialDescriptor'
+        userVerification:
+          type: string
+          enum:
+          - required
+          - preferred
+          - discouraged
+        extensions:
+          type: object
     bp_models.PasskeyCredential:
       type: object
       properties:
@@ -230,83 +268,20 @@ components:
           type: string
       required:
       - kind
-    dfns_entities.KeyCredentialFactor:
+    dfnsdto.ActionAuthenticationResponse:
       type: object
       properties:
-        credId:
+        challengeIdentifier:
           type: string
-        clientData:
-          type: string
-          format: byte
-        signature:
-          type: string
-          format: byte
-        kind:
-          type: string
-      required:
-      - kind
-    bp_dto.PasskeyDeactivateRequest:
-      type: object
-      properties:
-        credentialId:
-          type: string
-    bp_dto.DfnsTmpSignatureRequest:
-      type: object
-      properties:
-        walletId:
-          type: string
-        keyId:
-          type: string
-        hash:
-          type: string
-    bp_dto.CredentialCreation:
-      type: object
-      properties:
-        Data:
-          type: object
-    protocol.CredentialAssertion:
-      type: object
-      properties:
-        publicKey:
-          $ref: '#/components/schemas/protocol.PublicKeyCredentialRequestOptions'
-    bp_dto.CredentialCreationResponse:
-      type: object
-      properties:
-        Response:
-          type: object
-    bp_dto.DfnsSignature:
-      type: object
-      properties:
-        hash:
-          type: string
-        signature:
-          type: string
-    bp_dto.PasskeyApprovalRequest:
-      type: object
-      properties:
-        credentialId:
-          type: string
-    dfnsdto.ActionAllowedFactorsSet:
-      type: object
-      properties:
-        Fido2:
-          $ref: '#/components/schemas/protocol.CredentialAssertion'
-        Key:
-          $ref: '#/components/schemas/dfns_entities.KeyCredentialFactor'
-    dfnsdto.SignedEnvelope--any:
-      type: object
-      properties:
-        payload:
-          type: object
-        signature:
-          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
-    dfnsdto.SignedEnvelope--bp_dto.PasskeyDeactivateRequest:
-      type: object
-      properties:
-        payload:
-          $ref: '#/components/schemas/bp_dto.PasskeyDeactivateRequest'
-        signature:
-          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
+        firstFactor:
+          oneOf:
+          - $ref: '#/components/schemas/dfns_entities.Fido2CredentialFactor'
+          - $ref: '#/components/schemas/dfns_entities.KeyCredentialFactor'
+          discriminator:
+            propertyName: kind
+            mapping:
+              Fido2: '#/components/schemas/dfns_entities.Fido2CredentialFactor'
+              Key: '#/components/schemas/dfns_entities.KeyCredentialFactor'
     protocol.CredentialDescriptor:
       type: object
       properties:
@@ -334,20 +309,44 @@ components:
           type: string
         address:
           type: string
-    dfnsdto.ActionAuthenticationResponse:
+    bp_dto.CredentialCreationResponse:
       type: object
       properties:
+        Response:
+          type: object
+    bp_dto.DfnsSignature:
+      type: object
+      properties:
+        hash:
+          type: string
+        signature:
+          type: string
+    bp_dto.PasskeyApprovalRequest:
+      type: object
+      properties:
+        credentialId:
+          type: string
+    dfnsdto.SignedEnvelope--bp_dto.PasskeyApprovalRequest:
+      type: object
+      properties:
+        payload:
+          $ref: '#/components/schemas/bp_dto.PasskeyApprovalRequest'
+        signature:
+          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
+    SignatureRequiredErr:
+      type: object
+      properties:
+        factors:
+          $ref: '#/components/schemas/dfnsdto.ActionAllowedFactorsSet'
         challengeIdentifier:
           type: string
-        firstFactor:
-          oneOf:
-          - $ref: '#/components/schemas/dfns_entities.Fido2CredentialFactor'
-          - $ref: '#/components/schemas/dfns_entities.KeyCredentialFactor'
-          discriminator:
-            propertyName: kind
-            mapping:
-              Fido2: '#/components/schemas/dfns_entities.Fido2CredentialFactor'
-              Key: '#/components/schemas/dfns_entities.KeyCredentialFactor'
+    dfnsdto.ActionAllowedFactorsSet:
+      type: object
+      properties:
+        Fido2:
+          $ref: '#/components/schemas/protocol.CredentialAssertion'
+        Key:
+          $ref: '#/components/schemas/dfns_entities.KeyCredentialFactor'
     bp_dto.PasskeyCreationRequest:
       type: object
       properties:
@@ -360,36 +359,37 @@ components:
           format: byte
         kind:
           type: string
-    protocol.PublicKeyCredentialRequestOptions:
+    dfnsdto.SignedEnvelope--bp_dto.DfnsTmpSignatureRequest:
       type: object
       properties:
-        challenge:
-          type: string
-          format: byte
-        timeout:
-          type: integer
-          format: int32
-        rpId:
-          type: string
-        allowCredentials:
-          type: array
-          items:
-            $ref: '#/components/schemas/protocol.CredentialDescriptor'
-        userVerification:
-          type: string
-          enum:
-          - required
-          - preferred
-          - discouraged
-        extensions:
+        payload:
+          $ref: '#/components/schemas/bp_dto.DfnsTmpSignatureRequest'
+        signature:
+          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
+    dfnsdto.SignedEnvelope--any:
+      type: object
+      properties:
+        payload:
           type: object
-    SignatureRequiredErr:
+        signature:
+          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
+    bp_dto.PasskeyDeactivateRequest:
       type: object
       properties:
-        factors:
-          $ref: '#/components/schemas/dfnsdto.ActionAllowedFactorsSet'
-        challengeIdentifier:
+        credentialId:
           type: string
+    dfnsdto.SignedEnvelope--bp_dto.PasskeyDeactivateRequest:
+      type: object
+      properties:
+        payload:
+          $ref: '#/components/schemas/bp_dto.PasskeyDeactivateRequest'
+        signature:
+          $ref: '#/components/schemas/dfnsdto.ActionAuthenticationResponse'
+    bp_dto.CredentialCreation:
+      type: object
+      properties:
+        Data:
+          type: object
   securitySchemes:
     BearerAuth:
       type: http

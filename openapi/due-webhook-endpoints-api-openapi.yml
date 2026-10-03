@@ -165,15 +165,6 @@ components:
           type: string
         lastAttemptAt:
           type: string
-    repository.CursorPage--bp_models.WebhookEvent:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/bp_models.WebhookEvent'
-        next:
-          type: string
     bp_models.WebhookEndpoint:
       type: object
       properties:
@@ -193,6 +184,15 @@ components:
           type: string
         enabled:
           type: boolean
+    repository.CursorPage--bp_models.WebhookEvent:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/bp_models.WebhookEvent'
+        next:
+          type: string
     bp_dto.UpdateWebhookEndpointRequest:
       type: object
       properties:

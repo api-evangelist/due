@@ -38,17 +38,6 @@ paths:
                 $ref: '#/components/schemas/fx_models.Quote'
 components:
   schemas:
-    fx_dto.QuoteRequest:
-      type: object
-      properties:
-        currencyIn:
-          type: string
-        currencyOut:
-          type: string
-        amountIn:
-          type: string
-        amountOut:
-          type: string
     fx_models.Quote:
       type: object
       properties:
@@ -67,6 +56,17 @@ components:
           type: integer
           format: int32
         createdAt:
+          type: string
+    fx_dto.QuoteRequest:
+      type: object
+      properties:
+        currencyIn:
+          type: string
+        currencyOut:
+          type: string
+        amountIn:
+          type: string
+        amountOut:
           type: string
   securitySchemes:
     BearerAuth:
