@@ -44,6 +44,9 @@ x-tier-reason: enriched-from-public-api
 specificationVersion: '0.23'
 created: '2026-07-17'
 modified: '2026-07-18'
+x-docs-platform: readme
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-10-03
 tags:
 - Payments
 - Cross-Border Payments
@@ -364,6 +367,9 @@ apis:
   - type: GettingStarted
     url: https://due.readme.io/docs/overview
 common:
+- type: CapabilityMap
+  url: capabilities/due-capability-edges.yml
+  name: Due Business Capability Map
 - type: Overlay
   url: overlays/due-openapi-overlay.yaml
 - type: AgenticAccess
