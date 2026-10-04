@@ -134,6 +134,19 @@ paths:
       - Webhook Endpoints
 components:
   schemas:
+    bp_dto.UpdateWebhookEndpointRequest:
+      type: object
+      properties:
+        url:
+          type: string
+        description:
+          type: string
+        events:
+          type: array
+          items:
+            type: string
+        enabled:
+          type: boolean
     bp_models.WebhookEvent:
       type: object
       properties:
@@ -165,6 +178,15 @@ components:
           type: string
         lastAttemptAt:
           type: string
+    repository.CursorPage--bp_models.WebhookEvent:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/bp_models.WebhookEvent'
+        next:
+          type: string
     bp_models.WebhookEndpoint:
       type: object
       properties:
@@ -182,28 +204,6 @@ components:
             type: string
         publicKey:
           type: string
-        enabled:
-          type: boolean
-    repository.CursorPage--bp_models.WebhookEvent:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/bp_models.WebhookEvent'
-        next:
-          type: string
-    bp_dto.UpdateWebhookEndpointRequest:
-      type: object
-      properties:
-        url:
-          type: string
-        description:
-          type: string
-        events:
-          type: array
-          items:
-            type: string
         enabled:
           type: boolean
   securitySchemes:
