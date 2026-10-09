@@ -3,6 +3,17 @@ info:
   title: Due — Onboard a customer account with KYC/KYB
   version: 1.0.0
   summary: Create an account, initiate KYC/KYB, and confirm the account reaches a verified state.
+  x-realizes-capability-ids:
+  - BC-130.10
+  x-capability-derivation:
+    method: 'deterministic join: sourceDescriptions -> per-tag OpenAPI -> tag/capability edge. No classification at this step.'
+    min_confidence: 0.7
+    sources:
+    - capability_id: BC-130.10
+      capability_name: Regulatory Compliance Management
+      spec: due-kyc-api-openapi.yml
+      confidence: 0.7
+    model: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities, CC BY 4.0
 sourceDescriptions:
 - name: accountApi
   url: ../openapi/due-account-api-openapi.yml
